@@ -1,7 +1,7 @@
 <script lang="ts">
   import '$lib/fonts.css';
   import jobs from '$lib/jobs';
-  import Zrgqr2 from './zrgqr.svg?component';
+  import Zrgqr2 from '$lib/zrgqr.svg?component';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
