@@ -11,7 +11,7 @@
   <header>
     <h1 class="resumeName">
       <span class="word">Zev</span> <span class="word">Goldberg</span>
-      <span class="resumeTitle">Front-End Web Developer</span>
+      <span class="resumeTitle">Senior Software Engineer</span>
     </h1>
     <ul class="subheader">
       <li>
@@ -35,14 +35,16 @@
         Thoughtful, thorough and inclusive. With more than 25 years of experience, I am looking to
         be a good citizen on the internet, building the next generation of web applications. I seek
         understanding of end-users, stakeholders, UX and Product teams to gather consensus to build
-        interfaces that are perceivable, operable, understandable and robust.
+        interfaces that are perceivable, operable, understandable and robust. Noisemaker and
+        Noisemaker-maker. Guitar FX Mad Scientist.
       </p>
     </section>
     <section class="resumeSection column" id="specialties">
       <h2 class="sectionHeader">Specialties</h2>
       <p>
-        HTML, CSS, JavaScript, component frameworks, React.js, Next.js, Svelte, Node.js, Jest,
-        Storybook, Chromatic, Universal Design, UX/UI, accessibility, responsive layout
+        HTML, CSS, JavaScript, component frameworks, Single Page Applications, React.js, Next.js,
+        Svelte, Node.js, Jest, Storybook, Chromatic, Universal Design, UX/UI, accessibility,
+        responsive layout, guitar FX
       </p>
     </section>
 
