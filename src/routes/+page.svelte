@@ -53,7 +53,7 @@
             <li class="job column" {id}>
               <h3 class="job_header">
                 {#if url}
-                  <a href="://{url}" rel="nofollow">{fullName}</a>
+                  <a href="//{url}" rel="nofollow">{fullName}</a>
                 {:else}
                   {fullName}
                 {/if}

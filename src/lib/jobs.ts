@@ -21,7 +21,7 @@ const jobs = [
   }, {
     id: "sears",
     display: true,
-    url: "www.searslabs.com",
+    url: "",
     fullName: "Sears IR Labs",
     city: "Chicago, IL",
     startMonth: "2014-05",
