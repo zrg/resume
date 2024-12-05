@@ -62,7 +62,7 @@ const jobs = [
   }, {
     id: "trib",
     display: true,
-    url: "www.tribune.com",
+    url: "www.chicagotribune.com",
     fullName: "Chicago Tribune",
     city: "Chicago, IL",
     startMonth: "2012-04",
