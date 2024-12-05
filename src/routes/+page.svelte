@@ -18,8 +18,8 @@
         <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
       </li>
       <li>Evanston, IL 60203</li>
-      <li aria-label="zev at zrgmedia dot com">
-        zev@<span class="hidden">[remove this]</span>zrgmedia.com
+      <li aria-label="zev goldberg at G mail dot com">
+        zevgoldberg@<span class="hidden">[remove this]</span>gmail.com
       </li>
       <li>
         <a href="//zevgoldberg.com" title="Zev Goldberg">zevgoldberg.com</a>
