@@ -156,8 +156,8 @@ const jobs = [
     url: "",
     fullName: "Margloin Shoes and Apparel",
     city: "Chicago, IL",
-    startMonth: "Nov 2004&ndash;Oct 2005",
-    endMonth: "",
+    startMonth: "2004-11",
+    endMonth: "2005-10",
     title: "IT and Graphics",
     highlights: [
       "Service and maintain all computers",
@@ -171,8 +171,8 @@ const jobs = [
     url: "",
     fullName: "VoiceCue Technologies, Inc.",
     city: "Rosemont, IL",
-    startMonth: "Sep 2001&ndash;Oct 2004",
-    endMonth: "",
+    startMonth: "2001-11",
+    endMonth: "2004-10",
     title: "Software Development",
     highlights: [
       "Develop software for real-time billing of pre-paid phone accounts across multiple markets in the US and Mexico",
