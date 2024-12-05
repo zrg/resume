@@ -22,9 +22,9 @@
         zev@<span class="hidden">[remove this]</span>zrgmedia.com
       </li>
       <li>
-        <a href="http://zevgoldberg.com" title="Zev Goldberg">zevgoldberg.com</a>
+        <a href="//zevgoldberg.com" title="Zev Goldberg">zevgoldberg.com</a>
       </li>
-      <li><a href="http://zevgoldberg.com/resume-doc">Google Doc</a></li>
+      <li><a href="//zevgoldberg.com/resume-doc">Google Doc</a></li>
     </ul>
   </header>
 
