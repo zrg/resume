@@ -2,6 +2,14 @@
   import '$lib/fonts.css';
   import jobs from '$lib/jobs';
   import Zrgqr2 from './zrgqr2.svg?component';
+
+  const formatDate = (yearMonth: string) => {
+    return new Date(
+      Number(yearMonth.substring(0, 4)),
+      Number(yearMonth.substring(5)) - 1,
+      1
+    ).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
 </script>
 
 <div class="responsiveNotice">
@@ -60,7 +68,9 @@
               </h3>
               <div class="job_city">{city}</div>
               <div class="job_dates">
-                {startMonth}<span class="visuallyHidden"> through </span>&ndash;{endMonth}
+                {formatDate(startMonth)}<span class="visuallyHidden">
+                  through
+                </span>&ndash;{formatDate(endMonth)}
               </div>
               <div class="job_title">{title}</div>
               <ul class="job_highlights">

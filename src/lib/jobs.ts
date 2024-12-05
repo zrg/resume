@@ -36,8 +36,8 @@ const jobs = [
   }, {
     id: "tmc",
     display: true,
-    url: "www.thinkmintchip.com",
-    fullName: "Think Mint Chip",
+    url: "www.linkedin.com/company/think-mint-chip-llc",
+    fullName: "Mint Chip",
     city: "Skokie, IL",
     startMonth: "2014-03",
     endMonth: "2014-05",
@@ -78,7 +78,7 @@ const jobs = [
   }, {
     id: "jspace",
     display: true,
-    url: "",
+    url: "www.linkedin.com/company/jspace-llc/",
     fullName: "Jspace.com, LLC",
     city: "Chicago, IL",
     startMonth: "2010-11",
@@ -107,7 +107,7 @@ const jobs = [
   }, {
     id: "mywv",
     display: true,
-    url: "",
+    url: "www.linkedin.com/company/mywrigleyville.com/",
     fullName: "MyWrigleyville.com",
     city: "Chicago, IL",
     startMonth: "2010-05",
