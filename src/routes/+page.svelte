@@ -21,9 +21,6 @@
       <li aria-label="zev goldberg at G mail dot com">
         zevgoldberg@<span class="hidden">[remove this]</span>gmail.com
       </li>
-      <li>
-        <a href="//zevgoldberg.com" title="Zev Goldberg">zevgoldberg.com</a>
-      </li>
       <li><a href="//zevgoldberg.com/resume-doc">Google Doc</a></li>
     </ul>
   </header>
