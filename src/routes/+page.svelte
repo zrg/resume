@@ -1,7 +1,7 @@
 <script lang="ts">
   import '$lib/fonts.css';
   import jobs from '$lib/jobs';
-  import Zrgqr2 from './zrgqr2.svg?component';
+  import Zrgqr2 from './zrgqr.svg?component';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -47,9 +47,9 @@
     <section class="resumeSection column" id="specialties">
       <h2 class="sectionHeader">Specialties</h2>
       <p>
-        HTML, CSS, JavaScript, component frameworks, Single Page Applications, React.js, Next.js,
-        Svelte, Node.js, Jest, Storybook, Chromatic, Universal Design, UX/UI, accessibility,
-        responsive layout, guitar FX
+        HTML, CSS, JavaScript, component frameworks, REST API, Single Page Applications, React.js,
+        Next.js, Svelte, Node.js, Jest, Storybook, Chromatic, Universal Design, UX/UI,
+        accessibility, responsive layout, guitar FX
       </p>
     </section>
 
@@ -115,7 +115,7 @@
     </section>
 
     <div class="qrContainer">
-      <Zrgqr2 alt="zevgoldberg.com QR" />Scan this code to see this page on your phone
+      <Zrgqr2 alt="zevgoldberg.com QR" />Scan this QR code to see this page on your phone
     </div>
   </main>
 </div>
