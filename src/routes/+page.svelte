@@ -46,7 +46,7 @@
         >
       </li>
       <li>Evanston, IL 60203</li>
-      <li><a href="../Zev Goldberg - Resume 20241205_03.pdf">PDF Format</a></li>
+      <li><a href="../Zev Goldberg - Resume 20241205_04.pdf">PDF Format</a></li>
     </ul>
   </header>
 
@@ -276,6 +276,8 @@
     font-weight: 300;
     font-size: 0.43055556em; /* 15.5/36px */
     line-height: 2;
+    display: block;
+    margin-top: 1em;
 
     span {
       display: block;
@@ -359,23 +361,9 @@
     }
   }
 
-  @media (width >= 740px) {
-    :global(body) {
-      padding: 1.5% 0;
-      /* http://www.colorzilla.com/gradient-editor/#ffffff+0,ddd8ca+100;Custom */
-      background: #ddd8ca;
-      background: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
-      background-position: fixed;
-    }
-
-    .outerContainer {
-      width: 670px;
-      padding: 2em;
-      box-shadow: 4px 4px 16px #666;
-      border: 1px solid #ddd;
-    }
+  @media (width >= 630px) {
     .resumeTitle {
-      display: block;
+      margin-top: 0;
 
       span {
         display: inline;
@@ -401,6 +389,22 @@
           left: -0.5em;
         }
       }
+    }
+  }
+
+  @media (width >= 740px) {
+    :global(body) {
+      padding: 1.5% 0;
+      /* http://www.colorzilla.com/gradient-editor/#ffffff+0,ddd8ca+100;Custom */
+      background: #ddd8ca;
+      background: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
+      background-position: fixed;
+    }
+    .outerContainer {
+      width: 670px;
+      padding: 2em;
+      box-shadow: 4px 4px 16px #666;
+      border: 1px solid #ddd;
     }
     .column {
       display: inline-block;
