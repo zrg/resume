@@ -12,9 +12,9 @@
     ).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
 
-  const mailto: Action = (node)=> {
-    node.setAttribute("href","mailto:zevgoldberg@gmail.com");
-  }
+  const mailto: Action = (node) => {
+    node.setAttribute('href', 'mailto:zevgoldberg@gmail.com');
+  };
 </script>
 
 <div class="responsiveNotice">
@@ -24,7 +24,9 @@
   <header>
     <h1 class="resumeName">
       <span class="word">Zev</span> <span class="word">Goldberg</span>
-      <span class="resumeTitle">Senior Software Engineer | Guitar FX Mad Scientist</span>
+      <span class="resumeTitle"
+        ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
+      >
     </h1>
     <ul class="subheader">
       <li>
@@ -32,7 +34,8 @@
       </li>
       <li aria-label="zev goldberg at G mail dot com">
         <!-- svelte-ignore a11y_invalid_attribute -->
-        <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a>
+        <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
+        >
       </li>
       <li>Evanston, IL 60203</li>
       <li><a href="../Zev Goldberg - Resume 20241205_03.pdf">PDF Format</a></li>
@@ -68,18 +71,18 @@
             <li class="job column" {id}>
               <h3 class="job_header">
                 {#if url}
-                  <a href="//{url}" rel="nofollow">{fullName}</a>
+                  <a href="//{url}" rel="nofollow">{fullName.toUpperCase()}</a>
                 {:else}
-                  {fullName}
+                  {fullName.toUpperCase()}
                 {/if}
               </h3>
-              <div class="job_city">{city}</div>
+              <div class="job_title">{title.toUpperCase()}</div>
               <div class="job_dates">
-                {formatDate(startMonth)}<span class="visuallyHidden">
+                {formatDate(startMonth).toUpperCase()}<span class="visuallyHidden">
                   through
-                </span>&ndash;{formatDate(endMonth)}
+                </span>&ndash;{formatDate(endMonth).toUpperCase()}
               </div>
-              <div class="job_title">{title}</div>
+              <div class="job_city">{city.toUpperCase()}</div>
               <ul class="job_highlights">
                 {#each highlights as highlight}
                   <li>{highlight}</li>
@@ -130,9 +133,9 @@
 <style>
   :global(body) {
     line-height: 1.4;
-    font-family: 'HeuristicaRegular', Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
+    font-family: 'Merriweather', serif;
     font-size: 12px;
+    text-align: center;
     margin: 0;
   }
   a {
@@ -169,24 +172,16 @@
     width: 30em;
     padding: 0.5em 0 0.7em;
     position: fixed;
-    left: -9.5em;
-    bottom: 3.5em;
-    font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', Geneva, Arial, Helvetica, sans-serif;
+    left: -8.5em;
+    bottom: 4.5em;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
     font-size: 1.2em;
     letter-spacing: 0.03em;
     text-align: center;
     background-color: #fcf50a;
     z-index: 2;
-
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
-
     opacity: 0;
-    -webkit-animation: fadeOut 15s ease;
-    -moz-animation: fadeOut 15s ease;
-    -o-animation: fadeOut 15s ease;
     animation: fadeOut 15s ease;
   }
   @-webkit-keyframes fadeOut {
@@ -259,48 +254,50 @@
   }
 
   .resumeName {
-    font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', Geneva, Arial, Helvetica, sans-serif;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
     margin: 0;
-    font-size: 3.4em;
-    line-height: 1.2em;
+    font-size: 3em; /* 36/12px */
+    line-height: 1.2;
+    font-weight: 800;
   }
   .resumeName .word {
     display: inline-block;
+
+    &::first-letter {
+      font-size: 1.30555556em; /* 47/36 */
+    }
   }
-  .resumeName .word::first-letter {
-    font-size: 1.2em;
-  }
+
   .resumeTitle {
-    display: block;
     color: #aaa;
-    font-size: 0.75em;
-    font-weight: normal;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-size: 0.43055556em; /* 15.5/36px */
+    line-height: 2;
+
+    span {
+      display: block;
+      line-height: 1.2;
+      text-align: right;
+    }
   }
 
   .subheader {
-    font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', Geneva, Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
+    font-size: 0.91666667em; /* 11/12px */
     text-align: right;
     list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1em;
-
-    li:not(:first-child):before {
-      content: '|';
-      position: relative;
-      left: -0.5em;
-    }
+    padding: 0;
+    margin: 0;
   }
 
   .sectionHeader {
     border-top: 2px solid black;
     border-bottom: 1px solid gray;
-    font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', Geneva, Arial, Helvetica, sans-serif;
-    font-size: 2em;
-    font-weight: normal;
-    letter-spacing: 2px;
-    font-variant: small-caps;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    font-size: 1.1875em; /* 19/16px */
+    font-weight: 700;
   }
 
   .jobs {
@@ -317,17 +314,21 @@
   }
 
   .job_header {
-    font-size: 1.5em;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-size: 1.25em; /* 15/12px */
   }
   .job_header,
   .school_header {
-    margin: 0;
+    margin: 0.25em 0;
   }
   .job_city,
   .job_dates,
   .school_city,
   .school_dates {
     color: #666;
+    font-weight: 300;
+    line-height: 2;
   }
   .job_title,
   .school_concentration {
@@ -335,7 +336,7 @@
   }
   .job_highlights {
     padding-left: 1em;
-    margin-bottom: 2em;
+    margin: 1em 0;
     list-style: disc;
   }
   .job_highlights li {
@@ -350,12 +351,13 @@
     flex-basis: 100%;
   }
 
-  @media (min-width: 450px) {
+  @media (width >= 450px) {
     :global(body) {
       font-size: 16px;
     }
   }
-  @media (min-width: 740px) {
+
+  @media (width >= 740px) {
     :global(body) {
       padding: 1.5% 0;
       /* http://www.colorzilla.com/gradient-editor/#ffffff+0,ddd8ca+100;Custom */
@@ -371,7 +373,32 @@
       border: 1px solid #ddd;
     }
     .resumeTitle {
-      margin: 0;
+      display: block;
+
+      span {
+        display: inline;
+
+        &:not(:first-child):before {
+          content: '|';
+          position: relative;
+          margin: 0 0.15em;
+        }
+      }
+    }
+    .subheader {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1em;
+
+      li {
+        white-space: nowrap;
+
+        &:not(:first-child):before {
+          content: '|';
+          position: relative;
+          left: -0.5em;
+        }
+      }
     }
     .column {
       display: inline-block;
@@ -381,7 +408,7 @@
     .column:nth-of-type(2n) {
       margin-left: 4%;
     }
-    .job_city {
+    .job_dates {
       float: right;
     }
     .job_city,
@@ -393,11 +420,12 @@
     .tableader {
       border-bottom: 2px dotted gray;
       text-align: right;
+      line-height: 2;
     }
     .tableader_item {
       display: inline-block;
       position: relative;
-      top: 0.45em;
+      top: 0.8em;
       padding-right: 0.5em;
       font-size: 1em;
       background-color: #fbfcfc;

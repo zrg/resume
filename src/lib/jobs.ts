@@ -101,7 +101,7 @@ const jobs = [
     city: 'Chicago, IL',
     startMonth: '2010-10',
     endMonth: '2010-11',
-    title: 'Front-End Web Developer (short-term contract)',
+    title: 'Front-End Web Developer (contract)',
     highlights: [
       'HTML, CSS, JavaScript, Photoshop',
       'Migrate several classified ads systems into the new one, maintaining the latest look-and-feel styles'
@@ -131,7 +131,7 @@ const jobs = [
     endMonth: '2010-04',
     title: 'Senior Database and Application Developer',
     highlights: [
-      'LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server, bash/Python scripting',
+      'LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, MS Visual Basic, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server, bash/Python scripting',
       'Design, develop, code, test and support online database applications with multiple access levels, user management, custom user interface, reporting and graphs used by more than 300 people spanning several departments',
       'Design, develop and maintain a custom CMS for more than thirty websites for all Extended Care nursing facilities',
       'Provide complete graphics services for promotional materials and newsletters, including layout, copy-editing, printing and liaison to professional printing services'
