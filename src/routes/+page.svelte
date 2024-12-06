@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Action } from 'svelte/action';
-  import '$lib/fonts.css';
   import jobs from '$lib/jobs';
+  import summary from '$lib/summary';
   import Zrgqr from './zrgqr.svg?component';
 
   const formatDate = (yearMonth: string) => {
@@ -16,6 +16,14 @@
     node.setAttribute('href', 'mailto:zevgoldberg@gmail.com');
   };
 </script>
+
+<svelte:head>
+  <title>Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist</title>
+  <meta
+    name="description"
+    content="{summary}"
+  />
+</svelte:head>
 
 <div class="responsiveNotice">
   Resize the browser or rotate your device!<br />This résumé is responsive!
@@ -45,13 +53,7 @@
   <main>
     <section class="resumeSection column" id="summary">
       <h2 class="sectionHeader">Summary</h2>
-      <p>
-        Thoughtful, thorough and inclusive. With more than 25 years of experience, I am looking to
-        be a good citizen on the internet, and build the next generation of web applications. I
-        strive to understand end-users, while gathering consensus from stakeholders, UX and Product
-        teams to build interfaces that are perceivable, operable, understandable and robust. I am a
-        noise-maker and noisemaker-maker.
-      </p>
+      <p>{summary}</p>
     </section>
     <section class="resumeSection column" id="specialties">
       <h2 class="sectionHeader">Specialties</h2>
@@ -420,7 +422,6 @@
     .tableader {
       border-bottom: 2px dotted gray;
       text-align: right;
-      line-height: 2;
     }
     .tableader_item {
       display: inline-block;
