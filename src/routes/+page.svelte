@@ -35,7 +35,7 @@
         <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a>
       </li>
       <li>Evanston, IL 60203</li>
-      <li><a href="../Zev Goldberg - Resume 20241205_02.pdf">PDF Format</a></li>
+      <li><a href="../Zev Goldberg - Resume 20241205_03.pdf">PDF Format</a></li>
     </ul>
   </header>
 
