@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { Action } from 'svelte/action';
   import '$lib/fonts.css';
   import jobs from '$lib/jobs';
   import Zrgqr from './zrgqr.svg?component';
@@ -10,6 +11,10 @@
       1
     ).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
+
+  const mailto: Action = (node)=> {
+    node.setAttribute("href","mailto:zevgoldberg@gmail.com");
+  }
 </script>
 
 <div class="responsiveNotice">
@@ -19,17 +24,18 @@
   <header>
     <h1 class="resumeName">
       <span class="word">Zev</span> <span class="word">Goldberg</span>
-      <span class="resumeTitle">Senior Software Engineer</span>
+      <span class="resumeTitle">Senior Software Engineer | Guitar FX Mad Scientist</span>
     </h1>
     <ul class="subheader">
       <li>
         <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
       </li>
-      <li>Evanston, IL 60203</li>
       <li aria-label="zev goldberg at G mail dot com">
-        zevgoldberg@<span class="hidden">[remove this]</span>gmail.com
+        <!-- svelte-ignore a11y_invalid_attribute -->
+        <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a>
       </li>
-      <li><a href="../Zev Goldberg - Resume 20241205.pdf">PDF</a></li>
+      <li>Evanston, IL 60203</li>
+      <li><a href="../Zev Goldberg - Resume 20241205_02.pdf">PDF Format</a></li>
     </ul>
   </header>
 
@@ -38,18 +44,19 @@
       <h2 class="sectionHeader">Summary</h2>
       <p>
         Thoughtful, thorough and inclusive. With more than 25 years of experience, I am looking to
-        be a good citizen on the internet, building the next generation of web applications. I seek
-        understanding of end-users, stakeholders, UX and Product teams to gather consensus to build
-        interfaces that are perceivable, operable, understandable and robust. Noisemaker and
-        Noisemaker-maker. Guitar FX Mad Scientist.
+        be a good citizen on the internet, and build the next generation of web applications. I
+        strive to understand end-users, while gathering consensus from stakeholders, UX and Product
+        teams to build interfaces that are perceivable, operable, understandable and robust. I am a
+        noise-maker and noisemaker-maker.
       </p>
     </section>
     <section class="resumeSection column" id="specialties">
       <h2 class="sectionHeader">Specialties</h2>
       <p>
-        HTML, CSS, JavaScript, component frameworks, REST API, Single Page Applications, React.js,
-        Next.js, Svelte, Node.js, Jest, Storybook, Chromatic, Universal Design, UX/UI,
-        accessibility, responsive layout, guitar FX
+        HTML, CSS, JavaScript, Node.js, component frameworks, REST API, Single Page Applications,
+        React.js, Next.js, Svelte, Typescript, SCSS/Sass, Jest, Storybook, Chromatic, Webpack,
+        Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky bloopy
+        noises.
       </p>
     </section>
 
@@ -139,7 +146,7 @@
     text-decoration: underline;
   }
 
-  .hidden {
+  [aria-hidden] {
     width: 0;
     display: inline-block;
     visibility: hidden;
@@ -266,17 +273,24 @@
   .resumeTitle {
     display: block;
     color: #aaa;
-    text-indent: 1em;
     font-size: 0.75em;
+    font-weight: normal;
   }
 
   .subheader {
-    font-size: 12px;
+    font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', Geneva, Arial, Helvetica, sans-serif;
+    font-size: 18px;
     text-align: right;
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    gap: 2em;
+    gap: 1em;
+
+    li:not(:first-child):before {
+      content: '|';
+      position: relative;
+      left: -0.5em;
+    }
   }
 
   .sectionHeader {
@@ -357,7 +371,6 @@
       border: 1px solid #ddd;
     }
     .resumeTitle {
-      display: inline;
       margin: 0;
     }
     .column {
