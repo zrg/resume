@@ -1,7 +1,7 @@
 <script lang="ts">
   import '$lib/fonts.css';
   import jobs from '$lib/jobs';
-  import Zrgqr2 from '$lib/zrgqr.svg?component';
+  import Zrgqr from './zrgqr.svg?component';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -29,7 +29,7 @@
       <li aria-label="zev goldberg at G mail dot com">
         zevgoldberg@<span class="hidden">[remove this]</span>gmail.com
       </li>
-      <li><a href="//zevgoldberg.com/resume-doc">Google Doc</a></li>
+      <li><a href="../Zev Goldberg - Resume 20241205.pdf">PDF</a></li>
     </ul>
   </header>
 
@@ -115,7 +115,7 @@
     </section>
 
     <div class="qrContainer">
-      <Zrgqr2 alt="zevgoldberg.com QR" />Scan this QR code to see this page on your phone
+      <Zrgqr alt="zevgoldberg.com QR" />Scan this QR code to see this page on your phone
     </div>
   </main>
 </div>
