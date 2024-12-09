@@ -19,10 +19,7 @@
 
 <svelte:head>
   <title>Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist</title>
-  <meta
-    name="description"
-    content="{summary}"
-  />
+  <meta name="description" content={summary} />
 </svelte:head>
 
 <div class="responsiveNotice">
@@ -46,7 +43,7 @@
         >
       </li>
       <li>Evanston, IL 60203</li>
-      <li><a href="../Zev Goldberg - Resume 20241205_04.pdf">PDF Format</a></li>
+      <li><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
     </ul>
   </header>
 
@@ -60,8 +57,8 @@
       <p>
         HTML, CSS, JavaScript, Node.js, component frameworks, REST API, Single Page Applications,
         React.js, Next.js, Svelte, Typescript, SCSS/Sass, Jest, Storybook, Chromatic, Webpack,
-        Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky bloopy
-        noises.
+        Rollup, Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky
+        bloopy noises.
       </p>
     </section>
 
