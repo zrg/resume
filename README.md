@@ -1,38 +1,23 @@
-# sv
+# Zev Goldberg's Resume
+[`HTML`](https://resume.zevgoldberg.com) / [`PDF`](https://resume.zevgoldberg.com/Zev_Goldberg_-_Resume_20241209.pdf)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
-## Creating a project
+----
 
-If you're seeing this, you've probably already done this step. Congrats!
+<ul>
+  <li>
+    <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
+  </li>
+  <li aria-label="zev goldberg at G mail dot com">
+    <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
+    >
+  </li>
+  <li>Evanston, IL 60203</li>
+</ul>
 
-```bash
-# create a new project in the current directory
-npx sv create
+----
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Senior Software Engineer / Guitar FX Mad Scientist
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Thoughtful, thorough and inclusive. With more than 25 years of experience, I am looking to be a good citizen on the internet, and build the next generation of web applications. I strive to understand end-users, while gathering consensus from stakeholders, UX and Product teams to build interfaces that are perceivable, operable, understandable and robust. I am a noise-maker and noisemaker-maker.

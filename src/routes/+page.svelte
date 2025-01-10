@@ -44,6 +44,7 @@
       </li>
       <li>Evanston, IL 60203</li>
       <li><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
+      <li><a href="https://github.com/zrg/resume">Source</a></li>
     </ul>
   </header>
 
@@ -358,7 +359,7 @@
     }
   }
 
-  @media (width >= 630px) {
+  @media (width >= 680px) {
     .resumeTitle {
       margin-top: 0;
 
