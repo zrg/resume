@@ -393,7 +393,20 @@
   }
 
   .qrContainer {
-    display: none;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 1em;
+  }
+
+  // best guess for a device that reads QR codes with a camera (e.g., a phone)
+  @media only screen and (width <= 450px),
+    only screen and (pointer: coarse) and (width <= 800px) and (height <= 450px) {
+    .qrContainer {
+      display: none;
+    }
   }
 
   #education {
@@ -491,15 +504,6 @@
           )
           bottom/6px 2px repeat-x;
       }
-    }
-
-    .qrContainer {
-      display: flex;
-      flex-basis: 100%;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5em;
-      margin-top: 1em;
     }
   }
 
