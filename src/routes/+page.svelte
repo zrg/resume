@@ -19,7 +19,7 @@
     node.setAttribute('href', 'mailto:zevgoldberg@gmail.com');
   };
 
-  let darkMode = false;
+  let darkMode = $state(false);
 
   if (browser) {
     darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
