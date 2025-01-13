@@ -1,8 +1,11 @@
 <script lang="ts">
   import type { Action } from 'svelte/action';
+  import { browser } from '$app/environment';
   import jobs from '$lib/jobs';
   import summary from '$lib/summary';
   import Zrgqr from './zrgqr.svg?component';
+  import IconDark from './icon-dark.svg?component';
+  import IconLight from './icon-light.svg?component';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -15,6 +18,12 @@
   const mailto: Action = (node) => {
     node.setAttribute('href', 'mailto:zevgoldberg@gmail.com');
   };
+
+  let darkMode = false;
+
+  if (browser) {
+    darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 </script>
 
 <svelte:head>
@@ -22,128 +31,175 @@
   <meta name="description" content={summary} />
 </svelte:head>
 
-<div class="responsiveNotice">
-  Resize the browser or rotate your device!<br />This résumé is responsive!
-</div>
-<div class="outerContainer">
-  <header>
-    <h1 class="resumeName">
-      <span class="word">Zev</span> <span class="word">Goldberg</span>
-      <span class="resumeTitle"
-        ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
-      >
-    </h1>
-    <ul class="subheader">
-      <li>
-        <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
-      </li>
-      <li aria-label="zev goldberg at G mail dot com">
-        <!-- svelte-ignore a11y_invalid_attribute -->
-        <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
+<div class="outer-container">
+  <div class="responsive-notice">
+    Resize the browser or rotate your device!<br />This résumé is responsive!
+  </div>
+  <div class="inner-container">
+    <label class="theme-switcher">
+      <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
+      {#if darkMode}
+        <IconDark />
+      {:else}
+        <IconLight />
+      {/if}
+    </label>
+    <header>
+      <h1 class="resume-name">
+        <span class="resume-name__word">Zev</span> <span class="resume-name__word">Goldberg</span>
+        <span class="resume-name__title"
+          ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
         >
-      </li>
-      <li>Evanston, IL 60203</li>
-      <li><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
-      <li><a href="https://github.com/zrg/resume">Source</a></li>
-    </ul>
-  </header>
-
-  <main>
-    <section class="resumeSection column" id="summary">
-      <h2 class="sectionHeader">Summary</h2>
-      <p>{summary}</p>
-    </section>
-    <section class="resumeSection column" id="specialties">
-      <h2 class="sectionHeader">Specialties</h2>
-      <p>
-        HTML, CSS, JavaScript, Node.js, component frameworks, REST API, Single Page Applications,
-        React.js, Next.js, Svelte, Typescript, SCSS/Sass, Jest, Storybook, Chromatic, Webpack,
-        Rollup, Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky
-        bloopy noises.
-      </p>
-    </section>
-
-    <section class="resumeSection" id="experience">
-      <h2 class="sectionHeader">Experience</h2>
-      <ul class="jobs">
-        {#each jobs as { id, display, url, fullName, city, startMonth, endMonth, title, highlights }}
-          {#if display}
-            <li class="job column" {id}>
-              <h3 class="job_header">
-                {#if url}
-                  <a href="//{url}" rel="nofollow">{fullName.toUpperCase()}</a>
-                {:else}
-                  {fullName.toUpperCase()}
-                {/if}
-              </h3>
-              <div class="job_title">{title.toUpperCase()}</div>
-              <div class="job_dates">
-                {formatDate(startMonth).toUpperCase()}<span class="visuallyHidden">
-                  through
-                </span>&ndash;{formatDate(endMonth).toUpperCase()}
-              </div>
-              <div class="job_city">{city.toUpperCase()}</div>
-              <ul class="job_highlights">
-                {#each highlights as highlight}
-                  <li>{highlight}</li>
-                {/each}
-              </ul>
-            </li>
-          {/if}
-        {/each}
+      </h1>
+      <ul class="subheader">
+        <li>
+          <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
+        </li>
+        <li aria-label="zev goldberg at G mail dot com">
+          <!-- svelte-ignore a11y_invalid_attribute -->
+          <a href="#" use:mailto
+            >zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
+          >
+        </li>
+        <li>Evanston, IL 60203</li>
+        <li><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
+        <li><a href="https://github.com/zrg/resume">Source</a></li>
       </ul>
-    </section>
+    </header>
 
-    <section class="resumeSection" id="education">
-      <h2 class="sectionHeader">Education</h2>
+    <main>
+      <section class="column" id="summary">
+        <h2 class="resume-section-header">Summary</h2>
+        <p>{summary}</p>
+      </section>
+      <section class="column" id="specialties">
+        <h2 class="resume-section-header">Specialties</h2>
+        <p>
+          HTML, CSS, JavaScript, Node.js, component frameworks, REST API, Single Page Applications,
+          React.js, Next.js, Svelte, Typescript, SCSS/Sass, Jest, Storybook, Chromatic, Webpack,
+          Rollup, Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky
+          bloopy noises.
+        </p>
+      </section>
 
-      <div class="school" id="ccc">
-        <div class="tableader">
-          <h3 class="school_header tableader_item">Columbia College Chicago</h3>
-          <div class="school_city tableader_item">Chicago, IL</div>
-        </div>
-        <div class="tableader">
-          <div class="school_concentration tableader_item">Computer Animation and Film</div>
-          <div class="school_dates tableader_item">
-            1994<span class="visuallyHidden"> through </span>&ndash;1998
+      <section id="experience">
+        <h2 class="resume-section-header">Experience</h2>
+        <ul class="jobs">
+          {#each jobs as { id, display, url, fullName, city, startMonth, endMonth, title, highlights }}
+            {#if display}
+              <li class="job column" {id}>
+                <h3 class="job__header">
+                  {#if url}
+                    <a href="//{url}" rel="nofollow">{fullName.toUpperCase()}</a>
+                  {:else}
+                    {fullName.toUpperCase()}
+                  {/if}
+                </h3>
+                <div class="job__title">{title.toUpperCase()}</div>
+                <div class="job__dates">
+                  {formatDate(startMonth).toUpperCase()}<span class="visually-hidden">
+                    through
+                  </span>&ndash;{formatDate(endMonth).toUpperCase()}
+                </div>
+                <div class="job__city">{city.toUpperCase()}</div>
+                <ul class="job__highlights">
+                  {#each highlights as highlight}
+                    <li>{highlight}</li>
+                  {/each}
+                </ul>
+              </li>
+            {/if}
+          {/each}
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2 class="resume-section-header">Education</h2>
+
+        <div class="school" id="ccc">
+          <div class="tableader">
+            <h3 class="school__header tableader__item">Columbia College Chicago</h3>
+            <span class="tableader__dots"></span>
+            <div class="school__city tableader__item">Chicago, IL</div>
+          </div>
+          <div class="tableader">
+            <div class="school__concentration tableader__item">Computer Animation and Film</div>
+            <span class="tableader__dots"></span>
+            <div class="school__dates tableader__item">
+              1994<span class="visually-hidden"> through </span>&ndash;1998
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="school" id="uic">
-        <div class="tableader">
-          <h3 class="school_header tableader_item">University of Illinois at Chicago</h3>
-          <div class="school_city tableader_item">Chicago, IL</div>
-        </div>
-        <div class="tableader">
-          <div class="school_concentration tableader_item">Computer Science</div>
-          <div class="school_dates tableader_item">
-            1993<span class="visuallyHidden"> through </span>&ndash;1994
+        <div class="school" id="uic">
+          <div class="tableader">
+            <h3 class="school__header tableader__item">University of Illinois at Chicago</h3>
+            <span class="tableader__dots"></span>
+            <div class="school__city tableader__item">Chicago, IL</div>
+          </div>
+          <div class="tableader">
+            <div class="school__concentration tableader__item">Computer Science</div>
+            <span class="tableader__dots"></span>
+            <div class="school__dates tableader__item">
+              1993<span class="visually-hidden"> through </span>&ndash;1994
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="qrContainer">
-      <Zrgqr alt="zevgoldberg.com QR" />Scan this QR code to see this page on your phone
-    </div>
-  </main>
+      <div class="qrContainer">
+        <Zrgqr />Scan this QR code to see this page on your phone
+      </div>
+    </main>
+  </div>
 </div>
 
-<style>
+<style lang="scss">
+  :global(:root) {
+    --font-family: 'Merriweather', serif;
+    --font-family-secondary: 'Encode Sans Semi Condensed', sans-serif;
+    --font-color: #000;
+    --link-color: #2525e3;
+    --link-color-visited: #681091;
+    --jobs-color: #575757;
+    --bg-color: #fbfcfc;
+    --body-bg-color: #ddd8ca;
+    --inner-bg: var(--bg-color);
+    --body-bg: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
+    --border-color: var(--font-color);
+    --border-color-secondary: #868686;
+  }
+  .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+    --font-family: monospace;
+    --font-family-secondary: var(--font-family);
+    --font-color: #0f0;
+    --link-color: #0cf;
+    --link-color-visited: #d270ff;
+    --jobs-color: #00bd00;
+    --bg-color: #333;
+    --body-bg: #000;
+    --inner-bg: rgba(0, 0, 0, 0.5);
+    --border-color: var(--font-color);
+    --border-color-secondary: #090;
+  }
+
   :global(body) {
+    margin: 0;
+  }
+
+  .outer-container {
     line-height: 1.4;
-    font-family: 'Merriweather', serif;
     font-size: 12px;
     text-align: center;
-    margin: 0;
+    color: var(--font-color);
+    font-family: var(--font-family);
   }
   a {
     text-decoration: none;
-    color: #2525e3;
+    color: var(--link-color);
   }
   a:visited {
-    color: #681091;
+    color: var(--link-color-visited);
   }
   a:hover {
     text-decoration: underline;
@@ -156,7 +212,7 @@
     margin-top: -100em;
   }
 
-  .visuallyHidden {
+  .visually-hidden {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -168,13 +224,29 @@
     position: absolute;
   }
 
-  .responsiveNotice {
+  .theme-switcher {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--font-color);
+    cursor: pointer;
+
+    &__dark-mode-toggle {
+      display: none;
+    }
+
+    &::before {
+      content: 'Color Mode:';
+    }
+  }
+
+  .responsive-notice {
     width: 30em;
     padding: 0.5em 0 0.7em;
     position: fixed;
     left: -8.5em;
     bottom: 4.5em;
-    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    font-family: var(--font-family-secondary);
     font-size: 1.2em;
     letter-spacing: 0.03em;
     text-align: center;
@@ -182,51 +254,10 @@
     z-index: 2;
     transform: rotate(45deg);
     opacity: 0;
-    animation: fadeOut 15s ease;
+    animation: fade-out 15s ease;
   }
-  @-webkit-keyframes fadeOut {
-    0% {
-      opacity: 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  @-moz-keyframes fadeOut {
-    0% {
-      opacity: 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  @-o-keyframes fadeOut {
-    0% {
-      opacity: 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  @keyframes fadeOut {
+
+  @keyframes fade-out {
     0% {
       opacity: 0;
     }
@@ -241,11 +272,11 @@
     }
   }
 
-  .outerContainer {
+  .inner-container {
     padding: 1em;
     margin: 0 auto;
-    background-color: #fbfcfc;
     text-align: left;
+    background: var(--inner-bg);
   }
 
   main {
@@ -253,39 +284,38 @@
     flex-wrap: wrap;
   }
 
-  .resumeName {
-    font-family: 'Encode Sans Semi Condensed', sans-serif;
+  .resume-name {
+    font-family: var(--font-family-secondary);
     margin: 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
     font-weight: 800;
-  }
-  .resumeName .word {
-    display: inline-block;
 
-    &::first-letter {
-      font-size: 1.30555556em; /* 47/36 */
+    &__word {
+      display: inline-block;
+
+      &::first-letter {
+        font-size: 1.30555556em; /* 47/36 */
+      }
     }
-  }
 
-  .resumeTitle {
-    color: #aaa;
-    font-family: 'Merriweather', serif;
-    font-weight: 300;
-    font-size: 0.43055556em; /* 15.5/36px */
-    line-height: 2;
-    display: block;
-    margin-top: 1em;
-
-    span {
+    &__title {
+      font-family: var(--font-family);
+      font-weight: 300;
+      font-size: 0.43055556em; /* 15.5/36px */
+      line-height: 2;
       display: block;
-      line-height: 1.2;
-      text-align: right;
+      margin-top: 1em;
+
+      span {
+        display: block;
+        line-height: 1.2;
+        text-align: right;
+      }
     }
   }
 
   .subheader {
-    font-family: 'Merriweather', serif;
     font-weight: 500;
     font-size: 0.91666667em; /* 11/12px */
     text-align: right;
@@ -294,10 +324,10 @@
     margin: 0;
   }
 
-  .sectionHeader {
-    border-top: 2px solid black;
-    border-bottom: 1px solid gray;
-    font-family: 'Encode Sans Semi Condensed', sans-serif;
+  .resume-section-header {
+    border-top: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color-secondary);
+    font-family: var(--font-family-secondary);
     font-size: 1.1875em; /* 19/16px */
     font-weight: 700;
   }
@@ -313,36 +343,38 @@
     margin: 0 0 1em;
     padding: 0;
     list-style: none;
+
+    &__header {
+      margin: 0.25em 0;
+    }
+    &__city,
+    &__dates {
+      color: var(--jobs-color);
+      font-weight: 300;
+      line-height: 2;
+    }
   }
 
-  .job_header {
-    font-family: 'Merriweather', serif;
-    font-weight: 300;
-    font-size: 1.25em; /* 15/12px */
+  .job {
+    &__header {
+      font-weight: 300;
+      font-size: 1.25em; /* 15/12px */
+    }
+
+    &__highlights {
+      padding-left: 1em;
+      margin: 1em 0;
+      list-style: disc;
+
+      li {
+        margin-bottom: 0.5em;
+      }
+    }
   }
-  .job_header,
-  .school_header {
-    margin: 0.25em 0;
-  }
-  .job_city,
-  .job_dates,
-  .school_city,
-  .school_dates {
-    color: #666;
-    font-weight: 300;
-    line-height: 2;
-  }
-  .job_title,
-  .school_concentration {
+
+  .job__title,
+  .school__concentration {
     font-style: oblique;
-  }
-  .job_highlights {
-    padding-left: 1em;
-    margin: 1em 0;
-    list-style: disc;
-  }
-  .job_highlights li {
-    margin-bottom: 0.5em;
   }
 
   .qrContainer {
@@ -354,13 +386,13 @@
   }
 
   @media (width >= 450px) {
-    :global(body) {
+    .outer-container {
       font-size: 16px;
     }
   }
 
-  @media (width >= 680px) {
-    .resumeTitle {
+  @media (width >= 700px) {
+    .resume-name__title {
       margin-top: 0;
 
       span {
@@ -391,14 +423,13 @@
   }
 
   @media (width >= 740px) {
-    :global(body) {
+    .outer-container {
       padding: 1.5% 0;
-      /* http://www.colorzilla.com/gradient-editor/#ffffff+0,ddd8ca+100;Custom */
-      background: #ddd8ca;
-      background: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
-      background-position: fixed;
+      background: var(--body-bg-color);
+      background: var(--body-bg);
     }
-    .outerContainer {
+    .inner-container {
+      position: relative;
       width: 670px;
       padding: 2em;
       box-shadow: 4px 4px 16px #666;
@@ -412,33 +443,37 @@
     .column:nth-of-type(2n) {
       margin-left: 4%;
     }
-    .job_dates {
+    .job__dates {
       float: right;
     }
     .job_city,
-    .job_dates,
-    .job_title {
+    .job__dates,
+    .job__title {
       font-size: 0.85em;
     }
 
     .tableader {
-      border-bottom: 2px dotted gray;
-      text-align: right;
-    }
-    .tableader_item {
-      display: inline-block;
-      position: relative;
-      top: 0.8em;
-      padding-right: 0.5em;
-      font-size: 1em;
-      background-color: #fbfcfc;
-    }
-    .tableader_item + .tableader_item {
-      padding: 0 0 0 0.5em;
-    }
-    .school_header,
-    .school_concentration {
-      float: left;
+      display: flex;
+      margin-bottom: 0.5em;
+      gap: 0.5em;
+
+      &__item {
+        white-space: nowrap;
+        font-size: 1em;
+        line-height: 1;
+        margin: 0;
+      }
+
+      &__dots {
+        flex-basis: 100%;
+        background: linear-gradient(
+            90deg,
+            var(--font-color),
+            var(--font-color) 2px,
+            transparent 2px
+          )
+          bottom/6px 2px repeat-x;
+      }
     }
 
     .qrContainer {
@@ -448,6 +483,63 @@
       align-items: center;
       gap: 0.5em;
       margin-top: 1em;
+    }
+  }
+
+  @media (width >= 1050px) {
+    .theme-switcher {
+      position: fixed;
+    }
+  }
+
+  .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+    background: radial-gradient(rgba(0, 150, 0, 0.75), black 120%) fixed;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(black, 0.3),
+        rgba(black, 0.3) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+
+    .inner-container {
+      border-color: var(--border-color);
+      box-shadow: none;
+    }
+
+    .responsive-notice {
+      color: var(--bg-color);
+      background-color: var(--font-color);
+      font-size: 0.95em; /* monospace is just a bit bigger */
+      width: 28em;
+      left: -6em;
+      bottom: 6em;
+      letter-spacing: -0.04em;
+    }
+
+    .resume-name,
+    .resume-section-header {
+      font-weight: normal;
+    }
+
+    @media (width >= 740px) {
+      .inner-container {
+        border-radius: 20px;
+        border-width: 4px;
+      }
     }
   }
 </style>

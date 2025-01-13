@@ -9,5 +9,5 @@ declare global {
 		// interface Platform {}
 	}
 }
-
-export {};
+import '@poppanator/sveltekit-svg/dist/svg';
+export { };

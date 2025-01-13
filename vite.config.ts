@@ -1,15 +1,16 @@
 /** @type {import('vite').UserConfig} */
-import { defineConfig } from 'vitest/config';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import svg from '@poppanator/sveltekit-svg'
 
 const config = {
 	plugins: [
 		sveltekit(),
 		svg({
-				includePaths: ['./src/routes/'],
+			includePaths: ['./src/routes/'],
 		}), // Options are optional
 	],
+	preprocess: [vitePreprocess()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
