@@ -443,13 +443,15 @@
     .column:nth-of-type(2n) {
       margin-left: 4%;
     }
-    .job__dates {
-      float: right;
-    }
-    .job_city,
-    .job__dates,
-    .job__title {
-      font-size: 0.85em;
+    .job {
+      &__dates {
+        float: right;
+      }
+      &__city,
+      &__dates,
+      &__title {
+        font-size: 0.85em;
+      }
     }
 
     .tableader {
