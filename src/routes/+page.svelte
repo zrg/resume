@@ -32,11 +32,11 @@
 </svelte:head>
 
 <div class="outer-container">
-  <div class="responsive-notice">
+  <div class="responsive-notice no-print">
     Resize the browser or rotate your device!<br />This résumé is responsive!
   </div>
   <div class="inner-container">
-    <label class="theme-switcher">
+    <label class="theme-switcher no-print">
       <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
       {#if darkMode}
         <IconDark />
@@ -62,8 +62,8 @@
           >
         </li>
         <li>Evanston, IL 60203</li>
-        <li><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
-        <li><a href="https://github.com/zrg/resume">Source</a></li>
+        <li class="no-print"><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
+        <li class="no-print"><a href="https://github.com/zrg/resume">Source</a></li>
       </ul>
     </header>
 
@@ -169,18 +169,21 @@
     --border-color: var(--font-color);
     --border-color-secondary: #868686;
   }
-  .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
-    --font-family: monospace;
-    --font-family-secondary: var(--font-family);
-    --font-color: #0f0;
-    --link-color: #0cf;
-    --link-color-visited: #d270ff;
-    --jobs-color: #00bd00;
-    --bg-color: #333;
-    --body-bg: #000;
-    --inner-bg: rgba(0, 0, 0, 0.5);
-    --border-color: var(--font-color);
-    --border-color-secondary: #090;
+
+  @media not print {
+    .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+      --font-family: monospace;
+      --font-family-secondary: var(--font-family);
+      --font-color: #0f0;
+      --link-color: #0cf;
+      --link-color-visited: #d270ff;
+      --jobs-color: #00bd00;
+      --bg-color: #333;
+      --body-bg: #000;
+      --inner-bg: rgba(0, 0, 0, 0.5);
+      --border-color: var(--font-color);
+      --border-color-secondary: #090;
+    }
   }
 
   :global(body) {
@@ -197,12 +200,24 @@
   a {
     text-decoration: none;
     color: var(--link-color);
+
+    &:visited {
+      color: var(--link-color-visited);
+    }
+    &:hover {
+      text-decoration: underline;
+    }
   }
-  a:visited {
-    color: var(--link-color-visited);
-  }
-  a:hover {
-    text-decoration: underline;
+
+  @media print {
+    a,
+    a:visited,
+    a:hover {
+      color: var(--font-color);
+    }
+    .no-print {
+      display: none;
+    }
   }
 
   [aria-hidden] {
@@ -493,55 +508,67 @@
       position: fixed;
     }
   }
+  @media not print {
+    .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+      background: radial-gradient(rgba(0, 150, 0, 0.75), black 120%) fixed;
+      letter-spacing: -0.5px;
+      text-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
+      position: relative;
 
-  .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
-    background: radial-gradient(rgba(0, 150, 0, 0.75), black 120%) fixed;
-    letter-spacing: -0.5px;
-    text-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(black, 0.3),
-        rgba(black, 0.3) 1px,
-        transparent 1px,
-        transparent 2px
-      );
-      pointer-events: none;
-    }
-
-    .inner-container {
-      border-color: var(--border-color);
-      box-shadow: none;
-    }
-
-    .responsive-notice {
-      color: var(--bg-color);
-      background-color: var(--font-color);
-      font-size: 0.95em; /* monospace is just a bit bigger */
-      width: 28em;
-      left: -6em;
-      bottom: 6em;
-      letter-spacing: -0.04em;
-    }
-
-    .resume-name,
-    .resume-section-header {
-      font-weight: normal;
-    }
-
-    @media (width >= 740px) {
-      .inner-container {
-        border-radius: 20px;
-        border-width: 4px;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(black, 0.3),
+          rgba(black, 0.3) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
       }
+
+      .inner-container {
+        border-color: var(--border-color);
+        box-shadow: none;
+      }
+
+      .responsive-notice {
+        color: var(--bg-color);
+        background-color: var(--font-color);
+        font-size: 0.95em; /* monospace is just a bit bigger */
+        width: 28em;
+        left: -6em;
+        bottom: 6em;
+        letter-spacing: -0.04em;
+      }
+
+      .resume-name,
+      .resume-section-header {
+        font-weight: normal;
+      }
+
+      @media (width >= 740px) {
+        .inner-container {
+          border-radius: 20px;
+          border-width: 4px;
+        }
+      }
+    }
+  }
+
+  @media print {
+    .outer-container {
+      background: none;
+    }
+    .inner-container {
+      background: none;
+      border: none;
+      box-shadow: none;
     }
   }
 </style>
