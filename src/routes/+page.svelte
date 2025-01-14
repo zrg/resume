@@ -282,8 +282,7 @@
       cursor: pointer;
       display: block;
 
-      &:hover,
-      &:active {
+      &:hover {
         box-shadow: 0px 0px 0px 2px var(--font-color);
       }
     }
