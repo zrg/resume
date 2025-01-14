@@ -277,14 +277,11 @@
     right: 10px;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
+    width: 11em;
 
     label {
       cursor: pointer;
       display: block;
-
-      &:hover {
-        box-shadow: 0px 0px 0px 2px var(--font-color);
-      }
     }
 
     .theme-switcher {
