@@ -206,11 +206,11 @@
 
   :global(body) {
     margin: 0;
+    font-size: 16px;
   }
 
   .outer-container {
     line-height: 1.4;
-    font-size: 12px;
     text-align: center;
     color: var(--font-color);
     background: var(--body-bg-color);
@@ -377,6 +377,7 @@
         display: block;
         line-height: 1.2;
         text-align: right;
+        white-space: nowrap;
       }
     }
   }
@@ -475,23 +476,36 @@
       margin-top: 0;
 
       &__title {
-        margin-top: 0;
+        margin: 10px 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25em 1em;
+        overflow: hidden;
 
         span {
           display: inline;
+          white-space: nowrap;
 
-          &:not(:first-child):before {
-            content: '|';
-            position: relative;
-            margin: 0 0.15em;
+          &:not(:last-child) {
+            margin-right: 0.5em;
+          }
+          &:not(:first-child) {
+            margin-left: -0.5em;
+
+            &::before {
+              content: '|';
+              position: relative;
+              left: -0.5em;
+            }
           }
         }
       }
     }
     .subheader {
+      margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5em 1em;
+      gap: 0.25em 1em;
       overflow: hidden;
 
       li {
