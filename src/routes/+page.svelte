@@ -6,6 +6,7 @@
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
+  import Availability from './Availability.svelte';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -61,6 +62,7 @@
           ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
         >
       </h1>
+      <Availability {darkMode} {fontSizeLevel} />
       <ul class="subheader">
         <li>
           <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
@@ -389,6 +391,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
+    li {
+      margin-bottom: 8px;
+    }
   }
 
   .resume-section-header {
@@ -482,7 +488,7 @@
         margin: 10px 0 20px;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.25em 30px;
+        gap: 0.25em ($spacer-width * 2);
         overflow: hidden;
 
         span {
@@ -508,17 +514,18 @@
       }
     }
     .subheader {
-      $spacer-width: 15px;
+      $spacer-width: 11px;
       $spacer-line-width: 2px;
 
       margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25em 30px;
+      gap: 0.25em ($spacer-width * 2);
       overflow: hidden;
 
       li {
         white-space: nowrap;
+        margin-bottom: 0;
 
         &:not(:first-child) {
           margin-left: (-1 * $spacer-width);
