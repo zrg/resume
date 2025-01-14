@@ -206,7 +206,7 @@
 
   :global(body) {
     margin: 0;
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .outer-container {
@@ -371,13 +371,13 @@
       font-size: 0.43055556em; /* 15.5/36px */
       line-height: 2;
       display: block;
-      margin-top: 1em;
+      margin: 1em 0 0.6em;
 
       span {
         display: block;
+        margin-bottom: 0.3em;
         line-height: 1.2;
         text-align: right;
-        white-space: nowrap;
       }
     }
   }
@@ -466,7 +466,7 @@
   }
 
   @media (width >= 450px) {
-    .outer-container {
+    :global(body) {
       font-size: 16px;
     }
   }
@@ -476,51 +476,62 @@
       margin-top: 0;
 
       &__title {
+        $spacer-width: 15px;
+        $spacer-line-width: 3px;
+
         margin: 10px 0 20px;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.25em 1em;
+        gap: 0.25em 30px;
         overflow: hidden;
 
         span {
           display: inline;
           white-space: nowrap;
+          margin: 0;
 
-          &:not(:last-child) {
-            margin-right: 0.5em;
-          }
           &:not(:first-child) {
-            margin-left: -0.5em;
+            margin-left: (-1 * $spacer-width);
 
             &::before {
-              content: '|';
-              position: relative;
-              left: -0.5em;
+              content: ' ';
+              display: inline-block;
+              height: 1em;
+              vertical-align: middle;
+              box-sizing: border-box;
+
+              width: $spacer-width;
+              border-left: $spacer-line-width solid var(--font-color);
             }
           }
         }
       }
     }
     .subheader {
+      $spacer-width: 15px;
+      $spacer-line-width: 2px;
+
       margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25em 1em;
+      gap: 0.25em 30px;
       overflow: hidden;
 
       li {
         white-space: nowrap;
 
-        &:not(:last-child) {
-          margin-right: 0.5em;
-        }
         &:not(:first-child) {
-          margin-left: -0.5em;
+          margin-left: (-1 * $spacer-width);
 
           &::before {
-            content: '|';
-            position: relative;
-            left: -0.5em;
+            content: ' ';
+            display: inline-block;
+            height: 1em;
+            vertical-align: middle;
+            box-sizing: border-box;
+
+            width: $spacer-width;
+            border-left: $spacer-line-width solid var(--font-color);
           }
         }
       }
