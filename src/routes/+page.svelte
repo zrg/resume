@@ -277,7 +277,7 @@
     right: 10px;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
-    width: 11em;
+    width: 12em;
 
     label {
       cursor: pointer;
@@ -609,7 +609,7 @@
     }
   }
 
-  @media (width >= 1100px) {
+  @media (width >= 1160px) {
     .small .controls {
       position: fixed;
     }
