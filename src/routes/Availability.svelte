@@ -13,6 +13,10 @@
 <style lang="scss">
   .container {
     float: left;
+    color: #000;
+    font-style: oblique;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    letter-spacing: 1px;
 
     &.small {
       font-size: 18px;
@@ -28,6 +32,7 @@
       float: none;
       font-style: normal;
       font-weight: bold;
+      font-family: inherit;
       letter-spacing: 0;
 
       .available {
@@ -56,14 +61,11 @@
     width: 16em;
     height: $height;
     line-height: $height;
-    border-radius: 47%;
-    color: #000;
     background-color: #fcf50a;
+    border-radius: 47%;
     display: inline-block;
     text-align: center;
-    letter-spacing: 1px;
     border: 7px double;
-    font-style: oblique;
     margin: 0 auto 1em;
   }
 </style>
