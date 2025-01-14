@@ -39,7 +39,8 @@
   </div>
   <div class="inner-container">
     <div class="controls">
-      <label class="theme-switcher no-print">
+      <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+      <label class="theme-switcher no-print" tabindex="0" aria-roledescription="checkbox">
         <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
         {#if darkMode}
           <IconDark />
@@ -280,6 +281,11 @@
     label {
       cursor: pointer;
       display: block;
+
+      &:hover,
+      &:active {
+        box-shadow: 0px 0px 0px 2px var(--font-color);
+      }
     }
 
     .theme-switcher {
@@ -289,6 +295,8 @@
 
       &::before {
         content: 'Color Mode:';
+        margin-right: 0.4em;
+        text-decoration: underline dotted;
       }
     }
 
@@ -299,10 +307,13 @@
         border: none;
         font-size: 0.8em;
         font-family: var(--font-family-secondary);
+        cursor: pointer;
       }
 
       &::before {
-        content: 'Text Size: ';
+        content: 'Text Size:';
+        margin-right: 0.4em;
+        text-decoration: underline dotted;
       }
     }
   }
