@@ -20,6 +20,7 @@
   };
 
   let darkMode = $state(false);
+  let fontSizeLevel: 'small' | 'medium' | 'large' = $state('small');
 
   if (browser) {
     darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -31,19 +32,28 @@
   <meta name="description" content={summary} />
 </svelte:head>
 
-<div class="outer-container">
+<div class="outer-container {fontSizeLevel}">
   <div class="responsive-notice no-print">
     Resize the browser or rotate your device!<br />This résumé is responsive!
   </div>
   <div class="inner-container">
-    <label class="theme-switcher no-print">
-      <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
-      {#if darkMode}
-        <IconDark />
-      {:else}
-        <IconLight />
-      {/if}
-    </label>
+    <div class="controls">
+      <label class="theme-switcher no-print">
+        <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
+        {#if darkMode}
+          <IconDark />
+        {:else}
+          <IconLight />
+        {/if}
+      </label>
+      <label class="font-sizer no-print">
+        <select class="font-sizer__control" bind:value={fontSizeLevel}>
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+        </select>
+      </label>
+    </div>
     <header>
       <h1 class="resume-name">
         <span class="resume-name__word">Zev</span> <span class="resume-name__word">Goldberg</span>
@@ -179,10 +189,18 @@
       --link-color-visited: #d270ff;
       --jobs-color: #00bd00;
       --bg-color: #333;
+      --body-bg-color: var(--bg-color);
       --body-bg: #000;
       --inner-bg: rgba(0, 0, 0, 0.5);
       --border-color: var(--font-color);
       --border-color-secondary: #090;
+    }
+
+    // Doesn't appear to be a sensible way to use css vars above where they are declared without using global
+    // Using actual values to eliminate the white background when you "bounce" the page by pulling it down.
+    :global(body:has(.theme-switcher__dark-mode-toggle:checked)) {
+      background-color: #000;
+      color: #0f0;
     }
   }
 
@@ -195,7 +213,18 @@
     font-size: 12px;
     text-align: center;
     color: var(--font-color);
+    background: var(--body-bg-color);
     font-family: var(--font-family);
+
+    &.small {
+      font-size: 1em;
+    }
+    &.medium {
+      font-size: 1.2em;
+    }
+    &.large {
+      font-size: 1.4em;
+    }
   }
   a {
     text-decoration: none;
@@ -239,19 +268,40 @@
     position: absolute;
   }
 
-  .theme-switcher {
+  .controls {
     position: absolute;
     top: 10px;
     right: 10px;
     color: var(--font-color);
-    cursor: pointer;
+    font-family: var(--font-family-secondary);
 
-    &__dark-mode-toggle {
-      display: none;
+    label {
+      cursor: pointer;
+      display: block;
     }
 
-    &::before {
-      content: 'Color Mode:';
+    .theme-switcher {
+      &__dark-mode-toggle {
+        display: none;
+      }
+
+      &::before {
+        content: 'Color Mode:';
+      }
+    }
+
+    .font-sizer {
+      &__control {
+        background-color: var(--body-bg-color);
+        color: var(--font-color);
+        border: none;
+        font-size: 0.8em;
+        font-family: var(--font-family-secondary);
+      }
+
+      &::before {
+        content: 'Text Size: ';
+      }
     }
   }
 
@@ -265,6 +315,7 @@
     font-size: 1.2em;
     letter-spacing: 0.03em;
     text-align: center;
+    color: var(--font-color);
     background-color: #fcf50a;
     z-index: 2;
     transform: rotate(45deg);
@@ -301,7 +352,7 @@
 
   .resume-name {
     font-family: var(--font-family-secondary);
-    margin: 0;
+    margin: 1em 0 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
     font-weight: 800;
@@ -420,31 +471,43 @@
   }
 
   @media (width >= 700px) {
-    .resume-name__title {
+    .resume-name {
       margin-top: 0;
 
-      span {
-        display: inline;
+      &__title {
+        margin-top: 0;
 
-        &:not(:first-child):before {
-          content: '|';
-          position: relative;
-          margin: 0 0.15em;
+        span {
+          display: inline;
+
+          &:not(:first-child):before {
+            content: '|';
+            position: relative;
+            margin: 0 0.15em;
+          }
         }
       }
     }
     .subheader {
       display: flex;
-      flex-wrap: nowrap;
-      gap: 1em;
+      flex-wrap: wrap;
+      gap: 0.5em 1em;
+      overflow: hidden;
 
       li {
         white-space: nowrap;
 
-        &:not(:first-child):before {
-          content: '|';
-          position: relative;
-          left: -0.5em;
+        &:not(:last-child) {
+          margin-right: 0.5em;
+        }
+        &:not(:first-child) {
+          margin-left: -0.5em;
+
+          &::before {
+            content: '|';
+            position: relative;
+            left: -0.5em;
+          }
         }
       }
     }
@@ -507,8 +570,18 @@
     }
   }
 
-  @media (width >= 1050px) {
-    .theme-switcher {
+  @media (width >= 1100px) {
+    .small .controls {
+      position: fixed;
+    }
+  }
+  @media (width >= 1150px) {
+    .medium .controls {
+      position: fixed;
+    }
+  }
+  @media (width >= 1200px) {
+    .large .controls {
       position: fixed;
     }
   }
