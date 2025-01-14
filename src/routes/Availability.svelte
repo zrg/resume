@@ -17,15 +17,16 @@
     font-style: oblique;
     font-family: 'Encode Sans Semi Condensed', sans-serif;
     letter-spacing: 1px;
+    width: 14em;
 
     &.small {
-      font-size: 18px;
+      font-size: 14px;
     }
     &.medium {
-      font-size: 20px;
+      font-size: 16px;
     }
     &.large {
-      font-size: 22px;
+      font-size: 18px;
     }
 
     &.dark {
@@ -34,6 +35,7 @@
       font-weight: bold;
       font-family: inherit;
       letter-spacing: 0;
+      width: 100%;
 
       .available {
         $height: 2em;
@@ -42,11 +44,24 @@
         background-color: #0f0;
         border: none;
         border-radius: 0;
-        width: 100%;
+        max-width: 100%;
       }
     }
   }
 
+  @media (width >= 450px) {
+    .container {
+      &.small {
+        font-size: 18px;
+      }
+      &.medium {
+        font-size: 20px;
+      }
+      &.large {
+        font-size: 22px;
+      }
+    }
+  }
   @media (width >= 700px) {
     .container {
       text-align: center;
@@ -58,7 +73,8 @@
   .available {
     $height: 3em;
 
-    width: 16em;
+    width: 100%;
+    max-width: 16em;
     height: $height;
     line-height: $height;
     background-color: #fcf50a;
