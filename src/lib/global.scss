@@ -1,6 +1,8 @@
 :root {
   --font-family: 'Merriweather', serif;
   --font-family-secondary: 'Encode Sans Semi Condensed', sans-serif;
+  --font-size: 12px;
+  --font-size-wide: 16px;
   --font-color: #000;
   --link-color: #2525e3;
   --link-color-visited: #681091;
@@ -11,15 +13,6 @@
   --body-bg: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
   --border-color: var(--font-color);
   --border-color-secondary: #868686;
-}
-
-body {
-  margin: 0;
-  font-size: 12px;
-
-  @media (width >=450px) {
-    font-size: 16px;
-  }
 }
 
 a {

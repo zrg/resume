@@ -166,6 +166,8 @@
     .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
       --font-family: Inconsolata, monospace;
       --font-family-secondary: var(--font-family);
+      --font-size: 17px;
+      --font-size-wide: 19px;
       --font-color: #0f0;
       --link-color: #0cf;
       --link-color-visited: #d270ff;
@@ -176,8 +178,6 @@
       --inner-bg: rgba(0, 0, 0, 0.5);
       --border-color: var(--font-color);
       --border-color-secondary: #090;
-
-      font-size: 1.2em;
     }
 
     // Doesn't appear to be a sensible way to use css vars above where they are declared without using global
@@ -185,6 +185,15 @@
     :global(body:has(.theme-switcher__dark-mode-toggle:checked)) {
       background-color: #000;
       color: #0f0;
+    }
+  }
+
+  :global(body) {
+    margin: 0;
+    font-size: var(--font-size);
+
+    @media (width >=450px) {
+      font-size: var(--font-size-wide);
     }
   }
 
