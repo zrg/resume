@@ -58,9 +58,12 @@
       </label>
     </div>
     <header>
-      <h1 class="resume-name">
-        <span class="resume-name__word">Zev</span> <span class="resume-name__word">Goldberg</span>
-        <span class="resume-name__title"
+      <h1 class="resume-name-title">
+        <div class="resume-name-title__name">
+          <span class="resume-name-title__word">Zev</span>
+          <span class="resume-name-title__word">Goldberg</span>
+        </div>
+        <span class="resume-name-title__title"
           ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
         >
       </h1>
@@ -161,7 +164,7 @@
 <style lang="scss">
   @media not print {
     .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
-      --font-family: monospace;
+      --font-family: Inconsolata, monospace;
       --font-family-secondary: var(--font-family);
       --font-color: #0f0;
       --link-color: #0cf;
@@ -173,6 +176,8 @@
       --inner-bg: rgba(0, 0, 0, 0.5);
       --border-color: var(--font-color);
       --border-color-secondary: #090;
+
+      font-size: 1.2em;
     }
 
     // Doesn't appear to be a sensible way to use css vars above where they are declared without using global
@@ -225,11 +230,6 @@
     right: 10px;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
-    width: 12em;
-
-    @media (width >= 450) {
-      width: 11em;
-    }
 
     label {
       cursor: pointer;
@@ -278,12 +278,12 @@
     flex-wrap: wrap;
   }
 
-  .resume-name {
+  .resume-name-title {
     font-family: var(--font-family-secondary);
     margin: 0.8em 0 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
-    font-weight: 800;
+    font-weight: 900;
 
     &__word {
       display: inline-block;
@@ -374,7 +374,7 @@
 
   .job__title,
   .school__concentration {
-    font-style: oblique;
+    font-style: italic;
   }
 
   .qrContainer {
@@ -399,7 +399,7 @@
   }
 
   @media (width >= 700px) {
-    .resume-name {
+    .resume-name-title {
       margin-top: 0.5em;
 
       &__title {
@@ -480,7 +480,7 @@
       border: 1px solid #ddd;
     }
 
-    .resume-name {
+    .resume-name-title {
       margin-top: 0;
     }
 
@@ -571,8 +571,27 @@
         border-color: var(--border-color);
         box-shadow: none;
       }
+      .resume-name-title__name {
+        text-align: center;
 
-      .resume-name,
+        @media (width >= 740px) {
+          text-align: left;
+        }
+      }
+      .resume-name-title__word {
+        text-transform: uppercase;
+        letter-spacing: 1vw;
+        font-size: 13.4vw;
+
+        @media (width >= 740px) {
+          letter-spacing: 13px;
+          font-size: inherit;
+        }
+
+        &::first-letter {
+          font-size: inherit;
+        }
+      }
       .resume-section-header {
         font-weight: normal;
       }

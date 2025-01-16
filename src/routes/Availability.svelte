@@ -32,10 +32,11 @@
     &.dark {
       float: none;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 900;
       font-family: inherit;
       letter-spacing: 0;
       width: 100%;
+      font-variation-settings: 'wdth' 150;
 
       .available {
         $height: 2em;
