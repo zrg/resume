@@ -573,6 +573,7 @@
       }
       .resume-name-title__name {
         text-align: center;
+        font-weight: 100;
 
         @media (width >= 740px) {
           text-align: left;
@@ -580,8 +581,8 @@
       }
       .resume-name-title__word {
         text-transform: uppercase;
-        letter-spacing: 1vw;
-        font-size: 13.4vw;
+        letter-spacing: 2.1vw;
+        font-size: 11.2vw;
 
         @media (width >= 740px) {
           letter-spacing: 13px;
