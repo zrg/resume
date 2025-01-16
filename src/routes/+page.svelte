@@ -225,7 +225,11 @@
     right: 10px;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
-    width: 11em;
+    width: 12em;
+
+    @media (width >= 450) {
+      width: 11em;
+    }
 
     label {
       cursor: pointer;
