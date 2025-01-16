@@ -1,0 +1,52 @@
+:root {
+  --font-family: 'Merriweather', serif;
+  --font-family-secondary: 'Encode Sans Semi Condensed', sans-serif;
+  --font-color: #000;
+  --link-color: #2525e3;
+  --link-color-visited: #681091;
+  --jobs-color: #575757;
+  --bg-color: #fbfcfc;
+  --body-bg-color: #ddd8ca;
+  --inner-bg: var(--bg-color);
+  --body-bg: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
+  --border-color: var(--font-color);
+  --border-color-secondary: #868686;
+}
+
+body {
+  margin: 0;
+  font-size: 12px;
+
+  @media (width >=450px) {
+    font-size: 16px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+
+  &:visited {
+    color: var(--link-color-visited);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+[aria-hidden] {
+  width: 0;
+  display: inline-block;
+  visibility: hidden;
+  margin-top: -100em;
+}
+
+@media print {
+
+  a,
+  a:visited,
+  a:hover {
+    color: var(--font-color);
+  }
+}

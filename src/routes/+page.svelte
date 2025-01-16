@@ -1,11 +1,14 @@
 <script lang="ts">
   import type { Action } from 'svelte/action';
   import { browser } from '$app/environment';
+  import '$lib/global.scss';
   import jobs from '$lib/jobs';
+  import schools from '$lib/schools';
   import summary from '$lib/summary';
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
+  import ResponsiveNotice from './ResponsiveNotice.svelte';
   import Availability from './Availability.svelte';
 
   const formatDate = (yearMonth: string) => {
@@ -34,13 +37,11 @@
 </svelte:head>
 
 <div class="outer-container {fontSizeLevel}">
-  <div class="responsive-notice no-print">
-    Resize the browser or rotate your device!<br />This résumé is responsive!
-  </div>
+  <ResponsiveNotice {darkMode} />
   <div class="inner-container">
-    <div class="controls">
+    <div class="controls no-print">
       <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-      <label class="theme-switcher no-print" tabindex="0" aria-roledescription="checkbox">
+      <label class="theme-switcher" tabindex="0" aria-roledescription="checkbox">
         <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
         {#if darkMode}
           <IconDark />
@@ -48,7 +49,7 @@
           <IconLight />
         {/if}
       </label>
-      <label class="font-sizer no-print">
+      <label class="font-sizer">
         <select class="font-sizer__control" bind:value={fontSizeLevel}>
           <option value="small">small</option>
           <option value="medium">medium</option>
@@ -75,7 +76,7 @@
           >
         </li>
         <li>Evanston, IL 60203</li>
-        <li class="no-print"><a href="../Zev Goldberg - Resume 20241209.pdf">PDF Format</a></li>
+        <li class="no-print"><a href="../Zev Goldberg - Resume 20250115.pdf">PDF Format</a></li>
         <li class="no-print"><a href="https://github.com/zrg/resume">Source</a></li>
       </ul>
     </header>
@@ -128,36 +129,26 @@
 
       <section id="education">
         <h2 class="resume-section-header">Education</h2>
-
-        <div class="school" id="ccc">
-          <div class="tableader">
-            <h3 class="school__header tableader__item">Columbia College Chicago</h3>
-            <span class="tableader__dots"></span>
-            <div class="school__city tableader__item">Chicago, IL</div>
-          </div>
-          <div class="tableader">
-            <div class="school__concentration tableader__item">Computer Animation and Film</div>
-            <span class="tableader__dots"></span>
-            <div class="school__dates tableader__item">
-              1994<span class="visually-hidden"> through </span>&ndash;1998
-            </div>
-          </div>
-        </div>
-
-        <div class="school" id="uic">
-          <div class="tableader">
-            <h3 class="school__header tableader__item">University of Illinois at Chicago</h3>
-            <span class="tableader__dots"></span>
-            <div class="school__city tableader__item">Chicago, IL</div>
-          </div>
-          <div class="tableader">
-            <div class="school__concentration tableader__item">Computer Science</div>
-            <span class="tableader__dots"></span>
-            <div class="school__dates tableader__item">
-              1993<span class="visually-hidden"> through </span>&ndash;1994
-            </div>
-          </div>
-        </div>
+        <ul class="schools">
+          {#each schools as { id, display, fullName, city, concentration, startYear, endYear }}
+            {#if display}
+              <li class="school" {id}>
+                <div class="tableader">
+                  <h3 class="school__header tableader__item">{fullName}</h3>
+                  <span class="tableader__dots"></span>
+                  <div class="school__city tableader__item">{city}</div>
+                </div>
+                <div class="tableader">
+                  <div class="school__concentration tableader__item">{concentration}</div>
+                  <span class="tableader__dots"></span>
+                  <div class="school__dates tableader__item">
+                    {startYear}<span class="visually-hidden"> through </span>&ndash;{endYear}
+                  </div>
+                </div>
+              </li>
+            {/if}
+          {/each}
+        </ul>
       </section>
 
       <div class="qrContainer">
@@ -168,21 +159,6 @@
 </div>
 
 <style lang="scss">
-  :global(:root) {
-    --font-family: 'Merriweather', serif;
-    --font-family-secondary: 'Encode Sans Semi Condensed', sans-serif;
-    --font-color: #000;
-    --link-color: #2525e3;
-    --link-color-visited: #681091;
-    --jobs-color: #575757;
-    --bg-color: #fbfcfc;
-    --body-bg-color: #ddd8ca;
-    --inner-bg: var(--bg-color);
-    --body-bg: linear-gradient(to bottom, #fff 0%, #ddd8ca 100%) fixed;
-    --border-color: var(--font-color);
-    --border-color-secondary: #868686;
-  }
-
   @media not print {
     .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
       --font-family: monospace;
@@ -207,11 +183,6 @@
     }
   }
 
-  :global(body) {
-    margin: 0;
-    font-size: 12px;
-  }
-
   .outer-container {
     line-height: 1.4;
     text-align: center;
@@ -229,34 +200,11 @@
       font-size: 1.4em;
     }
   }
-  a {
-    text-decoration: none;
-    color: var(--link-color);
-
-    &:visited {
-      color: var(--link-color-visited);
-    }
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 
   @media print {
-    a,
-    a:visited,
-    a:hover {
-      color: var(--font-color);
-    }
     .no-print {
       display: none;
     }
-  }
-
-  [aria-hidden] {
-    width: 0;
-    display: inline-block;
-    visibility: hidden;
-    margin-top: -100em;
   }
 
   .visually-hidden {
@@ -277,73 +225,40 @@
     right: 10px;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
-    width: 12em;
+    width: 11em;
 
     label {
       cursor: pointer;
       display: block;
     }
+  }
 
-    .theme-switcher {
-      &__dark-mode-toggle {
-        display: none;
-      }
-
-      &::before {
-        content: 'Color Mode:';
-        margin-right: 0.4em;
-        text-decoration: underline dotted;
-      }
+  .theme-switcher {
+    &__dark-mode-toggle {
+      display: none;
     }
 
-    .font-sizer {
-      &__control {
-        background-color: var(--body-bg-color);
-        color: var(--font-color);
-        border: none;
-        font-size: 0.8em;
-        font-family: var(--font-family-secondary);
-        cursor: pointer;
-      }
-
-      &::before {
-        content: 'Text Size:';
-        margin-right: 0.4em;
-        text-decoration: underline dotted;
-      }
+    &::before {
+      content: 'Color Mode:';
+      margin-right: 0.4em;
+      text-decoration: underline dotted;
     }
   }
 
-  .responsive-notice {
-    width: 30em;
-    padding: 0.5em 0 0.7em;
-    position: fixed;
-    left: -8.5em;
-    bottom: 4.5em;
-    font-family: var(--font-family-secondary);
-    font-size: 1.2em;
-    letter-spacing: 0.03em;
-    text-align: center;
-    color: var(--font-color);
-    background-color: #fcf50a;
-    z-index: 2;
-    transform: rotate(45deg);
-    opacity: 0;
-    animation: fade-out 15s ease;
-  }
+  .font-sizer {
+    &__control {
+      background-color: var(--body-bg-color);
+      color: var(--font-color);
+      border: none;
+      font-size: 0.8em;
+      font-family: var(--font-family-secondary);
+      cursor: pointer;
+    }
 
-  @keyframes fade-out {
-    0% {
-      opacity: 0;
-    }
-    15% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
+    &::before {
+      content: 'Text Size:';
+      margin-right: 0.4em;
+      text-decoration: underline dotted;
     }
   }
 
@@ -361,7 +276,7 @@
 
   .resume-name {
     font-family: var(--font-family-secondary);
-    margin: 1em 0 0;
+    margin: 0.8em 0 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
     font-weight: 800;
@@ -412,7 +327,8 @@
     font-weight: 700;
   }
 
-  .jobs {
+  .jobs,
+  .schools {
     padding: 0;
     list-style: none;
     margin: 0;
@@ -478,15 +394,9 @@
     flex-basis: 100%;
   }
 
-  @media (width >= 450px) {
-    :global(body) {
-      font-size: 16px;
-    }
-  }
-
   @media (width >= 700px) {
     .resume-name {
-      margin-top: 0;
+      margin-top: 0.5em;
 
       &__title {
         $spacer-width: 15px;
@@ -565,6 +475,11 @@
       box-shadow: 4px 4px 16px #666;
       border: 1px solid #ddd;
     }
+
+    .resume-name {
+      margin-top: 0;
+    }
+
     .column {
       display: inline-block;
       width: 48%;
@@ -614,12 +529,12 @@
       position: fixed;
     }
   }
-  @media (width >= 1150px) {
+  @media (width >= 1280px) {
     .medium .controls {
       position: fixed;
     }
   }
-  @media (width >= 1200px) {
+  @media (width >= 1360px) {
     .large .controls {
       position: fixed;
     }
@@ -651,16 +566,6 @@
       .inner-container {
         border-color: var(--border-color);
         box-shadow: none;
-      }
-
-      .responsive-notice {
-        color: var(--bg-color);
-        background-color: var(--font-color);
-        font-size: 0.95em; /* monospace is just a bit bigger */
-        width: 28em;
-        left: -6em;
-        bottom: 6em;
-        letter-spacing: -0.04em;
       }
 
       .resume-name,

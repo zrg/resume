@@ -1,7 +1,7 @@
 <script lang="ts">
   import availability from '$lib/availability';
 
-  let { darkMode = false, fontSizeLevel = 'small' } = $props();
+  let { darkMode, fontSizeLevel = 'small' } = $props();
 </script>
 
 {#if availability}
@@ -83,5 +83,11 @@
     text-align: center;
     border: 7px double;
     margin: 0 auto 1em;
+  }
+
+  @media print {
+    .container {
+      display: none;
+    }
   }
 </style>
