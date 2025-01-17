@@ -188,30 +188,16 @@
     }
   }
 
-  :global(body) {
-    margin: 0;
-    font-size: var(--font-size);
-
-    @media (width >=450px) {
-      font-size: var(--font-size-wide);
-    }
-  }
-
   .outer-container {
     line-height: 1.4;
     text-align: center;
     color: var(--font-color);
     background: var(--body-bg-color);
     font-family: var(--font-family);
+    font-size: var(--font-size);
 
-    &.small {
-      font-size: 1em;
-    }
-    &.medium {
-      font-size: 1.2em;
-    }
-    &.large {
-      font-size: 1.4em;
+    @media (width >=450px) {
+      font-size: var(--font-size-wide);
     }
   }
 
@@ -280,6 +266,13 @@
     margin: 0 auto;
     text-align: left;
     background: var(--inner-bg);
+
+    .medium & {
+      font-size: 1.2em;
+    }
+    .large & {
+      font-size: 1.4em;
+    }
   }
 
   main {

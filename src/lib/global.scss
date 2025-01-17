@@ -15,6 +15,10 @@
   --border-color-secondary: #868686;
 }
 
+body {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: var(--link-color);
