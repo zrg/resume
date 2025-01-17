@@ -402,8 +402,6 @@
 
   @media (width >= 700px) {
     .resume-name-title {
-      margin-top: 0.5em;
-
       &__title {
         $spacer-width: 15px;
         $spacer-line-width: 3px;
@@ -574,23 +572,10 @@
         box-shadow: none;
       }
       .resume-name-title__name {
-        text-align: center;
         font-weight: 100;
-
-        @media (width >= 740px) {
-          text-align: left;
-        }
       }
+
       .resume-name-title__word {
-        text-transform: uppercase;
-        letter-spacing: 2.1vw;
-        font-size: 11.2vw;
-
-        @media (width >= 740px) {
-          letter-spacing: 13px;
-          font-size: inherit;
-        }
-
         &::first-letter {
           font-size: inherit;
         }
