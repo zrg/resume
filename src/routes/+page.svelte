@@ -8,6 +8,8 @@
   import jobs from '$lib/jobs';
   import schools from '$lib/schools';
   import summary from '$lib/summary';
+  import getRandomFont from '$lib/fontRandom';
+
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
@@ -28,6 +30,20 @@
   let darkMode = $state(false);
   let fontSizeLevel: 'small' | 'medium' | 'large' = $state('small');
 
+  let randomFont = getRandomFont(null);
+  let { darkModeNameFontFilename, darkModeNameFontStyle } = $state(randomFont);
+
+  const replaceDarkModeNameFont = () => {
+    if (darkMode) {
+      // I'm guessing people will click light/dark mode more than once
+      // so we'll change the dark mode font when light mode is showing
+      // so it loads in the background
+      randomFont = getRandomFont(darkModeNameFontFilename);
+      darkModeNameFontFilename = randomFont.darkModeNameFontFilename;
+      darkModeNameFontStyle = randomFont.darkModeNameFontStyle;
+    }
+  };
+
   if (browser) {
     darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
@@ -36,6 +52,7 @@
 <svelte:head>
   <title>Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist</title>
   <meta name="description" content={summary} />
+  {#if browser}<link rel="stylesheet" href="/fonts/{darkModeNameFontFilename}.css" />{/if}
 </svelte:head>
 
 {#if env.PUBLIC_ENV === 'dev'}<code
@@ -50,7 +67,12 @@
     <div class="controls no-print">
       <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
       <label class="theme-switcher" tabindex="0" aria-roledescription="checkbox">
-        <input type="checkbox" class="theme-switcher__dark-mode-toggle" bind:checked={darkMode} />
+        <input
+          type="checkbox"
+          class="theme-switcher__dark-mode-toggle"
+          bind:checked={darkMode}
+          onclick={replaceDarkModeNameFont}
+        />
         {#if darkMode}
           <IconDark />
         {:else}
@@ -67,7 +89,7 @@
     </div>
     <header>
       <h1 class="resume-name-title">
-        <div class="resume-name-title__name">
+        <div class="resume-name-title__name" style={darkModeNameFontStyle}>
           <span class="resume-name-title__word">Zev</span>
           <span class="resume-name-title__word">Goldberg</span>
         </div>
@@ -215,9 +237,13 @@
     }
 
     @media (width >= 740px) {
-      padding: 1.5% 0;
       background: var(--body-bg-color);
       background: var(--body-bg);
+      padding: calc(100vw - 750px) 0;
+    }
+
+    @media (width >= 760px) {
+      padding: 1.5% 0;
     }
   }
 
@@ -241,7 +267,6 @@
     #{$dark} & {
       color: var(--bg-color);
       background-color: var(--font-color);
-      font-size: 0.95em; /* monospace is just a bit bigger */
       width: 28em;
       left: -6em;
       bottom: 6em;
@@ -265,7 +290,7 @@
   }
 
   .inner-container {
-    padding: 1em;
+    padding: 20px;
     margin: 0 auto;
     text-align: left;
     background: var(--inner-bg);
@@ -275,12 +300,19 @@
     }
     .large & {
       font-size: 1.4em;
+
+      .column {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+      }
     }
 
     @media (width >= 740px) {
       position: relative;
-      width: 670px;
-      padding: 2em;
+      width: 740px;
+      box-sizing: border-box;
+      padding: 36px;
       box-shadow: 4px 4px 16px #666;
       border: 1px solid #ddd;
     }
@@ -348,7 +380,7 @@
 
   .resume-name-title {
     font-family: var(--font-family-secondary);
-    margin: 0.8em 0 0;
+    margin: 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
     font-weight: 900;
@@ -367,7 +399,7 @@
       font-size: 0.43055556em; /* 15.5/36px */
       line-height: 2;
       display: block;
-      margin: 1em 0 0.6em;
+      margin: 0.2em 0 0.6em;
 
       span {
         display: block;
@@ -375,6 +407,7 @@
         line-height: 1.2;
         text-align: right;
       }
+
       @media (width >= 700px) {
         $spacer-width: 15px;
         $spacer-line-width: 3px;
@@ -658,9 +691,33 @@
       .inner-container {
         border-color: var(--border-color);
         box-shadow: none;
+        padding-top: 60px;
+
+        @media (width >= 1360px) {
+          padding-top: 36px;
+        }
       }
       .resume-name-title__name {
-        font-weight: 100;
+        font-weight: normal;
+        font-family: var(--dmn-font-family), monospace;
+        text-transform: var(--dmn-text-transform);
+        font-size: var(--dmn-font-size);
+        margin-top: 0;
+      }
+
+      &.medium .resume-name-title__name {
+        margin-top: 16px;
+      }
+
+      &.large .resume-name-title__name {
+        margin-top: 36px;
+      }
+
+      @media (width >= 1360px) {
+        &.large .resume-name-title__name,
+        &.medium .resume-name-title__name {
+          margin-top: 0;
+        }
       }
 
       .resume-name-title__word {
