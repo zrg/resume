@@ -1,15 +1,17 @@
 <script lang="ts">
   import type { Action } from 'svelte/action';
   import { browser } from '$app/environment';
+  import { env } from '$env/dynamic/public';
+
   import '$lib/global.scss';
+  import availability from '$lib/availability';
   import jobs from '$lib/jobs';
   import schools from '$lib/schools';
   import summary from '$lib/summary';
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
-  import ResponsiveNotice from './ResponsiveNotice.svelte';
-  import Availability from './Availability.svelte';
+  import VisuallyHidden from './VisuallyHidden.svelte';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -36,8 +38,14 @@
   <meta name="description" content={summary} />
 </svelte:head>
 
+{#if env.PUBLIC_ENV === 'dev'}<code
+    style="position:absolute;left:120px;top:0;background:red;color:white;z-index:1;font-size:20px;padding:10px;border-radius:0 0 10px 10px"
+    >LOCAL</code
+  >{/if}
 <div class="outer-container {fontSizeLevel}">
-  <ResponsiveNotice {darkMode} />
+  <aside class="responsive-notice no-print">
+    Resize the browser or rotate your device!<br />This résumé is responsive!
+  </aside>
   <div class="inner-container">
     <div class="controls no-print">
       <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
@@ -67,7 +75,11 @@
           ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
         >
       </h1>
-      <Availability {darkMode} {fontSizeLevel} />
+      {#if availability}
+        <aside class="availability no-print">
+          <div>AVAILABLE FOR HIRE!</div>
+        </aside>
+      {/if}
       <ul class="subheader">
         <li>
           <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
@@ -114,9 +126,9 @@
                 </h3>
                 <div class="job__title">{title.toUpperCase()}</div>
                 <div class="job__dates">
-                  {formatDate(startMonth).toUpperCase()}<span class="visually-hidden">
+                  {formatDate(startMonth).toUpperCase()}<VisuallyHidden>
                     through
-                  </span>&ndash;{formatDate(endMonth).toUpperCase()}
+                  </VisuallyHidden>&ndash;{formatDate(endMonth).toUpperCase()}
                 </div>
                 <div class="job__city">{city.toUpperCase()}</div>
                 <ul class="job__highlights">
@@ -136,16 +148,16 @@
           {#each schools as { id, display, fullName, city, concentration, startYear, endYear }}
             {#if display}
               <li class="school" {id}>
-                <div class="tableader">
-                  <h3 class="school__header tableader__item">{fullName}</h3>
-                  <span class="tableader__dots"></span>
-                  <div class="school__city tableader__item">{city}</div>
+                <div class="tab-leader">
+                  <h3 class="school__header tab-leader__item">{fullName}</h3>
+                  <span class="tab-leader__dots"></span>
+                  <div class="school__city tab-leader__item">{city}</div>
                 </div>
-                <div class="tableader">
-                  <div class="school__concentration tableader__item">{concentration}</div>
-                  <span class="tableader__dots"></span>
-                  <div class="school__dates tableader__item">
-                    {startYear}<span class="visually-hidden"> through </span>&ndash;{endYear}
+                <div class="tab-leader">
+                  <div class="school__concentration tab-leader__item">{concentration}</div>
+                  <span class="tab-leader__dots"></span>
+                  <div class="school__dates tab-leader__item">
+                    {startYear}<VisuallyHidden>through</VisuallyHidden>&ndash;{endYear}
                   </div>
                 </div>
               </li>
@@ -162,8 +174,10 @@
 </div>
 
 <style lang="scss">
+  $dark: '.outer-container:has(.theme-switcher__dark-mode-toggle:checked)';
+
   @media not print {
-    .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+    #{$dark} {
       --font-family: Inconsolata, monospace;
       --font-family-secondary: var(--font-family);
       --font-size: 17px;
@@ -199,24 +213,77 @@
     @media (width >=450px) {
       font-size: var(--font-size-wide);
     }
-  }
 
-  @media print {
-    .no-print {
-      display: none;
+    @media (width >= 740px) {
+      padding: 1.5% 0;
+      background: var(--body-bg-color);
+      background: var(--body-bg);
     }
   }
 
-  .visually-hidden {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: absolute;
+  .responsive-notice {
+    width: 30em;
+    padding: 0.5em 0 0.7em;
+    position: fixed;
+    left: -8.5em;
+    bottom: 4.5em;
+    font-family: var(--font-family-secondary);
+    font-size: 1.2em;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: var(--font-color);
+    background-color: #fcf50a;
+    z-index: 2;
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: fade-out 15s ease;
+
+    #{$dark} & {
+      color: var(--bg-color);
+      background-color: var(--font-color);
+      font-size: 0.95em; /* monospace is just a bit bigger */
+      width: 28em;
+      left: -6em;
+      bottom: 6em;
+      letter-spacing: -0.04em;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .inner-container {
+    padding: 1em;
+    margin: 0 auto;
+    text-align: left;
+    background: var(--inner-bg);
+
+    .medium & {
+      font-size: 1.2em;
+    }
+    .large & {
+      font-size: 1.4em;
+    }
+
+    @media (width >= 740px) {
+      position: relative;
+      width: 670px;
+      padding: 2em;
+      box-shadow: 4px 4px 16px #666;
+      border: 1px solid #ddd;
+    }
   }
 
   .controls {
@@ -229,6 +296,24 @@
     label {
       cursor: pointer;
       display: block;
+    }
+
+    @media (width >= 1160px) {
+      .small & {
+        position: fixed;
+      }
+    }
+
+    @media (width >= 1280px) {
+      .medium & {
+        position: fixed;
+      }
+    }
+
+    @media (width >= 1360px) {
+      .large & {
+        position: fixed;
+      }
     }
   }
 
@@ -261,25 +346,6 @@
     }
   }
 
-  .inner-container {
-    padding: 1em;
-    margin: 0 auto;
-    text-align: left;
-    background: var(--inner-bg);
-
-    .medium & {
-      font-size: 1.2em;
-    }
-    .large & {
-      font-size: 1.4em;
-    }
-  }
-
-  main {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   .resume-name-title {
     font-family: var(--font-family-secondary);
     margin: 0.8em 0 0;
@@ -309,6 +375,90 @@
         line-height: 1.2;
         text-align: right;
       }
+      @media (width >= 700px) {
+        $spacer-width: 15px;
+        $spacer-line-width: 3px;
+
+        margin: 10px 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25em ($spacer-width * 2);
+        overflow: hidden;
+
+        span {
+          display: inline;
+          white-space: nowrap;
+          margin: 0;
+
+          &:not(:first-child) {
+            margin-left: (-1 * $spacer-width);
+
+            &::before {
+              content: ' ';
+              display: inline-block;
+              height: 1em;
+              vertical-align: middle;
+              box-sizing: border-box;
+
+              width: $spacer-width;
+              border-left: $spacer-line-width solid var(--font-color);
+            }
+          }
+        }
+      }
+    }
+
+    @media (width >= 740px) {
+      margin-top: 0;
+    }
+  }
+
+  .availability {
+    float: left;
+    color: #000;
+    font-style: oblique;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    letter-spacing: 1px;
+    width: 14em;
+
+    > div {
+      $height: 3em;
+      width: 100%;
+      max-width: 16em;
+      height: $height;
+      line-height: $height;
+      background-color: #fcf50a;
+      border-radius: 47%;
+      display: inline-block;
+      text-align: center;
+      border: 7px double;
+      margin: 0 auto 1em;
+    }
+
+    @media (width >= 700px) {
+      text-align: center;
+      float: none;
+      width: 100%;
+    }
+
+    #{$dark} & {
+      float: none;
+      font-style: normal;
+      font-weight: 900;
+      font-family: inherit;
+      letter-spacing: 0;
+      width: 100%;
+      font-variation-settings: 'wdth' 150;
+
+      > div {
+        $height: 2em;
+        height: $height;
+        line-height: $height;
+        background-color: #0f0;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
     }
   }
 
@@ -323,6 +473,42 @@
     li {
       margin-bottom: 8px;
     }
+
+    @media (width >= 700px) {
+      $spacer-width: 11px;
+      $spacer-line-width: 2px;
+
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25em ($spacer-width * 2);
+      overflow: hidden;
+
+      li {
+        white-space: nowrap;
+        margin-bottom: 0;
+
+        &:not(:first-child) {
+          margin-left: (-1 * $spacer-width);
+
+          &::before {
+            content: ' ';
+            display: inline-block;
+            height: 1em;
+            vertical-align: middle;
+            box-sizing: border-box;
+
+            width: $spacer-width;
+            border-left: $spacer-line-width solid var(--font-color);
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .resume-section-header {
@@ -331,6 +517,10 @@
     font-family: var(--font-family-secondary);
     font-size: 1.1875em; /* 19/16px */
     font-weight: 700;
+  }
+
+  #education {
+    flex-basis: 100%;
   }
 
   .jobs,
@@ -372,6 +562,17 @@
         margin-bottom: 0.5em;
       }
     }
+
+    @media (width >= 740px) {
+      &__dates {
+        float: right;
+      }
+      &__city,
+      &__dates,
+      &__title {
+        font-size: 0.85em;
+      }
+    }
   }
 
   .job__title,
@@ -386,124 +587,26 @@
     align-items: center;
     gap: 0.5em;
     margin-top: 1em;
-  }
 
-  // best guess for a device that reads QR codes with a camera (e.g., a phone)
-  @media only screen and (width <= 450px),
-    only screen and (pointer: coarse) and (width <= 800px) and (height <= 450px) {
-    .qrContainer {
+    // best guess for a device that reads QR codes with a camera (e.g., a phone)
+    @media only screen and (width <= 450px),
+      only screen and (pointer: coarse) and (width <= 800px) and (height <= 450px) {
       display: none;
     }
   }
 
-  #education {
-    flex-basis: 100%;
-  }
-
-  @media (width >= 700px) {
-    .resume-name-title {
-      &__title {
-        $spacer-width: 15px;
-        $spacer-line-width: 3px;
-
-        margin: 10px 0 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.25em ($spacer-width * 2);
-        overflow: hidden;
-
-        span {
-          display: inline;
-          white-space: nowrap;
-          margin: 0;
-
-          &:not(:first-child) {
-            margin-left: (-1 * $spacer-width);
-
-            &::before {
-              content: ' ';
-              display: inline-block;
-              height: 1em;
-              vertical-align: middle;
-              box-sizing: border-box;
-
-              width: $spacer-width;
-              border-left: $spacer-line-width solid var(--font-color);
-            }
-          }
-        }
-      }
-    }
-    .subheader {
-      $spacer-width: 11px;
-      $spacer-line-width: 2px;
-
-      margin: 10px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25em ($spacer-width * 2);
-      overflow: hidden;
-
-      li {
-        white-space: nowrap;
-        margin-bottom: 0;
-
-        &:not(:first-child) {
-          margin-left: (-1 * $spacer-width);
-
-          &::before {
-            content: ' ';
-            display: inline-block;
-            height: 1em;
-            vertical-align: middle;
-            box-sizing: border-box;
-
-            width: $spacer-width;
-            border-left: $spacer-line-width solid var(--font-color);
-          }
-        }
-      }
-    }
-  }
-
   @media (width >= 740px) {
-    .outer-container {
-      padding: 1.5% 0;
-      background: var(--body-bg-color);
-      background: var(--body-bg);
-    }
-    .inner-container {
-      position: relative;
-      width: 670px;
-      padding: 2em;
-      box-shadow: 4px 4px 16px #666;
-      border: 1px solid #ddd;
-    }
-
-    .resume-name-title {
-      margin-top: 0;
-    }
-
     .column {
       display: inline-block;
       width: 48%;
       vertical-align: top;
-    }
-    .column:nth-of-type(2n) {
-      margin-left: 4%;
-    }
-    .job {
-      &__dates {
-        float: right;
-      }
-      &__city,
-      &__dates,
-      &__title {
-        font-size: 0.85em;
+
+      &:nth-of-type(2n) {
+        margin-left: 4%;
       }
     }
 
-    .tableader {
+    .tab-leader {
       display: flex;
       margin-bottom: 0.5em;
       gap: 0.5em;
@@ -528,23 +631,8 @@
     }
   }
 
-  @media (width >= 1160px) {
-    .small .controls {
-      position: fixed;
-    }
-  }
-  @media (width >= 1280px) {
-    .medium .controls {
-      position: fixed;
-    }
-  }
-  @media (width >= 1360px) {
-    .large .controls {
-      position: fixed;
-    }
-  }
   @media not print {
-    .outer-container:has(.theme-switcher__dark-mode-toggle:checked) {
+    #{$dark} {
       background: radial-gradient(rgba(0, 150, 0, 0.75), black 120%) fixed;
       letter-spacing: -0.5px;
       text-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
@@ -594,6 +682,9 @@
   }
 
   @media print {
+    .no-print {
+      display: none;
+    }
     .outer-container {
       background: none;
     }
