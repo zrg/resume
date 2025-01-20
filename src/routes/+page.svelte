@@ -126,9 +126,10 @@
           <span class="resume-name-title__word">Zev</span>
           <span class="resume-name-title__word">Goldberg</span>
         </div>
-        <ul class="resume-name-title__title"
-          ><li>Senior Software Engineer</li><li>Guitar FX Mad Scientist</li></ul
-        >
+        <ul class="resume-name-title__title">
+          <li>Senior Software Engineer</li>
+          <li>Guitar FX Mad Scientist</li>
+        </ul>
       </h1>
       {#if availability}
         <aside class="no-print">
@@ -503,23 +504,23 @@
     font-size: 0.89em;
     margin: 0 0 0 10px;
     padding-left: 20px;
-    
+
     li {
       list-style: circle;
       margin-bottom: 8px;
     }
-    
+
     @media (width >= 560px) {
       $spacer-width: 11px;
       $spacer-line-width: 2px;
-      
+
       padding: 0;
       margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
       gap: 0.25em ($spacer-width * 2);
       overflow: hidden;
-      
+
       li {
         list-style: none;
         white-space: nowrap;
@@ -542,19 +543,25 @@
       }
     }
 
+    @media (width >= 700px) {
+      //  - 1st number allows font size to change with font-sizer control
+      //  - 2nd number is targeted to take up 100% of the space and
+      //    grow at the same rate as the viewport when viewport width is 700px > < 740px
+      //    (see fontRandom.ts for math details)
+      font-size: max(0.9em, calc(2.2vw - calc(40px * 0.022)));
+    }
+    @media (width >= 740px) {
+      font-size: 0.9em;
+    }
+
     #{$dark} & {
       font-size: 1.2em;
 
       @media (width >= 700px) {
-        //  - 1st number allows font size to change with font-sizer control
-        //  - 2nd number is targeted to take up 100% of the space and
-        //    grow at the same rate as the viewport when viewport width is 700px > < 740px
-        //    (see fontRandom.ts for math details)
         font-size: max(1em, calc(3.3vw - calc(40px * 0.033)));
       }
 
       @media (width >= 740px) {
-        // same math as above but for next breakpoint
         font-size: min(1.2em, calc(3.27vw - calc(72px * 0.0327)));
       }
 

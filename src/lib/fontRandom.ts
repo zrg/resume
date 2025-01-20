@@ -21,7 +21,7 @@ interface RandomFont {
  *  - the 2nd number is the relative font-size to be even with the professional title underneath
  *  - the 3rd number is targeted to take up 100% of the space and
  *    grow at the same rate as the viewport when viewport width is less than 740px
- * 
+ *
  *    without padding that would be
  *      [number]vw
  *    translated to pseudo code
@@ -32,8 +32,8 @@ interface RandomFont {
  *      ( viewport width * [numner]% ) - ( container padding * [numner]% )
  *    is the same as
  *      calc( [number]vw - calc( 40px * [number / 100] ) )
- *  */ 
- 
+ *  */
+
 const fonts = [
   {
     fontFamily: "'8-bit-lim O'",
