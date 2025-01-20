@@ -136,6 +136,7 @@
       </h1>
       {#if availability}
         <aside class="availability no-print">
+          <!-- svelte-ignore a11y_invalid_attribute -->
           <a class="availability__cta" href="#" use:mailto>AVAILABLE FOR HIRE!</a>
         </aside>
       {/if}
