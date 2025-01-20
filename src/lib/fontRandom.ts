@@ -8,6 +8,7 @@ interface RandomFont {
   active: boolean;
   filename: string;
   fontSize?: string;
+  lineHeight?: string;
   letterSpacing?: string;
   textTransform?: string;
   colorFamily?: ColorFamily;
@@ -19,12 +20,14 @@ const fonts = [
     active: true,
     filename: '8bitlimo',
     fontSize: 'min(1.8em, 14.5vw, 102.6px)',
+    lineHeight: '',
   },
   {
     fontFamily: "'Crackman'",
     active: true,
     filename: 'Crackman',
     fontSize: 'min(12vw, 90px)',
+    lineHeight: '',
   },
   {
     fontFamily: "'EXE Pixel Perfect'",
@@ -32,24 +35,28 @@ const fonts = [
     filename: 'EXEPixelPerfect',
     textTransform: 'uppercase',
     fontSize: 'min(20vw, 142.5px)',
+    lineHeight: '0.6',
   },
   {
     fontFamily: "'Karma Future'",
     active: true,
     filename: 'Karma Future',
     fontSize: 'min(1.75em, 13.5vw, 99.75px)',
+    lineHeight: '',
   },
   {
     fontFamily: "'Televideo'",
     active: true,
     filename: 'Televideo',
     fontSize: 'min(1.75em, 13.5vw, 99.75px)',
+    lineHeight: '',
   },
   {
     fontFamily: "'Youre Gone'",
     active: true,
     filename: 'Youre Gone',
     fontSize: 'min(85px, 11.2vw)',
+    lineHeight: '',
   },
 ];
 

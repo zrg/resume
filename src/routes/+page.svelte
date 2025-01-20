@@ -41,6 +41,7 @@
     fontSize: dmnFontSize,
     letterSpacing: dmnLetterSpacing,
     textTransform: dmnTextTransform,
+    lineHeight: dmnLineHeight,
     colorFamily: dmcf,
   } = $state(randomFont);
 
@@ -56,6 +57,7 @@
       dmnFontSize = randomFont.fontSize;
       dmnLetterSpacing = randomFont.letterSpacing;
       dmnTextTransform = randomFont.textTransform;
+      dmnLineHeight = randomFont.lineHeight;
       dmcf = randomFont.colorFamily;
     }
   };
@@ -75,8 +77,8 @@
     style:position="fixed"
     style:left="120px"
     style:top="0"
-    style:background="red"
-    style:color="#fff"
+    style:background={env.PUBLIC_ENV === 'dev' ? 'red' : env.PUBLIC_ENV === 'preview' ? '#fb0' : ''}
+    style:color={env.PUBLIC_ENV === 'dev' ? '#fff' : env.PUBLIC_ENV === 'preview' ? '#000' : ''}
     style:z-index="1"
     style:font-size="20px"
     style:padding="10px"
@@ -127,6 +129,7 @@
           style:--dmn-font-size={dmnFontSize}
           style:--dmn-letter-spacing={dmnLetterSpacing}
           style:--dmn-text-transform={dmnTextTransform}
+          style:--dmn-line-height={dmnLineHeight}
         >
           <span class="resume-name-title__word">Zev</span>
           <span class="resume-name-title__word">Goldberg</span>
@@ -779,6 +782,7 @@
         font-family: var(--dmn-font-family), 'VT323', monospace;
         text-transform: var(--dmn-text-transform);
         font-size: var(--dmn-font-size);
+        line-height: var(--dmn-line-height);
         margin-top: 10px;
       }
 
