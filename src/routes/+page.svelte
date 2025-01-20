@@ -256,11 +256,11 @@
 
   .outer-container {
     transition:
-      color 0.25s,
-      font-size 0.5s,
-      background-color 0.25s,
-      letter-spacing 0.25s,
-      line-height 0.5s;
+      color 0.6s,
+      font-size 0.8s,
+      background-color 0.6s,
+      letter-spacing 0.6s,
+      line-height 0.8s;
     line-height: 1.4;
     text-align: center;
     color: var(--font-color);
@@ -327,31 +327,27 @@
 
   .inner-container {
     transition:
-      background-color 0.25s,
-      padding 0.5s,
-      margin 0.5s,
-      font-size 0.5s;
+      background-color 0.6s,
+      width 0.8s,
+      padding 0.8s,
+      margin 0.8s,
+      font-size 0.8s;
     padding: 20px;
     margin: 0 auto;
     text-align: left;
     background: var(--inner-bg);
+    box-sizing: border-box;
 
     .medium & {
       font-size: 1.2em;
     }
     .large & {
       font-size: 1.4em;
-
-      .column {
-        display: block;
-        width: 100%;
-        margin-left: 0;
-      }
     }
 
     @media (width >= 740px) {
       position: relative;
-      width: 740px;
+      width: min(100%, 45.5em);
       box-sizing: border-box;
       padding: 36px;
       box-shadow: 4px 4px 16px #666;
@@ -377,13 +373,13 @@
       }
     }
 
-    @media (width >= 1280px) {
+    @media (width >= 1480px) {
       .medium & {
         position: fixed;
       }
     }
 
-    @media (width >= 1360px) {
+    @media (width >= 1700px) {
       .large & {
         position: fixed;
       }
@@ -488,6 +484,9 @@
   }
 
   .availability {
+    transition:
+      width 0.8s color 0.6s,
+      background-color 0.6s;
     float: left;
     color: #000;
     font-style: oblique;
@@ -497,8 +496,11 @@
 
     > div {
       $height: 3em;
-      width: 100%;
-      max-width: 16em;
+
+      transition:
+        border-radius 0.8s,
+        width 0.8s;
+      width: min(16em, 100%);
       height: $height;
       line-height: $height;
       background-color: #fcf50a;
@@ -531,7 +533,7 @@
         background-color: var(--dm-color-1);
         border: none;
         border-radius: 0;
-        max-width: 100%;
+        width: 100%;
       }
     }
   }
@@ -738,6 +740,7 @@
           padding-top: 36px;
         }
       }
+
       .resume-name-title__name {
         font-weight: normal;
         font-family: var(--dmn-font-family), monospace;
