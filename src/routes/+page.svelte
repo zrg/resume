@@ -19,7 +19,7 @@
     return new Date(
       Number(yearMonth.substring(0, 4)),
       Number(yearMonth.substring(5)) - 1,
-      1
+      1,
     ).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
 
@@ -30,17 +30,29 @@
   let darkMode = $state(false);
   let fontSizeLevel: 'small' | 'medium' | 'large' = $state('small');
 
-  let randomFont = getRandomFont(null);
-  let { darkModeNameFontFilename, darkModeNameFontStyle } = $state(randomFont);
+  let randomFont = getRandomFont(null, null);
+  let {
+    filename: darkModeNameFontFilename,
+    fontFamily: dmnFontFamily,
+    fontSize: dmnFontSize,
+    letterSpacing: dmnLetterSpacing,
+    textTransform: dmnTextTransform,
+    colorFamily: dmcf,
+  } = $state(randomFont);
 
   const replaceDarkModeNameFont = () => {
     if (darkMode) {
       // I'm guessing people will click light/dark mode more than once
       // so we'll change the dark mode font when light mode is showing
       // so it loads in the background
-      randomFont = getRandomFont(darkModeNameFontFilename);
-      darkModeNameFontFilename = randomFont.darkModeNameFontFilename;
-      darkModeNameFontStyle = randomFont.darkModeNameFontStyle;
+      randomFont = getRandomFont(darkModeNameFontFilename, dmcf?.name ?? null);
+      darkModeNameFontFilename = randomFont.filename;
+
+      dmnFontFamily = randomFont.fontFamily;
+      dmnFontSize = randomFont.fontSize;
+      dmnLetterSpacing = randomFont.letterSpacing;
+      dmnTextTransform = randomFont.textTransform;
+      dmcf = randomFont.colorFamily;
     }
   };
 
@@ -56,10 +68,25 @@
 </svelte:head>
 
 {#if env.PUBLIC_ENV === 'dev'}<code
-    style="position:absolute;left:120px;top:0;background:red;color:white;z-index:1;font-size:20px;padding:10px;border-radius:0 0 10px 10px"
-    >LOCAL</code
+    style:position="absolute"
+    style:left="120px"
+    style:top="0"
+    style:background="red"
+    style:color="#fff"
+    style:z-index="1"
+    style:font-size="20px"
+    style:padding="10px"
+    style:border-radius="0 0 10px 10px">LOCAL</code
   >{/if}
-<div class="outer-container {fontSizeLevel}">
+
+<div
+  class="outer-container {fontSizeLevel}"
+  style:--dm-color-1={dmcf?.shades[0]}
+  style:--dm-color-2={dmcf?.shades[1]}
+  style:--dm-color-3={dmcf?.shades[2]}
+  style:--dm-color-4={dmcf?.shades[3]}
+  style:--dm-color-5={dmcf?.shades[4]}
+>
   <aside class="responsive-notice no-print">
     Resize the browser or rotate your device!<br />This résumé is responsive!
   </aside>
@@ -89,7 +116,13 @@
     </div>
     <header>
       <h1 class="resume-name-title">
-        <div class="resume-name-title__name" style={darkModeNameFontStyle}>
+        <div
+          class="resume-name-title__name"
+          style:--dmn-font-family={dmnFontFamily}
+          style:--dmn-font-size={dmnFontSize}
+          style:--dmn-letter-spacing={dmnLetterSpacing}
+          style:--dmn-text-transform={dmnTextTransform}
+        >
           <span class="resume-name-title__word">Zev</span>
           <span class="resume-name-title__word">Goldberg</span>
         </div>
@@ -204,27 +237,30 @@
       --font-family-secondary: var(--font-family);
       --font-size: 17px;
       --font-size-wide: 19px;
-      --font-color: #0f0;
+      --font-color: var(--dm-color-1);
       --link-color: #0cf;
       --link-color-visited: #d270ff;
-      --jobs-color: #00bd00;
-      --bg-color: #333;
+      --jobs-color: var(--dm-color-2);
+      --bg-color: #282828;
       --body-bg-color: var(--bg-color);
       --body-bg: #000;
       --inner-bg: rgba(0, 0, 0, 0.5);
       --border-color: var(--font-color);
-      --border-color-secondary: #090;
+      --border-color-secondary: var(--dm-color-3);
     }
-
-    // Doesn't appear to be a sensible way to use css vars above where they are declared without using global
-    // Using actual values to eliminate the white background when you "bounce" the page by pulling it down.
     :global(body:has(.theme-switcher__dark-mode-toggle:checked)) {
       background-color: #000;
-      color: #0f0;
+      color: var(--dm-color-1);
     }
   }
 
   .outer-container {
+    transition:
+      color 0.25s,
+      font-size 0.5s,
+      background-color 0.25s,
+      letter-spacing 0.25s,
+      line-height 0.5s;
     line-height: 1.4;
     text-align: center;
     color: var(--font-color);
@@ -266,7 +302,7 @@
 
     #{$dark} & {
       color: var(--bg-color);
-      background-color: var(--font-color);
+      background-color: var(--dm-color-2);
       width: 28em;
       left: -6em;
       bottom: 6em;
@@ -290,6 +326,11 @@
   }
 
   .inner-container {
+    transition:
+      background-color 0.25s,
+      padding 0.5s,
+      margin 0.5s,
+      font-size 0.5s;
     padding: 20px;
     margin: 0 auto;
     text-align: left;
@@ -487,7 +528,7 @@
         $height: 2em;
         height: $height;
         line-height: $height;
-        background-color: #0f0;
+        background-color: var(--dm-color-1);
         border: none;
         border-radius: 0;
         max-width: 100%;
@@ -666,9 +707,9 @@
 
   @media not print {
     #{$dark} {
-      background: radial-gradient(rgba(0, 150, 0, 0.75), black 120%) fixed;
+      background: radial-gradient(var(--dm-color-4), black 120%) fixed;
       letter-spacing: -0.5px;
-      text-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
+      text-shadow: 0 0 4px var(--dm-color-5);
       position: relative;
 
       &::after {
