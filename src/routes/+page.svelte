@@ -24,7 +24,10 @@
   };
 
   const mailto: Action = (node) => {
-    node.setAttribute('href', 'mailto:zevgoldberg@gmail.com');
+    node.setAttribute(
+      'href',
+      'mailto:zevgoldberg@gmail.com?subject=Very%20impressive%20resume%21&body=Let%27s%20get%20this%20thing%20going.%20When%20is%20a%20good%20time%20to%20meet%3F',
+    );
   };
 
   let darkMode = $state(false);
@@ -133,7 +136,7 @@
       </h1>
       {#if availability}
         <aside class="availability no-print">
-          <div>AVAILABLE FOR HIRE!</div>
+          <a class="availability__cta" href="#" use:mailto>AVAILABLE FOR HIRE!</a>
         </aside>
       {/if}
       <ul class="subheader">
@@ -234,7 +237,7 @@
 
   @media not print {
     #{$dark} {
-      --font-family: Inconsolata, monospace;
+      --font-family: 'VT323', monospace;
       --font-family-secondary: var(--font-family);
       --font-size: 17px;
       --font-size-wide: 19px;
@@ -495,16 +498,15 @@
     letter-spacing: 1px;
     width: 14em;
 
-    > div {
-      $height: 3em;
-
+    &__cta {
       transition:
         border-radius 0.8s,
         width 0.8s;
       width: min(16em, 100%);
-      height: $height;
-      line-height: $height;
+      height: 3em;
+      line-height: 3;
       background-color: #fcf50a;
+      color: var(--font-color);
       border-radius: 47%;
       display: inline-block;
       text-align: center;
@@ -527,14 +529,16 @@
       width: 100%;
       font-variation-settings: 'wdth' 150;
 
-      > div {
-        $height: 2em;
-        height: $height;
-        line-height: $height;
+      &__cta {
+        height: 1.2em;
+        line-height: 1.2;
         background-color: var(--dm-color-1);
+        color: var(--bg-color);
         border: none;
         border-radius: 0;
         width: 100%;
+        font-size: 2.2em;
+        letter-spacing: 7.2px;
       }
     }
   }
@@ -580,6 +584,10 @@
           }
         }
       }
+    }
+
+    #{$dark} & {
+      font-size: 1.38em;
     }
   }
 
@@ -744,7 +752,7 @@
 
       .resume-name-title__name {
         font-weight: normal;
-        font-family: var(--dmn-font-family), monospace;
+        font-family: var(--dmn-font-family), 'VT323', monospace;
         text-transform: var(--dmn-text-transform);
         font-size: var(--dmn-font-size);
         margin-top: 0;
@@ -776,6 +784,7 @@
 
       @media (width >= 740px) {
         .inner-container {
+          width: min(100%, 45.5em);
           border-radius: 20px;
           border-width: 4px;
         }
