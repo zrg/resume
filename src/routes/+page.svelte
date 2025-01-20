@@ -138,7 +138,7 @@
       {#if availability}
         <aside class="availability no-print">
           <!-- svelte-ignore a11y_invalid_attribute -->
-          <a class="availability__cta" href="#" use:mailto>AVAILABLE FOR HIRE!</a>
+          <a class="availability__cta" href="#" target="_blank" use:mailto>AVAILABLE FOR HIRE!</a>
         </aside>
       {/if}
       <ul class="subheader">
@@ -147,7 +147,7 @@
         </li>
         <li aria-label="zev goldberg at G mail dot com">
           <!-- svelte-ignore a11y_invalid_attribute -->
-          <a href="#" use:mailto
+          <a href="#" use:mailto target="_blank"
             >zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
           >
         </li>
@@ -241,8 +241,8 @@
     #{$dark} {
       --font-family: 'VT323', monospace;
       --font-family-secondary: var(--font-family);
-      --font-size: 22px;
-      --font-size-wide: 24px;
+      --font-size: 18px;
+      --font-size-wide: 20px;
       --font-color: var(--dm-color-1);
       --link-color: #0cf;
       --link-color-visited: #d270ff;
@@ -423,7 +423,7 @@
 
   .resume-name-title {
     font-family: var(--font-family-secondary);
-    margin: 0;
+    margin: 16px 0 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
     font-weight: 900;
@@ -491,14 +491,16 @@
 
   .availability {
     transition:
-      width 0.8s color 0.6s,
+      width 0.8s,
+      color 0.6s,
       background-color 0.6s;
     float: left;
     color: #000;
     font-style: oblique;
     font-family: 'Encode Sans Semi Condensed', sans-serif;
     letter-spacing: 1px;
-    width: 14em;
+    width: auto;
+    margin: 4px 1em 0 0;
 
     &__cta {
       transition:
@@ -513,13 +515,14 @@
       display: inline-block;
       text-align: center;
       border: 7px double;
-      margin: 0 auto 1em;
+      margin: 0 auto;
     }
 
     @media (width >= 700px) {
       text-align: center;
       float: none;
       width: 100%;
+      margin-bottom: 1em;
     }
 
     #{$dark} & {
@@ -531,6 +534,10 @@
       width: 100%;
       font-variation-settings: 'wdth' 150;
 
+      @media (width >= 700px) {
+        margin-bottom: 0;
+      }
+
       &__cta {
         height: auto;
         line-height: 1.8;
@@ -541,6 +548,7 @@
         width: 100%;
         font-size: min(1em, 50px);
         letter-spacing: 0.5vw;
+        margin-bottom: 1em;
       }
     }
   }
@@ -551,11 +559,14 @@
     text-align: right;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 6em 0 0;
 
     li {
       margin-bottom: 8px;
-      line-height: 1;
+    }
+
+    @media (width >= 450px) {
+      margin-top: 0;
     }
 
     @media (width >= 700px) {
@@ -590,7 +601,16 @@
     }
 
     #{$dark} & {
-      font-size: 1.23em;
+      font-size: 1.2em;
+      margin: 0;
+
+      @media (width >= 700px) {
+        font-size: min(1.2em, calc(2.85vw + 0.7px)); // absolutely ludicrous
+      }
+
+      li {
+        line-height: 1;
+      }
     }
   }
 
