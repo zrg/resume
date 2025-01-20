@@ -26,7 +26,8 @@
   const mailto: Action = (node) => {
     node.setAttribute(
       'href',
-      'mailto:zevgoldberg@gmail.com?subject=Very%20impressive%20resume%21&body=Let%27s%20get%20this%20thing%20going.%20When%20is%20a%20good%20time%20to%20meet%3F',
+      'mailto:zevgoldberg@gmail.com?subject=Very%20impressive%20resume%21&body=Let%27s%20make%20' +
+        'something%20happen.%20When%20is%20a%20good%20time%20to%20meet%3F',
     );
   };
 
@@ -240,8 +241,8 @@
     #{$dark} {
       --font-family: 'VT323', monospace;
       --font-family-secondary: var(--font-family);
-      --font-size: 17px;
-      --font-size-wide: 19px;
+      --font-size: 22px;
+      --font-size-wide: 24px;
       --font-color: var(--dm-color-1);
       --link-color: #0cf;
       --link-color-visited: #d270ff;
@@ -531,22 +532,22 @@
       font-variation-settings: 'wdth' 150;
 
       &__cta {
-        height: 1.2em;
-        line-height: 1.2;
+        height: auto;
+        line-height: 1.8;
         background-color: var(--dm-color-1);
         color: var(--bg-color);
         border: none;
         border-radius: 0;
         width: 100%;
-        font-size: 2.2em;
-        letter-spacing: 7.2px;
+        font-size: min(1em, 50px);
+        letter-spacing: 0.5vw;
       }
     }
   }
 
   .subheader {
     font-weight: 500;
-    font-size: 0.91666667em; /* 11/12px */
+    font-size: 0.89em;
     text-align: right;
     list-style: none;
     padding: 0;
@@ -554,6 +555,7 @@
 
     li {
       margin-bottom: 8px;
+      line-height: 1;
     }
 
     @media (width >= 700px) {
@@ -588,7 +590,7 @@
     }
 
     #{$dark} & {
-      font-size: 1.38em;
+      font-size: 1.23em;
     }
   }
 
@@ -723,6 +725,7 @@
       letter-spacing: -0.5px;
       text-shadow: 0 0 4px var(--dm-color-5);
       position: relative;
+      line-height: 1.2;
 
       &::after {
         content: '';
@@ -756,7 +759,7 @@
         font-family: var(--dmn-font-family), 'VT323', monospace;
         text-transform: var(--dmn-text-transform);
         font-size: var(--dmn-font-size);
-        margin-top: 0;
+        margin-top: 10px;
       }
 
       &.medium .resume-name-title__name {
@@ -785,7 +788,7 @@
 
       @media (width >= 740px) {
         .inner-container {
-          width: min(100%, 45.5em);
+          width: min(100%, 40em);
           border-radius: 20px;
           border-width: 4px;
         }
