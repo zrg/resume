@@ -10,10 +10,10 @@ const config = {
     svg({
       includePaths: ['./src/routes/'],
     }),
-		visualizer({
-			emitFile: true,
-			filename: 'stats.html'
-		})
+    visualizer({
+      emitFile: true,
+      filename: 'stats.html',
+    }),
   ],
   preprocess: [vitePreprocess()],
   test: {

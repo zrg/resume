@@ -9,15 +9,17 @@ const jobs = [
     endMonth: '2024-09',
     title: 'Software Engineer II',
     highlights: [
-      'HTML, CSS, SCSS/Sass, JavaScript, jQuery, Node.js, Svelte, React, TypeScript, Next.js, StoryBook, Jest, Webpack, Rollup, Snyk, Github Actions/Workflows, Figma, REST API, microservices',
+      'HTML, CSS, SCSS/Sass, JavaScript, jQuery, Node.js, Svelte, React, TypeScript, Next.js, \
+      StoryBook, Jest, Webpack, Rollup, Snyk, Github Actions/Workflows, Figma, REST API, \
+      microservices',
       'Develop components and pages for e-commerce application',
       'Convert legacy pages to faster and more robust SPAs',
       'Participate in regular on-call rotation for troubleshooting issues with released code',
       'Write documentation for components in Storybook for other developer teams',
       'Define accessibility requirements and shape approach for implementation of UI components',
       'Implement mechanism for onsite employees to provide feedback on internal search results',
-      'Automate processes with GitHub Actions and Workflows, Bash scripts'
-    ]
+      'Automate processes with GitHub Actions and Workflows, Bash scripts',
+    ],
   },
   {
     id: 'sears',
@@ -31,8 +33,8 @@ const jobs = [
     highlights: [
       'HTML, CSS, JavaScript, Angular, Bootstrap, Less, Angular-UI, Grunt, Underscore, Github',
       'Develop gamified learning management application',
-      'Convert UX documents and mock-up images into functioning sections of the application'
-    ]
+      'Convert UX documents and mock-up images into functioning sections of the application',
+    ],
   },
   {
     id: 'tmc',
@@ -45,8 +47,8 @@ const jobs = [
     title: 'Senior Web Developer',
     highlights: [
       'HTML, CSS, JavaScript, PHP, Wordpress, Git, Beanstalk',
-      'Develop and troubleshoot responsive Wordpress sites for SMB clients'
-    ]
+      'Develop and troubleshoot responsive Wordpress sites for SMB clients',
+    ],
   },
   {
     id: 'cm',
@@ -59,8 +61,9 @@ const jobs = [
     title: 'Senior Developer',
     highlights: [
       'Web Performance Tools, Google PageSpeed Tools, YSlow, ImageOptim',
-      'Develop strategies and plans to measure and improve load times and perceived performance of existing websites'
-    ]
+      'Develop strategies and plans to measure and improve load times and perceived performance of \
+      existing websites',
+    ],
   },
   {
     id: 'trib',
@@ -72,11 +75,13 @@ const jobs = [
     endMonth: '2013-11',
     title: 'Software Engineer III',
     highlights: [
-      'HTML, CSS, JavaScript, jQuery, responsive layout, touch-enabled, cross-browser, device-agnostic, SVN, Photoshop, InDesign',
+      'HTML, CSS, JavaScript, jQuery, responsive layout, touch-enabled, cross-browser, \
+      device-agnostic, SVN, Photoshop, InDesign',
       'Develop major metropolitan online newspaper as a device-agnostic SPA',
-      'Convert requirements documents and mock-up images into layouts and functioning sections of the website',
-      'Interview and onboard frontend engineer candidates'
-    ]
+      'Convert requirements documents and mock-up images into layouts and functioning sections of \
+      the website',
+      'Interview and onboard frontend engineer candidates',
+    ],
   },
   {
     id: 'jspace',
@@ -88,10 +93,13 @@ const jobs = [
     endMonth: '2012-04',
     title: 'Web Developer',
     highlights: [
-      'HTML, CSS, Smarty, JavaScript, jQuery, jQuery UI, Modernizr, NetBeans, Subversion, Photoshop, PHP, Zend, MySQL',
-      'Lead frontend development of HTML and CSS for a large social network, news, venue/city guide and dating site',
-      'Convert requirements documents and mock-up images into reusable templates and functioning sections of the website'
-    ]
+      'HTML, CSS, Smarty, JavaScript, jQuery, jQuery UI, Modernizr, NetBeans, Subversion, \
+      Photoshop, PHP, Zend, MySQL',
+      'Lead frontend development of HTML and CSS for a large social network, news, venue/city \
+      guide and dating site',
+      'Convert requirements documents and mock-up images into reusable templates and functioning \
+      sections of the website',
+    ],
   },
   {
     id: 'suntimes',
@@ -104,8 +112,9 @@ const jobs = [
     title: 'Front-End Web Developer (contract)',
     highlights: [
       'HTML, CSS, JavaScript, Photoshop',
-      'Migrate several classified ads systems into the new one, maintaining the latest look-and-feel styles'
-    ]
+      'Migrate several classified ads systems into the new one, maintaining the latest \
+      look-and-feel styles',
+    ],
   },
   {
     id: 'mywv',
@@ -117,9 +126,10 @@ const jobs = [
     endMonth: '2010-08',
     title: 'Web Developer',
     highlights: [
-      'LAMP, Joomla, HTML, CSS, JavaScript, Ajax, ColdFusion, Photoshop, Illustrator, social media, Android',
-      'Develop and maintain company’s extensive web presence and partner websites'
-    ]
+      'LAMP, Joomla, HTML, CSS, JavaScript, Ajax, ColdFusion, Photoshop, Illustrator, social \
+      media, Android',
+      'Develop and maintain company’s extensive web presence and partner websites',
+    ],
   },
   {
     id: 'ecc',
@@ -131,11 +141,17 @@ const jobs = [
     endMonth: '2010-04',
     title: 'Senior Database and Application Developer',
     highlights: [
-      'LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, MS Visual Basic, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server, bash/Python scripting',
-      'Design, develop, code, test and support online database applications with multiple access levels, user management, custom user interface, reporting and graphs used by more than 300 people spanning several departments',
-      'Design, develop and maintain a custom CMS for more than thirty websites for all Extended Care nursing facilities',
-      'Provide complete graphics services for promotional materials and newsletters, including layout, copy-editing, printing and liaison to professional printing services'
-    ]
+      'LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, MS \
+      Visual Basic, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server, bash/Python \
+      scripting',
+      'Design, develop, code, test and support online database applications with multiple access \
+      levels, user management, custom user interface, reporting and graphs used by more than 300 \
+      people spanning several departments',
+      'Design, develop and maintain a custom CMS for more than thirty websites for all Extended \
+      Care nursing facilities',
+      'Provide complete graphics services for promotional materials and newsletters, including \
+      layout, copy-editing, printing and liaison to professional printing services',
+    ],
   },
   {
     id: 'indy',
@@ -149,8 +165,8 @@ const jobs = [
     highlights: [
       'Design, develop and maintain websites for clients',
       'Design company logos',
-      'Create commissioned artwork (ketubahs and a mural)'
-    ]
+      'Create commissioned artwork (ketubahs and a mural)',
+    ],
   },
   {
     id: 'margolin',
@@ -166,8 +182,8 @@ const jobs = [
       'Maintain large catalog website',
       'Script and automate shipping and inventory processes',
       'Photograph inventory and process the images',
-      'Layout semi-annual product catalog'
-    ]
+      'Layout semi-annual product catalog',
+    ],
   },
   {
     id: 'vc',
@@ -179,14 +195,15 @@ const jobs = [
     endMonth: '2004-10',
     title: 'Software Development',
     highlights: [
-      'Develop software for real-time billing of pre-paid phone accounts across multiple markets in the US and Mexico',
+      'Develop software for real-time billing of pre-paid phone accounts across multiple markets \
+      in the US and Mexico',
       'Record and maintain large dictionary of Spanish and English voice prompts for the IVR',
       'Develop and document technical procedures for network engineers',
       'On-call technical support for network engineers',
       'Develop working web interface for sample pre-paid products',
-      'Design splash graphics for point-of-sale application'
-    ]
-  }
+      'Design splash graphics for point-of-sale application',
+    ],
+  },
 ];
 
 export default jobs;

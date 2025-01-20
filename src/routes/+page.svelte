@@ -67,8 +67,8 @@
   {#if browser}<link rel="stylesheet" href="/fonts/{darkModeNameFontFilename}.css" />{/if}
 </svelte:head>
 
-{#if env.PUBLIC_ENV === 'dev'}<code
-    style:position="absolute"
+{#if env.PUBLIC_ENV}<code
+    style:position="fixed"
     style:left="120px"
     style:top="0"
     style:background="red"
@@ -76,7 +76,8 @@
     style:z-index="1"
     style:font-size="20px"
     style:padding="10px"
-    style:border-radius="0 0 10px 10px">LOCAL</code
+    style:border-radius="0 0 10px 10px"
+    style:text-transform="uppercase">{env.PUBLIC_ENV}</code
   >{/if}
 
 <div
