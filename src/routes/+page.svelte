@@ -126,14 +126,14 @@
           <span class="resume-name-title__word">Zev</span>
           <span class="resume-name-title__word">Goldberg</span>
         </div>
-        <span class="resume-name-title__title"
-          ><span>Senior Software Engineer</span><span>Guitar FX Mad Scientist</span></span
+        <ul class="resume-name-title__title"
+          ><li>Senior Software Engineer</li><li>Guitar FX Mad Scientist</li></ul
         >
       </h1>
       {#if availability}
-        <aside class="availability no-print">
+        <aside class="no-print">
           <!-- svelte-ignore a11y_invalid_attribute -->
-          <a class="availability__cta" href="#" target="_blank" use:mailto>AVAILABLE FOR HIRE!</a>
+          <a class="availability" href="#" target="_blank" use:mailto>AVAILABLE FOR HIRE!</a>
         </aside>
       {/if}
       <ul class="subheader">
@@ -333,7 +333,7 @@
       padding 0.8s,
       margin 0.8s,
       font-size 0.8s;
-    padding: 20px;
+    padding: 16px 20px 20px;
     margin: 0 auto;
     text-align: left;
     background: var(--inner-bg);
@@ -350,40 +350,25 @@
       position: relative;
       width: min(100%, 45.5em);
       box-sizing: border-box;
-      padding: 36px;
+      padding: 16px 36px 36px;
       box-shadow: 4px 4px 16px #666;
       border: 1px solid #ddd;
     }
   }
 
   .controls {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    float: right;
     color: var(--font-color);
     font-family: var(--font-family-secondary);
+    margin-bottom: 16px;
+
+    @media (width >= 740px) {
+      margin-right: -20px;
+    }
 
     label {
       cursor: pointer;
       display: block;
-    }
-
-    @media (width >= 1160px) {
-      .small & {
-        position: fixed;
-      }
-    }
-
-    @media (width >= 1480px) {
-      .medium & {
-        position: fixed;
-      }
-    }
-
-    @media (width >= 1700px) {
-      .large & {
-        position: fixed;
-      }
     }
   }
 
@@ -417,11 +402,11 @@
   }
 
   .resume-name-title {
+    margin: 0;
+    clear: both;
     font-family: var(--font-family-secondary);
-    margin: 16px 0 0;
     font-size: 3em; /* 36/12px */
     line-height: 1.2;
-    font-weight: 900;
 
     &__word {
       display: inline-block;
@@ -434,29 +419,29 @@
     &__title {
       font-family: var(--font-family);
       font-weight: 300;
-      font-size: 0.43055556em; /* 15.5/36px */
-      line-height: 2;
+      font-size: 0.45em;
       display: block;
-      margin: 0.2em 0 0.6em;
+      margin: 0.2em 0 0.6em 10px;
+      padding-left: 20px;
 
-      span {
-        display: block;
+      li {
         margin-bottom: 0.3em;
         line-height: 1.2;
-        text-align: right;
+        list-style: circle;
       }
 
-      @media (width >= 700px) {
+      @media (width >= 560px) {
         $spacer-width: 15px;
         $spacer-line-width: 3px;
 
         margin: 10px 0 20px;
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
         gap: 0.25em ($spacer-width * 2);
         overflow: hidden;
 
-        span {
+        li {
           display: inline;
           white-space: nowrap;
           margin: 0;
@@ -478,103 +463,65 @@
         }
       }
     }
-
-    @media (width >= 740px) {
-      margin-top: 0;
-    }
   }
 
   .availability {
+    text-align: center;
     transition:
-      width 0.8s,
       color 0.6s,
-      background-color 0.6s;
-    float: left;
-    color: #000;
+      background-color 0.6s,
+      width 0.8s;
     font-style: oblique;
     font-family: 'Encode Sans Semi Condensed', sans-serif;
     letter-spacing: 1px;
-    width: auto;
-    margin: 4px 1em 0 0;
-
-    &__cta {
-      transition:
-        border-radius 0.8s,
-        width 0.8s;
-      width: min(16em, 100%);
-      height: 3em;
-      line-height: 3;
-      background-color: #fcf50a;
-      color: var(--font-color);
-      border-radius: 47%;
-      display: inline-block;
-      text-align: center;
-      border: 7px double;
-      margin: 0 auto;
-    }
-
-    @media (width >= 700px) {
-      text-align: center;
-      float: none;
-      width: 100%;
-      margin-bottom: 1em;
-    }
+    display: block;
+    width: 100%;
+    line-height: 3;
+    background-color: #fcf50a;
+    color: var(--font-color);
+    border-top: 7px double;
+    border-bottom: 7px double;
+    margin: 0 auto 1em;
 
     #{$dark} & {
-      float: none;
       font-style: normal;
       font-weight: 900;
       font-family: inherit;
       letter-spacing: 0;
-      width: 100%;
       font-variation-settings: 'wdth' 150;
-
-      @media (width >= 700px) {
-        margin-bottom: 0;
-      }
-
-      &__cta {
-        height: auto;
-        line-height: 1.8;
-        background-color: var(--dm-color-1);
-        color: var(--bg-color);
-        border: none;
-        border-radius: 0;
-        width: 100%;
-        font-size: min(1em, 50px);
-        letter-spacing: 0.5vw;
-        margin-bottom: 1em;
-      }
+      line-height: 1.8;
+      background-color: var(--dm-color-1);
+      color: var(--bg-color);
+      border: none;
+      font-size: min(1em, 50px);
+      letter-spacing: 0.5vw;
     }
   }
 
   .subheader {
     font-weight: 500;
     font-size: 0.89em;
-    text-align: right;
-    list-style: none;
-    padding: 0;
-    margin: 6em 0 0;
-
+    margin: 0 0 0 10px;
+    padding-left: 20px;
+    
     li {
+      list-style: circle;
       margin-bottom: 8px;
     }
-
-    @media (width >= 450px) {
-      margin-top: 0;
-    }
-
-    @media (width >= 700px) {
+    
+    @media (width >= 560px) {
       $spacer-width: 11px;
       $spacer-line-width: 2px;
-
+      
+      padding: 0;
       margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
       gap: 0.25em ($spacer-width * 2);
       overflow: hidden;
-
+      
       li {
+        list-style: none;
         white-space: nowrap;
         margin-bottom: 0;
 
@@ -597,14 +544,27 @@
 
     #{$dark} & {
       font-size: 1.2em;
-      margin: 0;
 
       @media (width >= 700px) {
-        font-size: min(1.2em, calc(2.85vw + 0.7px)); // absolutely ludicrous
+        //  - 1st number allows font size to change with font-sizer control
+        //  - 2nd number is targeted to take up 100% of the space and
+        //    grow at the same rate as the viewport when viewport width is 700px > < 740px
+        //    (see fontRandom.ts for math details)
+        font-size: max(1em, calc(3.3vw - calc(40px * 0.033)));
+      }
+
+      @media (width >= 740px) {
+        // same math as above but for next breakpoint
+        font-size: min(1.2em, calc(3.27vw - calc(72px * 0.0327)));
       }
 
       li {
         line-height: 1;
+        list-style: square;
+
+        @media (width >= 560px) {
+          list-style: none;
+        }
       }
     }
   }
@@ -762,11 +722,6 @@
       .inner-container {
         border-color: var(--border-color);
         box-shadow: none;
-        padding-top: 60px;
-
-        @media (width >= 1360px) {
-          padding-top: 36px;
-        }
       }
 
       .resume-name-title__name {
@@ -775,22 +730,10 @@
         text-transform: var(--dmn-text-transform);
         font-size: var(--dmn-font-size);
         line-height: var(--dmn-line-height);
-        margin-top: 10px;
       }
 
-      &.medium .resume-name-title__name {
-        margin-top: 16px;
-      }
-
-      &.large .resume-name-title__name {
-        margin-top: 36px;
-      }
-
-      @media (width >= 1360px) {
-        &.large .resume-name-title__name,
-        &.medium .resume-name-title__name {
-          margin-top: 0;
-        }
+      .resume-name-title__title li {
+        list-style: square;
       }
 
       .resume-name-title__word {
