@@ -14,6 +14,7 @@
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
   import VisuallyHidden from './VisuallyHidden.svelte';
+  import EnvNotice from './envNotice.svelte';
 
   const formatDate = (yearMonth: string) => {
     return new Date(
@@ -73,18 +74,9 @@
   {#if browser}<link rel="stylesheet" href="/fonts/{darkModeNameFontFilename}.css" />{/if}
 </svelte:head>
 
-{#if env.PUBLIC_ENV}<code
-    style:position="fixed"
-    style:left="120px"
-    style:top="0"
-    style:background={env.PUBLIC_ENV === 'dev' ? 'red' : env.PUBLIC_ENV === 'preview' ? '#fb0' : ''}
-    style:color={env.PUBLIC_ENV === 'dev' ? '#fff' : env.PUBLIC_ENV === 'preview' ? '#000' : ''}
-    style:z-index="1"
-    style:font-size="20px"
-    style:padding="10px"
-    style:border-radius="0 0 10px 10px"
-    style:text-transform="uppercase">{env.PUBLIC_ENV}</code
-  >{/if}
+{#if env.PUBLIC_ENV}
+  <EnvNotice env={env.PUBLIC_ENV} />
+{/if}
 
 <div
   class="outer-container {fontSizeLevel}"
