@@ -257,12 +257,6 @@
   }
 
   .outer-container {
-    transition:
-      color 0.6s,
-      font-size 0.8s,
-      background-color 0.6s,
-      letter-spacing 0.6s,
-      line-height 0.8s;
     line-height: 1.4;
     text-align: center;
     color: var(--font-color);
@@ -406,8 +400,6 @@
     margin: 0;
     clear: both;
     font-family: var(--font-family-secondary);
-    font-size: 3em; /* 36/12px */
-    line-height: 1.2;
 
     &__word {
       display: inline-block;
@@ -417,10 +409,15 @@
       }
     }
 
+    &__name {
+      line-height: 1.2;
+      font-size: min(1.5em, calc(15.8vw - calc(40px * 0.158)));
+    }
+
     &__title {
       font-family: var(--font-family);
       font-weight: 300;
-      font-size: 0.45em;
+      font-size: 0.675em;
       display: block;
       margin: 0.2em 0 0.6em 10px;
       padding-left: 20px;
