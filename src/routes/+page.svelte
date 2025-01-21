@@ -373,7 +373,7 @@
     }
 
     &::before {
-      content: 'Color Mode:';
+      content: 'Light / Dark:';
       margin-right: 0.4em;
       text-decoration: underline dotted;
     }
