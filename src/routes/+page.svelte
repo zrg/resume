@@ -316,8 +316,12 @@
     90% {
       opacity: 1;
     }
+    99% {
+      left: -169px;
+    }
     100% {
       opacity: 0;
+      left: -99999px;
     }
   }
 
