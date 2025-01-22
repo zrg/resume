@@ -307,19 +307,14 @@
   }
 
   @keyframes fade-out {
-    0% {
-      opacity: 0;
-      left: -169px;
-    }
-    5% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
+    0%,
     99% {
       opacity: 0;
       left: -169px;
+    }
+    5%,
+    90% {
+      opacity: 1;
     }
     100% {
       left: -99999px;
