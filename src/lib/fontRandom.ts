@@ -61,7 +61,7 @@ const fonts = [
     fontFamily: "'Karma Future'",
     active: true,
     filename: 'Karma Future',
-    fontSize: 'min(102px, 2em, calc(15.4vw - calc(40px * 0.154)))',
+    fontSize: 'min(102px, 2em, calc(15.3vw - calc(40px * 0.153)))',
     lineHeight: '',
   },
   {

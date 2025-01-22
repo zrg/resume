@@ -282,7 +282,6 @@
   .responsive-notice {
     position: fixed;
     width: 600px;
-    left: -169px;
     bottom: 90px;
     padding: 9.6px 0 13px;
     font-family: var(--font-family-secondary);
@@ -293,10 +292,11 @@
     background-color: #fcf50a;
     z-index: 2;
     transform: rotate(45deg);
-    opacity: 0;
-    animation: fade-out 15s ease;
     box-shadow: 12px 3px 5px var(--font-color);
-    transition: font-size 0.8s;
+
+    opacity: 0;
+    left: -99999px;
+    animation: fade-out 15s ease;
 
     #{$dark} & {
       color: var(--bg-color);
@@ -309,18 +309,19 @@
   @keyframes fade-out {
     0% {
       opacity: 0;
+      left: -169px;
     }
-    15% {
+    5% {
       opacity: 1;
     }
     90% {
       opacity: 1;
     }
     99% {
+      opacity: 0;
       left: -169px;
     }
     100% {
-      opacity: 0;
       left: -99999px;
     }
   }
