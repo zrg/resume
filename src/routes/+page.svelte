@@ -662,12 +662,6 @@
     align-items: center;
     gap: 0.5em;
     margin-top: 1em;
-
-    // best guess for a device that reads QR codes with a camera (e.g., a phone)
-    @media only screen and (width <= 450px),
-      only screen and (pointer: coarse) and (width <= 800px) and (height <= 450px) {
-      display: none;
-    }
   }
 
   @media (width >= 740px) {
