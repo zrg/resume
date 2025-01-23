@@ -16,6 +16,8 @@
   import VisuallyHidden from './VisuallyHidden.svelte';
   import EnvNotice from './envNotice.svelte';
 
+  const pdfLink = '../Zev%20Goldberg%20-%20Resume%20202501231105.pdf';
+
   const formatDate = (yearMonth: string) => {
     return new Date(
       Number(yearMonth.substring(0, 4)),
@@ -148,7 +150,7 @@
           >
         </li>
         <li>Evanston, IL 60203</li>
-        <li class="no-print"><a href="../Zev Goldberg - Resume 20250115.pdf">PDF Format</a></li>
+        <li class="no-print"><a href={pdfLink}>PDF Format</a></li>
         <li class="no-print"><a href="https://github.com/zrg/resume">Source</a></li>
       </ul>
     </header>
