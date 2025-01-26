@@ -45,15 +45,23 @@
     colorFamily: dmcf,
   } = $state(randomFont);
 
+  const getStoredDarkMode = () => {
+    const raw = localStorage.getItem('darkMode');
+    return typeof raw === 'string' && ['0', '1'].indexOf(raw) > -1 ? !!parseInt(raw) : null;
+  };
+
+  const getStoredFontSiseLevel = () => {
+    const raw = localStorage.getItem('fontSizeLevel');
+    typeof raw === 'string' && ['small', 'medium', 'large'].indexOf(raw) > -1 ? raw : null;
+  };
+
   let assumedFontSizeLevel = 'small';
   let assumedDarkMode = false;
+
   if (browser) {
     const browserDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const storedDarkMode = localStorage.getItem('darkMode');
-    assumedDarkMode = storedDarkMode === null ? browserDarkMode : storedDarkMode === 'true';
-
-    const storedFontSizeLevel = localStorage.getItem('fontSizeLevel');
-    assumedFontSizeLevel = storedFontSizeLevel ?? assumedFontSizeLevel;
+    assumedDarkMode = getStoredDarkMode() ?? browserDarkMode;
+    assumedFontSizeLevel = getStoredFontSiseLevel() ?? assumedFontSizeLevel;
   }
 
   let fontSizeLevel = $state(assumedFontSizeLevel);
@@ -61,7 +69,7 @@
 
   const darkModeUserSelect = () => {
     // at the time of function call, darkMode is not yet toggled
-    localStorage.setItem('darkMode', darkMode ? 'false' : 'true');
+    localStorage.setItem('darkMode', darkMode ? '0' : '1');
 
     if (darkMode) {
       // I'm guessing people will click light/dark mode more than once
