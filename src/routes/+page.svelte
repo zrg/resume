@@ -34,9 +34,6 @@
     );
   };
 
-  let darkMode = $state(false);
-  let fontSizeLevel: 'small' | 'medium' | 'large' = $state('small');
-
   let randomFont = getRandomFont(null, null);
   let {
     filename: darkModeNameFontFilename,
@@ -48,7 +45,24 @@
     colorFamily: dmcf,
   } = $state(randomFont);
 
-  const replaceDarkModeNameFont = () => {
+  let assumedFontSizeLevel = 'small';
+  let assumedDarkMode = false;
+  if (browser) {
+    const browserDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedDarkMode = localStorage.getItem('darkMode');
+    assumedDarkMode = storedDarkMode === null ? browserDarkMode : storedDarkMode === 'true';
+
+    const storedFontSizeLevel = localStorage.getItem('fontSizeLevel');
+    assumedFontSizeLevel = storedFontSizeLevel ?? assumedFontSizeLevel;
+  }
+
+  let fontSizeLevel = $state(assumedFontSizeLevel);
+  let darkMode = $state(assumedDarkMode);
+
+  const darkModeUserSelect = () => {
+    // at the time of function call, darkMode is not yet toggled
+    localStorage.setItem('darkMode', darkMode ? 'false' : 'true');
+
     if (darkMode) {
       // I'm guessing people will click light/dark mode more than once
       // so we'll change the dark mode font when light mode is showing
@@ -65,9 +79,9 @@
     }
   };
 
-  if (browser) {
-    darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
+  const storeFontSize = () => {
+    localStorage.setItem('fontSizeLevel', fontSizeLevel);
+  };
 </script>
 
 <svelte:head>
@@ -99,7 +113,7 @@
           type="checkbox"
           class="theme-switcher__dark-mode-toggle"
           bind:checked={darkMode}
-          onclick={replaceDarkModeNameFont}
+          onclick={darkModeUserSelect}
         />
         {#if darkMode}
           <IconDark />
@@ -108,7 +122,7 @@
         {/if}
       </label>
       <label class="font-sizer">
-        <select class="font-sizer__control" bind:value={fontSizeLevel}>
+        <select class="font-sizer__control" bind:value={fontSizeLevel} onchange={storeFontSize}>
           <option value="small">small</option>
           <option value="medium">medium</option>
           <option value="large">large</option>
