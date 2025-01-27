@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Action } from 'svelte/action';
   import { browser } from '$app/environment';
   import { env } from '$env/dynamic/public';
 
@@ -8,8 +7,11 @@
   import jobs from '$lib/jobs';
   import schools from '$lib/schools';
   import summary from '$lib/summary';
-  import getRandomFont from '$lib/fontRandom';
+  import { getRandomFont } from '$lib/fontRandom';
+  import { getStoredDarkMode, getStoredFontSizeLevel } from '$lib/getStoredValues';
+  import { formatDate } from '$lib/formatDate.js';
 
+  import Mailto from './Mailto.svelte';
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
@@ -17,22 +19,6 @@
   import EnvNotice from './envNotice.svelte';
 
   const pdfLink = '../Zev%20Goldberg%20-%20Resume%20202501231105.pdf';
-
-  const formatDate = (yearMonth: string) => {
-    return new Date(
-      Number(yearMonth.substring(0, 4)),
-      Number(yearMonth.substring(5)) - 1,
-      1,
-    ).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  };
-
-  const mailto: Action = (node) => {
-    node.setAttribute(
-      'href',
-      'mailto:zevgoldberg@gmail.com?subject=Very%20impressive%20resume%21&body=Let%27s%20make%20' +
-        'something%20happen.%20When%20is%20a%20good%20time%20to%20meet%3F',
-    );
-  };
 
   let randomFont = getRandomFont(null, null);
   let {
@@ -44,16 +30,6 @@
     lineHeight: dmnLineHeight,
     colorFamily: dmcf,
   } = $state(randomFont);
-
-  const getStoredDarkMode = () => {
-    const raw = localStorage.getItem('darkMode');
-    return typeof raw === 'string' && ['0', '1'].indexOf(raw) > -1 ? !!parseInt(raw) : null;
-  };
-
-  const getStoredFontSizeLevel = () => {
-    const raw = localStorage.getItem('fontSizeLevel');
-    return typeof raw === 'string' && ['small', 'medium', 'large'].indexOf(raw) > -1 ? raw : null;
-  };
 
   let assumedFontSizeLevel = 'small';
   let assumedDarkMode = false;
@@ -156,9 +132,8 @@
         </ul>
       </h1>
       {#if availability}
-        <aside class="no-print">
-          <!-- svelte-ignore a11y_invalid_attribute -->
-          <a class="availability" href="#" target="_blank" use:mailto>AVAILABLE FOR HIRE!</a>
+        <aside class="no-print availability">
+          <Mailto><span class="availability__inner">AVAILABLE FOR HIRE!</span></Mailto>
         </aside>
       {/if}
       <ul class="subheader">
@@ -166,10 +141,7 @@
           <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
         </li>
         <li aria-label="zev goldberg at G mail dot com">
-          <!-- svelte-ignore a11y_invalid_attribute -->
-          <a href="#" use:mailto target="_blank"
-            >zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
-          >
+          <Mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</Mailto>
         </li>
         <li>Evanston, IL 60203</li>
         <li class="no-print"><a href={pdfLink}>PDF Format</a></li>
@@ -489,10 +461,7 @@
 
   .availability {
     text-align: center;
-    transition:
-      color 0.6s,
-      background-color 0.6s,
-      width 0.8s;
+    transition: width 0.8s;
     font-weight: bold;
     font-size: min(1.5em, 6.8vw);
     font-family: 'Encode Sans Semi Condensed', sans-serif;
@@ -500,13 +469,21 @@
     display: block;
     width: 100%;
     line-height: 2;
-    background-color: var(--font-color);
-    color: var(--bg-color);
     margin: 0 auto 1em;
     transform: skew(0deg);
 
-    &:hover {
-      box-shadow: 0 0 16px inset;
+    &__inner {
+      transition:
+        color 0.6s,
+        background-color 0.6s;
+      display: block;
+      background-color: var(--font-color);
+      color: var(--bg-color);
+
+      &:hover {
+        box-shadow: 0 0 16px inset;
+        text-decoration: underline;
+      }
     }
 
     @media (width >= 560px) {
@@ -521,10 +498,13 @@
       letter-spacing: 0;
       font-variation-settings: 'wdth' 150;
       line-height: 1.8;
-      background-color: var(--dm-color-1);
-      color: var(--bg-color);
       font-size: min(1.5em, 8vw);
       letter-spacing: 0.5vw;
+
+      &__inner {
+        background-color: var(--dm-color-1);
+        color: var(--bg-color);
+      }
     }
   }
 

@@ -3,7 +3,7 @@ type ColorFamily = {
   shades: string[];
 };
 
-interface RandomFont {
+export interface RandomFont {
   fontFamily: string;
   active: boolean;
   filename: string;
@@ -113,7 +113,7 @@ const colorFamilies = [
   },
 ];
 
-const getRandomFont = (currentFontFilename: string | null, currentColor: string | null) => {
+export const getRandomFont = (currentFontFilename: string | null, currentColor: string | null) => {
   const fontSet = fonts.filter((font) => font.active && font.filename !== currentFontFilename);
   const randomFontNumber = Math.floor(Math.random() * fontSet.length);
   const randomFont: RandomFont = fontSet[randomFontNumber];
@@ -126,5 +126,3 @@ const getRandomFont = (currentFontFilename: string | null, currentColor: string 
 
   return randomFont;
 };
-
-export default getRandomFont;
