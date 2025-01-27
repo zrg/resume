@@ -50,9 +50,9 @@
     return typeof raw === 'string' && ['0', '1'].indexOf(raw) > -1 ? !!parseInt(raw) : null;
   };
 
-  const getStoredFontSiseLevel = () => {
+  const getStoredFontSizeLevel = () => {
     const raw = localStorage.getItem('fontSizeLevel');
-    typeof raw === 'string' && ['small', 'medium', 'large'].indexOf(raw) > -1 ? raw : null;
+    return typeof raw === 'string' && ['small', 'medium', 'large'].indexOf(raw) > -1 ? raw : null;
   };
 
   let assumedFontSizeLevel = 'small';
@@ -61,7 +61,7 @@
   if (browser) {
     const browserDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     assumedDarkMode = getStoredDarkMode() ?? browserDarkMode;
-    assumedFontSizeLevel = getStoredFontSiseLevel() ?? assumedFontSizeLevel;
+    assumedFontSizeLevel = getStoredFontSizeLevel() ?? assumedFontSizeLevel;
   }
 
   let fontSizeLevel = $state(assumedFontSizeLevel);
