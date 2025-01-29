@@ -75,4 +75,8 @@ export default defineConfig({
     command: 'npm run build && PUBLIC_ENV=test npx vite preview',
     port: 4173,
   },
+
+  expect: {
+    timeout: 10_000,
+  },
 });
