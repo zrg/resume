@@ -1,4 +1,5 @@
-import { type RandomFont, getRandomFont } from '$lib/fontRandom';
+import { type RandomFont } from '$lib/constants';
+import { getRandomFont } from '$lib/fontRandom';
 import { describe, it, expect, expectTypeOf } from 'vitest';
 
 describe('getRandomFont', () => {

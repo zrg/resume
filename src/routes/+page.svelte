@@ -3,13 +3,11 @@
   import { env } from '$env/dynamic/public';
 
   import '$lib/global.scss';
-  import availability from '$lib/availability';
-  import jobs from '$lib/jobs';
-  import schools from '$lib/schools';
-  import summary from '$lib/summary';
+  import { availability, jobs, schools, summary, title } from '$lib/constants';
   import { getRandomFont } from '$lib/fontRandom';
   import { getStoredDarkMode, getStoredFontSizeLevel } from '$lib/getStoredValues';
   import { formatDate } from '$lib/formatDate.js';
+  import { testId } from '$lib/testId';
 
   import Mailto from './Mailto.svelte';
   import Zrgqr from './zrgqr.svg?component';
@@ -69,7 +67,7 @@
 </script>
 
 <svelte:head>
-  <title>Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist</title>
+  <title>{title}</title>
   <meta name="description" content={summary} />
   {#if browser}<link rel="stylesheet" href="/fonts/{darkModeNameFontFilename}.css" />{/if}
 </svelte:head>
@@ -132,11 +130,11 @@
         </ul>
       </h1>
       {#if availability}
-        <aside class="no-print availability">
+        <aside class="no-print availability" data-testid={testId('availability')}>
           <Mailto><span class="availability__inner">AVAILABLE FOR HIRE!</span></Mailto>
         </aside>
       {/if}
-      <ul class="subheader">
+      <ul class="subheader" data-testid={testId('subheader')}>
         <li>
           <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
         </li>

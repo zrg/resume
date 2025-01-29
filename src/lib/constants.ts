@@ -1,4 +1,121 @@
-const jobs = [
+export const availability = true;
+
+type ColorFamily = {
+  name: string | null;
+  shades: string[];
+};
+
+export interface RandomFont {
+  fontFamily: string;
+  active: boolean;
+  filename: string;
+  fontSize?: string;
+  lineHeight?: string;
+  letterSpacing?: string;
+  textTransform?: string;
+  colorFamily?: ColorFamily;
+}
+
+/**
+ * font-size is the smallest of 3 numbers
+ *  - the 1st number is the largest number in px where the heading doesn't break
+ *    in size Large at 740px viewport width
+ *  - the 2nd number is the relative font-size to be even with the professional title underneath
+ *  - the 3rd number is targeted to take up 100% of the space and
+ *    grow at the same rate as the viewport when viewport width is less than 740px
+ *
+ *    without padding that would be
+ *      [number]vw
+ *    translated to pseudo code
+ *      [number]% * viewport width
+ *    take into account the container padding
+ *      [numner]% * ( viewport width - container padding )
+ *    is the same as
+ *      ( viewport width * [numner]% ) - ( container padding * [numner]% )
+ *    is the same as
+ *      calc( [number]vw - calc( 40px * [number / 100] ) )
+ *  */
+
+export const fonts = [
+  {
+    fontFamily: "'8-bit-lim O'",
+    active: true,
+    filename: '8bitlimo',
+    fontSize: 'min(107px, 2.1em, calc(16vw - calc(40px * 0.16)))',
+    lineHeight: '',
+  },
+  {
+    fontFamily: "'Crackman'",
+    active: true,
+    filename: 'Crackman',
+    fontSize: 'min(87px, 1.71em, calc(13.2vw - calc(40px * 0.132)))',
+    lineHeight: '',
+  },
+  {
+    fontFamily: "'EXE Pixel Perfect'",
+    active: true,
+    filename: 'EXEPixelPerfect',
+    textTransform: 'uppercase',
+    fontSize: 'min(150px, 2.97em, calc(22.74vw - calc(40px * 0.2274)))',
+    lineHeight: '0.6',
+  },
+  {
+    fontFamily: "'Karma Future'",
+    active: true,
+    filename: 'Karma Future',
+    fontSize: 'min(102px, 2em, calc(15.3vw - calc(40px * 0.153)))',
+    lineHeight: '',
+  },
+  {
+    fontFamily: "'Televideo'",
+    active: true,
+    filename: 'Televideo',
+    fontSize: 'min(107px, 2.1em, calc(16.2vw - calc(40px * 0.162)))',
+    lineHeight: '0.8',
+  },
+  {
+    fontFamily: "'Youre Gone'",
+    active: true,
+    filename: 'Youre Gone',
+    fontSize: 'min(83px, 1.65em, calc(12.6vw - calc(40px * 0.126)))',
+    lineHeight: '',
+  },
+];
+
+export const colorFamilies = [
+  {
+    name: 'green',
+    shades: [
+      'rgb(51, 255, 0)',
+      'rgb(41, 204, 0)',
+      'rgb(31, 153, 0)',
+      'rgba(31, 153, 0, 0.75)',
+      'rgba(31, 153, 0, 0.3)',
+    ],
+  },
+  {
+    name: 'amber',
+    shades: [
+      'rgb(255, 176, 0)',
+      'rgb(226, 154, 0)',
+      'rgb(194, 132, 0)',
+      'rgba(194, 132, 0, 0.75)',
+      'rgba(194, 132, 0, 0.3)',
+    ],
+  },
+  {
+    name: 'white',
+    shades: [
+      'rgb(255, 255, 255)',
+      'rgb(218, 218, 218)',
+      'rgb(184, 184, 184)',
+      'rgba(184, 184, 184, 0.75)',
+      'rgba(184, 184, 184, 0.3)',
+    ],
+  },
+];
+
+export const jobs = [
   {
     id: 'grainger',
     display: true,
@@ -206,4 +323,36 @@ const jobs = [
   },
 ];
 
-export default jobs;
+export const schools = [
+  {
+    id: 'ccc',
+    display: true,
+    fullName: 'Columbia College Chicago',
+    city: 'Chicago, IL',
+    concentration: 'Computer Animation and Film',
+    startYear: '1994',
+    endYear: '1998',
+  },
+  {
+    id: 'uic',
+    display: true,
+    fullName: 'University of Illinois at Chicago',
+    city: 'Chicago, IL',
+    concentration: 'Computer Science ',
+    startYear: '1993',
+    endYear: '1994',
+  },
+];
+
+const startYear = 1998;
+const currentYear = new Date().getFullYear();
+const yearsString = currentYear - startYear;
+
+export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString} years
+  experience with web technology. I am looking to be a good citizen on the
+  internet and build the next generation of web applications. I strive to
+  understand end-users, while gathering consensus from stakeholders, UX and
+  Product teams to build interfaces that are perceivable, operable,
+  understandable and robust. I am a noise-maker and noisemaker-maker.`;
+
+export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist`;
