@@ -48,7 +48,7 @@ test('Page has experience', async ({ page }) => {
 
   jobs.forEach(async ({ display, fullName }) => {
     if (display) {
-      expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
+      await expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
     }
   });
 });
@@ -62,7 +62,7 @@ test('Page has education', async ({ page }) => {
 
   schools.forEach(async ({ display, fullName }) => {
     if (display) {
-      expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
+      await expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
     }
   });
 });
