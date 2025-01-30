@@ -397,10 +397,6 @@
 
     &__word {
       display: inline-block;
-
-      &::first-letter {
-        font-size: 1.30555556em; /* 47/36 */
-      }
     }
 
     &__name {
@@ -455,6 +451,11 @@
         }
       }
     }
+  }
+
+  .outer-container:has(.theme-switcher__dark-mode-toggle:not(:checked))
+    .resume-name-title__word::first-letter {
+    font-size: 1.30555556em; /* 47/36 */
   }
 
   .availability {
@@ -744,11 +745,6 @@
         list-style: square;
       }
 
-      .resume-name-title__word {
-        &::first-letter {
-          font-size: inherit;
-        }
-      }
       .resume-section-header {
         font-weight: normal;
       }

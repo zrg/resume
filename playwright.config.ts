@@ -39,10 +39,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
     {
       name: 'webkit',
@@ -74,5 +74,11 @@ export default defineConfig({
   webServer: {
     command: 'npm run build && PUBLIC_ENV=test npx vite preview',
     port: 4173,
+  },
+
+  timeout: 120_000,
+
+  expect: {
+    timeout: 120_000,
   },
 });

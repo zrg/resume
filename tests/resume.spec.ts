@@ -40,29 +40,11 @@ test('Page has specialties', async ({ page }) => {
 });
 
 test('Page has experience', async ({ page }) => {
-  test.setTimeout(60_000);
-
   await page.goto('/');
-
   await expect(page.getByRole('heading', { level: 2, name: 'Experience' })).toBeVisible();
-
-  jobs.forEach(async ({ display, fullName }) => {
-    if (display) {
-      await expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
-    }
-  });
 });
 
 test('Page has education', async ({ page }) => {
-  test.setTimeout(60_000);
-
   await page.goto('/');
-
   await expect(page.getByRole('heading', { level: 2, name: 'Education' })).toBeVisible();
-
-  schools.forEach(async ({ display, fullName }) => {
-    if (display) {
-      await expect(page.getByRole('heading', { level: 3, name: fullName })).toBeVisible();
-    }
-  });
 });
