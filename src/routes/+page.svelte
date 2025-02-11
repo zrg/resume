@@ -155,10 +155,10 @@
       <section class="column" id="specialties">
         <h2 class="resume-section-header">Specialties</h2>
         <p>
-          HTML, CSS, JavaScript, Node.js, component frameworks, REST API, Single Page Applications,
-          React.js, Next.js, Svelte, Typescript, SCSS/Sass, Jest, Storybook, Chromatic, Webpack,
-          Rollup, Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and skronky
-          bloopy noises.
+          HTML, CSS, JavaScript, Svelte, Node.js, component frameworks, REST API, Single Page
+          Applications, React.js, Next.js, Typescript, SCSS/Sass, Jest, Storybook, Chromatic,
+          Webpack, Rollup, Universal Design, UX/UI, accessibility, responsive layout, guitar FX, and
+          skronky bloopy noises.
         </p>
       </section>
 

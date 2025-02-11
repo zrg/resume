@@ -126,10 +126,10 @@ export const jobs = [
     endMonth: '2024-09',
     title: 'Software Engineer II',
     highlights: [
-      'HTML, CSS, SCSS/Sass, JavaScript, jQuery, Node.js, Svelte, React, TypeScript, Next.js, \
+      'HTML, CSS, SCSS/Sass, JavaScript, Svelte, Node.js, React, TypeScript, Next.js, jQuery, \
       StoryBook, Jest, Webpack, Rollup, Snyk, Github Actions/Workflows, Figma, REST API, \
       microservices',
-      'Develop components and pages for e-commerce application',
+      'Develop components and pages for e-commerce application using Svelte',
       'Convert legacy pages to faster and more robust SPAs',
       'Participate in regular on-call rotation for troubleshooting issues with released code',
       'Write documentation for components in Storybook for other developer teams',
