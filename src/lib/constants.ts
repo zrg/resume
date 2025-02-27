@@ -128,8 +128,8 @@ export const jobs = [
     highlights: [
       'HTML, CSS, SCSS/Sass, JavaScript, Svelte, Node.js, React, TypeScript, Next.js, jQuery, \
       StoryBook, Jest, Webpack, Rollup, Snyk, Github Actions/Workflows, Figma, REST API, \
-      microservices',
-      'Develop components and pages for e-commerce application using Svelte',
+      microservices, WCAG',
+      'Develop components and pages for e-commerce application using Svelte and React',
       'Convert legacy pages to faster and more robust SPAs',
       'Participate in regular on-call rotation for troubleshooting issues with released code',
       'Write documentation for components in Storybook for other developer teams',
@@ -353,6 +353,7 @@ export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString}
   internet and build the next generation of web applications. I strive to
   understand end-users, while gathering consensus from stakeholders, UX and
   Product teams to build interfaces that are perceivable, operable,
-  understandable and robust. I am a noise-maker and noisemaker-maker.`;
+  understandable and robust. I am passionate about a11y. I am a noise-maker
+  and noisemaker-maker.`;
 
 export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist`;
