@@ -1,7 +1,7 @@
 # Zev Goldberg's Resume
 
 [`HTML`](https://resume.zevgoldberg.com) /
-[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%20202501231105.pdf)
+[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%20202502271335.pdf)
 
 Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
