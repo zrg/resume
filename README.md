@@ -1,7 +1,7 @@
 # Zev Goldberg's Resume
 
 [`HTML`](https://resume.zevgoldberg.com) /
-[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%20202502271335.pdf)
+[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%20202503121610.pdf)
 
 Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
@@ -20,7 +20,7 @@ Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
 ---
 
-## Senior Software Engineer / Guitar FX Mad Scientist
+## Senior Software Engineer / Front-End Web Developer / Guitar FX Mad Scientist
 
 Thoughtful, thorough, and inclusive, with 27 years experience with web technology. I am looking to
 be a good citizen on the internet and build the next generation of web applications. I strive to

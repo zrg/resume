@@ -16,7 +16,7 @@
   import VisuallyHidden from './VisuallyHidden.svelte';
   import EnvNotice from './envNotice.svelte';
 
-  const pdfLink = '../Zev%20Goldberg%20-%20Resume%20202502271335.pdf';
+  const pdfLink = '../Zev%20Goldberg%20-%20Resume%20202503121610.pdf';
 
   let randomFont = getRandomFont(null, null);
   let {
@@ -126,6 +126,7 @@
         </div>
         <ul class="resume-name-title__title">
           <li>Senior Software Engineer</li>
+          <li>Front-End Web Developer</li>
           <li>Guitar FX Mad Scientist</li>
         </ul>
       </h1>
@@ -407,7 +408,7 @@
     &__title {
       font-family: var(--font-family);
       font-weight: 300;
-      font-size: 0.675em;
+      font-size: 0.54em;
       display: block;
       margin: 0.2em 0 0.6em 10px;
       padding-left: 20px;
@@ -419,8 +420,8 @@
       }
 
       @media (width >= 560px) {
-        $spacer-width: 15px;
-        $spacer-line-width: 3px;
+        $spacer-width: 10px;
+        $spacer-line-width: 2px;
 
         margin: 10px 0 20px;
         padding: 0;

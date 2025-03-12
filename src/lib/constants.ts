@@ -356,4 +356,4 @@ export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString}
   understandable and robust. I am passionate about a11y. I am a noise-maker
   and noisemaker-maker.`;
 
-export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Guitar FX Mad Scientist`;
+export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Front-End Web Developer | Guitar FX Mad Scientist`;
