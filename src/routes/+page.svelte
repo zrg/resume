@@ -3,7 +3,7 @@
   import { env } from '$env/dynamic/public';
 
   import '$lib/global.scss';
-  import { availability, jobs, schools, summary, title } from '$lib/constants';
+  import { availability, coreSkills, jobs, schools, summary, title } from '$lib/constants';
   import { getRandomFont } from '$lib/fontRandom';
   import { getStoredDarkMode, getStoredFontSizeLevel } from '$lib/getStoredValues';
   import { formatDate } from '$lib/formatDate.js';
@@ -16,7 +16,7 @@
   import VisuallyHidden from './VisuallyHidden.svelte';
   import EnvNotice from './envNotice.svelte';
 
-  const pdfLink = '../Zev%20Goldberg%20-%20Resume%20202503121610.pdf';
+  const pdfLink = '../Zev%20Goldberg%20-%20Resume%202025_03_14.pdf';
 
   let randomFont = getRandomFont(null, null);
   let {
@@ -135,32 +135,42 @@
           <Mailto><span class="availability__inner">AVAILABLE FOR HIRE!</span></Mailto>
         </aside>
       {/if}
-      <ul class="subheader" data-testid={testId('subheader')}>
-        <li>
-          <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
-        </li>
-        <li aria-label="zev goldberg at G mail dot com">
-          <Mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</Mailto>
-        </li>
-        <li>Evanston, IL 60203</li>
-        <li class="no-print"><a href={pdfLink}>PDF Format</a></li>
-        <li class="no-print"><a href="https://github.com/zrg/resume">Source</a></li>
-      </ul>
+      <div data-testid={testId('subheaders')}>
+        <ul class="subheader">
+          <li>
+            <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
+          </li>
+          <li aria-label="zev goldberg at G mail dot com">
+            <Mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</Mailto>
+          </li>
+          <li>Evanston, IL 60203</li>
+        </ul>
+        <ul class="subheader">
+          <li class="no-print"><a href={pdfLink}>PDF Format</a></li>
+          <li class="no-print">
+            <a href="https://github.com/zrg/resume">GitHub Source Code</a>
+          </li>
+        </ul>
+      </div>
     </header>
 
     <main>
-      <section class="column" id="summary">
+      <section id="summary">
         <h2 class="resume-section-header">Summary</h2>
         <p>{summary}</p>
       </section>
-      <section class="column" id="specialties">
-        <h2 class="resume-section-header">Specialties</h2>
-        <p>
-          HTML, CSS, JavaScript, Svelte, Node.js, component frameworks, REST API, Single Page
-          Applications, React.js, Next.js, Typescript, SCSS/Sass, Jest, Storybook, Chromatic,
-          Webpack, Rollup, Universal Design, UX/UI, WCAG, accessibility, responsive layout, guitar
-          FX, and skronky bloopy noises.
-        </p>
+      <section id="coreSkills">
+        <h2 class="resume-section-header">Core Skills</h2>
+        <ul class="core-skills">
+          {#each coreSkills as { id, title, sublist }}
+            <li {id}>
+              <span class="core-skills__title">{title}:</span>
+              <ul class="core-skills__sublist">
+                {#each sublist as skill}<li>{skill}</li>{/each}
+              </ul>
+            </li>
+          {/each}
+        </ul>
       </section>
 
       <section id="experience">
@@ -168,21 +178,23 @@
         <ul class="jobs">
           {#each jobs as { id, display, url, fullName, city, startMonth, endMonth, title, highlights }}
             {#if display}
-              <li class="job column" {id}>
+              <li class="job" {id}>
                 <h3 class="job__header">
                   {#if url}
                     <a href="//{url}" rel="nofollow">{fullName.toUpperCase()}</a>
                   {:else}
                     {fullName.toUpperCase()}
                   {/if}
+                  <span class="job__title">{title}</span>
                 </h3>
-                <div class="job__title">{title.toUpperCase()}</div>
-                <div class="job__dates">
-                  {formatDate(startMonth).toUpperCase()}<VisuallyHidden>
-                    through
-                  </VisuallyHidden>&ndash;{formatDate(endMonth).toUpperCase()}
+                <div>
+                  <span class="job__city">{city.toUpperCase()}</span>
+                  <span class="job__dates">
+                    {formatDate(startMonth).toUpperCase()}<VisuallyHidden>
+                      through
+                    </VisuallyHidden>&ndash;{formatDate(endMonth).toUpperCase()}
+                  </span>
                 </div>
-                <div class="job__city">{city.toUpperCase()}</div>
                 <ul class="job__highlights">
                   {#each highlights as highlight}
                     <li>{highlight}</li>
@@ -603,10 +615,34 @@
   }
 
   .jobs,
-  .schools {
+  .schools,
+  .core-skills,
+  .core-skills__sublist {
     padding: 0;
     list-style: none;
     margin: 0;
+  }
+
+  .core-skills {
+    > li {
+      margin-bottom: 1em;
+    }
+
+    &__title {
+      display: inline;
+      font-weight: 700;
+      font-family: var(--font-family-secondary);
+      text-transform: uppercase;
+    }
+    &__sublist {
+      &,
+      & li {
+        display: inline;
+      }
+    }
+    &__sublist li:not(:last-of-type)::after {
+      content: ', ';
+    }
   }
 
   .job,
@@ -631,10 +667,13 @@
       font-weight: 300;
       font-size: 1.25em; /* 15/12px */
     }
-
+    &__title {
+      margin-top: 0.25em;
+      display: block;
+    }
     &__highlights {
       padding-left: 1em;
-      margin: 1em 0;
+      margin: 0.5em 0 2em 0;
       list-style: disc;
 
       li {
@@ -643,8 +682,15 @@
     }
 
     @media (width >= 740px) {
-      &__dates {
-        float: right;
+      &__dates::before {
+        content: ' | ';
+      }
+      &__title {
+        display: inline;
+
+        &::before {
+          content: '\2014\0020';
+        }
       }
       &__city,
       &__dates,
@@ -669,16 +715,6 @@
   }
 
   @media (width >= 740px) {
-    .column {
-      display: inline-block;
-      width: 48%;
-      vertical-align: top;
-
-      &:nth-of-type(2n) {
-        margin-left: 4%;
-      }
-    }
-
     .tab-leader {
       display: flex;
       margin-bottom: 0.5em;

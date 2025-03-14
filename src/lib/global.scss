@@ -34,6 +34,20 @@ a {
   &:focus-visible {
     outline-offset: -1px;
   }
+
+  &[rel='nofollow']::after {
+    content: ' ';
+    mask: url(external-link.svg);
+    mask-size: contain;
+    display: inline-block;
+    margin-left: 0.1em;
+    height: 0.6em;
+    width: 0.6em;
+    background-color: var(--link-color);
+  }
+  &:visited::after {
+    background-color: var(--link-color-visited);
+  }
 }
 
 [aria-hidden] {

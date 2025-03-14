@@ -115,6 +115,64 @@ export const colorFamilies = [
   },
 ];
 
+export const coreSkills = [
+  {
+    id: 'uxui',
+    title: 'UX/UI',
+    sublist: [
+      'Accessibility (A11y)',
+      'WCAG',
+      'Figma',
+      'Storybook',
+      'Semantic Markup',
+      'Screen-Readers',
+      'Universal Design',
+      'responsive layout',
+      'Photoshop',
+      'Illustrator',
+      'InDesign',
+      'Material UI (MUI)',
+    ],
+  },
+  {
+    id: 'code',
+    title: 'Code',
+    sublist: [
+      'HTML',
+      'CSS/SCSS/Sass/Less',
+      'ECMAScript (JavaScript)',
+      'Typescript',
+      'Svelte',
+      'SvelteKit',
+      'React.js',
+      'Next.js',
+      'Angular',
+      'component frameworks',
+      'Bootstrap',
+      'jQuery',
+      'REST API',
+      'Single Page Applications',
+      'ZShell/Bash',
+      'Linux/Apache/MySql/PHP (LAMP)',
+      'WordPress',
+      'Joomla',
+    ],
+  },
+  {
+    id: 'devops',
+    title: 'Dev-Ops',
+    sublist: [
+      'Jest (Unit Testing)',
+      'Chromatic',
+      'Node.js',
+      'Github Actions/Workflows',
+      'Snyk',
+      'Webpack',
+      'Rollup',
+    ],
+  },
+];
+
 export const jobs = [
   {
     id: 'grainger',
@@ -126,16 +184,18 @@ export const jobs = [
     endMonth: '2024-09',
     title: 'Software Engineer II',
     highlights: [
-      'HTML, CSS, SCSS/Sass, JavaScript, Svelte, Node.js, React, TypeScript, Next.js, jQuery, \
-      StoryBook, Jest, Webpack, Rollup, Snyk, Github Actions/Workflows, Figma, REST API, \
-      microservices, WCAG',
-      'Develop components and pages for e-commerce application using Svelte and React',
-      'Convert legacy pages to faster and more robust SPAs',
-      'Participate in regular on-call rotation for troubleshooting issues with released code',
-      'Write documentation for components in Storybook for other developer teams',
-      'Define accessibility requirements and shape approach for implementation of UI components',
-      'Implement mechanism for onsite employees to provide feedback on internal search results',
-      'Automate processes with GitHub Actions and Workflows, Bash scripts',
+      `Improved speed, reliability and capabilities of Fortune 500 e-commerce platform by
+        converting legacy components and pages to modern Single-Page Applications using
+        microservices and component frameworks (Svelte, React)`,
+      `Kept our code working by supporting other teams in regular on-call rotation`,
+      `Improved internal useability with documentation for components in Storybook for other
+        developer teams`,
+      `Helped our platform become useable by all by defining and implementing accessibility
+        requirements and shaping our approach to developing UI components`,
+      `Improved product data by implementing a mechanism for onsite employees to provide feedback
+        on internal search results`,
+      `Saved hundreds of Engineering Hours by automating dev-ops processes with GitHub Actions and
+        Workflows and Bash scripts`,
     ],
   },
   {
@@ -148,9 +208,8 @@ export const jobs = [
     endMonth: '2015-03',
     title: 'Software Engineer (contract)',
     highlights: [
-      'HTML, CSS, JavaScript, Angular, Bootstrap, Less, Angular-UI, Grunt, Underscore, Github',
-      'Develop gamified learning management application',
-      'Convert UX documents and mock-up images into functioning sections of the application',
+      `Developed gamified learning management application`,
+      `Converted UX documents and mock-up images into functioning sections of the application`,
     ],
   },
   {
@@ -162,10 +221,7 @@ export const jobs = [
     startMonth: '2014-03',
     endMonth: '2014-05',
     title: 'Senior Web Developer',
-    highlights: [
-      'HTML, CSS, JavaScript, PHP, Wordpress, Git, Beanstalk',
-      'Develop and troubleshoot responsive Wordpress sites for SMB clients',
-    ],
+    highlights: [`Developed and supported responsive Wordpress sites for SMB clients`],
   },
   {
     id: 'cm',
@@ -177,9 +233,8 @@ export const jobs = [
     endMonth: '2014-02',
     title: 'Senior Developer',
     highlights: [
-      'Web Performance Tools, Google PageSpeed Tools, YSlow, ImageOptim',
-      'Develop strategies and plans to measure and improve load times and perceived performance of \
-      existing websites',
+      `Developed strategies and plans to measure and improve load times and perceived performance
+        of existing websites`,
     ],
   },
   {
@@ -192,12 +247,10 @@ export const jobs = [
     endMonth: '2013-11',
     title: 'Software Engineer III',
     highlights: [
-      'HTML, CSS, JavaScript, jQuery, responsive layout, touch-enabled, cross-browser, \
-      device-agnostic, SVN, Photoshop, InDesign',
-      'Develop major metropolitan online newspaper as a device-agnostic SPA',
-      'Convert requirements documents and mock-up images into layouts and functioning sections of \
-      the website',
-      'Interview and onboard frontend engineer candidates',
+      `Developed completely new device-agnostic SPA publication for a major metropolitan newspaper`,
+      `Converted requirements documents and mock-up images into layouts and functioning sections of
+        the website`,
+      `Interviewed and onboarded front-end engineer candidates`,
     ],
   },
   {
@@ -210,12 +263,10 @@ export const jobs = [
     endMonth: '2012-04',
     title: 'Web Developer',
     highlights: [
-      'HTML, CSS, Smarty, JavaScript, jQuery, jQuery UI, Modernizr, NetBeans, Subversion, \
-      Photoshop, PHP, Zend, MySQL',
-      'Lead frontend development of HTML and CSS for a large social network, news, venue/city \
-      guide and dating site',
-      'Convert requirements documents and mock-up images into reusable templates and functioning \
-      sections of the website',
+      `Lead front-end development of HTML and CSS for a large social network, news, venue/city
+        guide and dating site`,
+      `Converted requirements documents and mock-up images into reusable templates and functioning
+        sections of the website`,
     ],
   },
   {
@@ -228,9 +279,8 @@ export const jobs = [
     endMonth: '2010-11',
     title: 'Front-End Web Developer (contract)',
     highlights: [
-      'HTML, CSS, JavaScript, Photoshop',
-      'Migrate several classified ads systems into the new one, maintaining the latest \
-      look-and-feel styles',
+      `Migrated several classified ads systems into the new one, maintaining the latest
+        branding styles in a legacy framework`,
     ],
   },
   {
@@ -243,9 +293,8 @@ export const jobs = [
     endMonth: '2010-08',
     title: 'Web Developer',
     highlights: [
-      'LAMP, Joomla, HTML, CSS, JavaScript, Ajax, ColdFusion, Photoshop, Illustrator, social \
-      media, Android',
-      'Develop and maintain company’s extensive web presence and partner websites',
+      `Developed and maintained content and SEO for company’s extensive web presence and partner
+        websites`,
     ],
   },
   {
@@ -256,18 +305,15 @@ export const jobs = [
     city: 'Evanston, IL',
     startMonth: '2006-05',
     endMonth: '2010-04',
-    title: 'Senior Database and Application Developer',
+    title: 'Senior Web Application Developer',
     highlights: [
-      'LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, MS \
-      Visual Basic, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server, bash/Python \
-      scripting',
-      'Design, develop, code, test and support online database applications with multiple access \
-      levels, user management, custom user interface, reporting and graphs used by more than 300 \
-      people spanning several departments',
-      'Design, develop and maintain a custom CMS for more than thirty websites for all Extended \
-      Care nursing facilities',
-      'Provide complete graphics services for promotional materials and newsletters, including \
-      layout, copy-editing, printing and liaison to professional printing services',
+      `Designed, developed, coded, tested and supported online database applications with multiple
+        access levels, user management, custom user interface, reporting and graphs used by more
+        than 300 people spanning several departments`,
+      `Designed, developed and maintained a custom CMS for more than thirty websites for all
+        Extended Care nursing facilities`,
+      `Provided complete graphics services for promotional materials and newsletters, including
+        layout, copy-editing, printing and liaison to professional printing services`,
     ],
   },
   {
@@ -348,12 +394,12 @@ const startYear = 1998;
 const currentYear = new Date().getFullYear();
 const yearsString = currentYear - startYear;
 
-export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString} years
-  experience with web technology. I am looking to be a good citizen on the
-  internet and build the next generation of web applications. I strive to
+export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString}
+  years of experience with web technology. I am looking to be a good citizen on
+  the internet and build the next generation of web applications. I strive to
   understand end-users, while gathering consensus from stakeholders, UX and
   Product teams to build interfaces that are perceivable, operable,
-  understandable and robust. I am passionate about a11y. I am a noise-maker
-  and noisemaker-maker.`;
+  understandable and robust. I am passionate about accessibility. I am a
+  noise-maker and noisemaker-maker.`;
 
 export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Front-End Web Developer | Guitar FX Mad Scientist`;

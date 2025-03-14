@@ -24,19 +24,19 @@ test('Page may or may not have availability', async ({ page }) => {
   // await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
-test('Page has subheader', async ({ page }) => {
+test('Page has subheaders', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('subheader')).toBeVisible();
+  await expect(page.getByTestId('subheaders')).toBeVisible();
 });
 
 test('Page has summary', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 2, name: 'summary' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: 'Summary' })).toBeVisible();
 });
 
-test('Page has specialties', async ({ page }) => {
+test('Page has core skills', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 2, name: 'Specialties' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: 'Core Skills' })).toBeVisible();
 });
 
 test('Page has experience', async ({ page }) => {
