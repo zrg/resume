@@ -389,11 +389,6 @@ export const schools = [
     endYear: '1994',
   },
 ];
-
-const startYear = 1998;
-const currentYear = new Date().getFullYear();
-const yearsString = currentYear - startYear;
-
 export const summary = `Extensive web  development experience working on mission critical applications.
   I am looking to be a good citizen on the internet and deliver robust, intuitive, and accessible
   interfaces. I strive to gather consensus from all stakeholders, Product, Engineering, and UX while
