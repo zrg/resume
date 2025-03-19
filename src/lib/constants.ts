@@ -394,12 +394,9 @@ const startYear = 1998;
 const currentYear = new Date().getFullYear();
 const yearsString = currentYear - startYear;
 
-export const summary = `Thoughtful, thorough, and inclusive, with ${yearsString}
-  years of experience with web technology. I am looking to be a good citizen on
-  the internet and build the next generation of web applications. I strive to
-  understand end-users, while gathering consensus from stakeholders, UX and
-  Product teams to build interfaces that are perceivable, operable,
-  understandable and robust. I am passionate about accessibility. I am a
-  noise-maker and noisemaker-maker.`;
+export const summary = `Extensive web  development experience working on mission critical applications.
+  I am looking to be a good citizen on the internet and deliver robust, intuitive, and accessible
+  interfaces. I strive to gather consensus from all stakeholders, Product, Engineering, and UX while
+  focusing on the end-user. I am passionate about accessibility.`;
 
 export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Front-End Web Developer | Guitar FX Mad Scientist`;
