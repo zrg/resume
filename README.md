@@ -1,7 +1,7 @@
 # Zev Goldberg's Resume
 
 [`HTML`](https://resume.zevgoldberg.com) /
-[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%202025_03_14.pdf)
+[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%202025_03_19.pdf)
 
 Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
@@ -22,8 +22,8 @@ Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
 ## Senior Software Engineer / Front-End Web Developer / Guitar FX Mad Scientist
 
-Thoughtful, thorough, and inclusive, with 27 years experience with web technology. I am looking to
-be a good citizen on the internet and build the next generation of web applications. I strive to
-understand end-users, while gathering consensus from stakeholders, UX and Product teams to build
-interfaces that are perceivable, operable, understandable and robust. I am a noise-maker and
-noisemaker-maker.
+Extensive web  development experience working on mission critical
+applications. I am looking to be a good citizen on the internet and
+deliver robust, intuitive, and accessible interfaces. I strive to
+gather consensus from all stakeholders, Product, Engineering, and
+UX while focusing on the end-user. I am passionate about accessibility.
