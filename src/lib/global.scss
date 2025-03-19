@@ -37,7 +37,7 @@ a {
 
   &[rel='nofollow']::after {
     content: ' ';
-    mask: url(external-link.svg);
+    mask: url('/external-link.svg');
     mask-size: contain;
     display: inline-block;
     margin-left: 0.1em;
