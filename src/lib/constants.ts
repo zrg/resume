@@ -153,6 +153,8 @@ export const coreSkills = [
       'REST API',
       'Single Page Applications',
       'ZShell/Bash',
+      'Object-Oriented',
+      'Design Patterns',
       'Linux/Apache/MySql/PHP (LAMP)',
       'WordPress',
       'Joomla',
