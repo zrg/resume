@@ -138,7 +138,7 @@
       <div data-testid={testId('subheaders')}>
         <ul class="subheader">
           <li>
-            <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
+            <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. 9 3 8 4.">(773) 800-9384</a>
           </li>
           <li aria-label="zev goldberg at G mail dot com">
             <Mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</Mailto>
