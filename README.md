@@ -7,16 +7,9 @@ Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
 ---
 
-<ul>
-  <li>
-    <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. 9 3 8 4.">(773) 800-9384</a>
-  </li>
-  <li aria-label="zev goldberg at G mail dot com">
-    <a href="mailto:zevgoldberg@gmail.com">zevgoldberg@gmail.com</a
-    >
-  </li>
-  <li>Evanston, IL 60203</li>
-</ul>
+* [(773) 800-9384](tel:+17738009384)
+* [zevgoldberg@gmail.com](mailto:zevgoldberg@gmail.com)
+* Evanston, IL 60203
 
 ---
 
