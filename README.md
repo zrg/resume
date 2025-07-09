@@ -9,10 +9,10 @@ Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
 <ul>
   <li>
-    <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. Z E V G.">(773) 800-ZEVG</a>
+    <a href="tel:7738009384" aria-label="7 7 3. 8 0 0. 9 3 8 4.">(773) 800-9384</a>
   </li>
   <li aria-label="zev goldberg at G mail dot com">
-    <a href="#" use:mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</a
+    <a href="mailto:zevgoldberg@gmail.com">zevgoldberg@gmail.com</a
     >
   </li>
   <li>Evanston, IL 60203</li>
