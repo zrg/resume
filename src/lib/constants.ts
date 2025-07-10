@@ -147,6 +147,7 @@ export const coreSkills = [
       'React.js',
       'Next.js',
       'Angular',
+      'documentation',
       'component frameworks',
       'Bootstrap',
       'jQuery',
