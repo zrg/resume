@@ -394,8 +394,8 @@ export const schools = [
 ];
 
 export const summary = `Extensive web  development experience working on mission critical applications.
-  I am looking to be a good citizen on the internet and deliver robust, intuitive, and accessible
-  interfaces. I strive to gather consensus from all stakeholders, Product, Engineering, and UX while
-  focusing on the end-user. I am passionate about accessibility.`;
+I am looking to be a good citizen on the internet and deliver robust, intuitive, and accessible
+interfaces. I strive to gather consensus from all stakeholders, Product, Engineering, and UX while
+focusing on the end-user. I am passionate about accessibility and detail-oriented.`;
 
 export const title = `Zev Goldberg's Résumé: Senior Software Engineer | Front-End Web Developer | Guitar FX Mad Scientist`;

@@ -1,7 +1,7 @@
 # Zev Goldberg's Resume
 
 [`HTML`](https://resume.zevgoldberg.com) /
-[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%202025_07_20.pdf)
+[`PDF`](https://resume.zevgoldberg.com/Zev%20Goldberg%20-%20Resume%202025_07_20b.pdf)
 
 Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 
@@ -18,4 +18,4 @@ Built in [`SvelteKit`](https://github.com/sveltejs/kit)
 Extensive web development experience working on mission critical applications. I am looking to be a
 good citizen on the internet and deliver robust, intuitive, and accessible interfaces. I strive to
 gather consensus from all stakeholders, Product, Engineering, and UX while focusing on the end-user.
-I am passionate about accessibility.
+I am passionate about accessibility and detail-oriented.
