@@ -16,7 +16,7 @@
   import VisuallyHidden from './VisuallyHidden.svelte';
   import EnvNotice from './envNotice.svelte';
 
-  const pdfLink = '../Zev%20Goldberg%20-%20Resume%202025_07_10.pdf';
+  const pdfLink = '../Zev%20Goldberg%20-%20Resume%202025_07_20.pdf';
 
   let randomFont = getRandomFont(null, null);
   let {
