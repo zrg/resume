@@ -191,9 +191,9 @@ export const jobs = [
         converting legacy components and pages to modern Single-Page Applications using
         microservices and component frameworks (Svelte, React)`,
       `Kept our code working by supporting other teams in regular on-call rotation`,
-      `Improved internal useability with documentation for components in Storybook for other
+      `Improved internal usability with documentation for components in Storybook for other
         developer teams`,
-      `Helped our platform become useable by all by defining and implementing accessibility
+      `Helped our platform become usable by all by defining and implementing accessibility
         requirements and shaping our approach to developing UI components`,
       `Improved product data by implementing a mechanism for onsite employees to provide feedback
         on internal search results`,
