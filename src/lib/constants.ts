@@ -121,13 +121,16 @@ export const coreSkills = [
     title: 'UX/UI',
     sublist: [
       'Accessibility (A11y)',
+      'ADA',
       'WCAG',
+      'WAI-ARIA',
       'Figma',
       'Storybook',
       'Semantic Markup',
       'Screen-Readers',
       'Universal Design',
-      'responsive layout',
+      'responsive and adaptive layout',
+      'cross-browser',
       'Photoshop',
       'Illustrator',
       'InDesign',
@@ -154,6 +157,9 @@ export const coreSkills = [
       'REST API',
       'Single Page Applications',
       'ZShell/Bash',
+      'JSLint',
+      'Prettier',
+      'Python',
       'Object-Oriented',
       'Design Patterns',
       'Linux/Apache/MySql/PHP (LAMP)',
@@ -169,6 +175,7 @@ export const coreSkills = [
       'Chromatic',
       'Node.js',
       'Github Actions/Workflows',
+      'CI/CD',
       'Snyk',
       'Webpack',
       'Rollup',
@@ -187,6 +194,9 @@ export const jobs = [
     endMonth: '2024-09',
     title: 'Software Engineer II',
     highlights: [
+      `HTML, SCSS/Sass/Less, Javascript, Node.js, NPM, React, TypeScript, Next.js, SSR, StoryBook,
+        Chromatic, Webpack, Rollup, Snyk, JSLint, Prettier, Jest, Svelte, jQuery, AWS, GitHub
+        Actions/Workflows, CI/CD, Bash/ZShell`,
       `Improved speed, reliability and capabilities of Fortune 500 e-commerce platform by
         converting legacy components and pages to modern Single-Page Applications using
         microservices and component frameworks (Svelte, React)`,
