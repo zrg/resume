@@ -13,10 +13,13 @@
   import Zrgqr from './zrgqr.svg?component';
   import IconDark from './icon-dark.svg?component';
   import IconLight from './icon-light.svg?component';
+  import Github from './github.svg?component';
+  import Linkedin from './linkedin.svg?component';
+  import Pdf from './pdf.svg?component';
   import VisuallyHidden from './VisuallyHidden.svelte';
   import EnvNotice from './envNotice.svelte';
 
-  const pdfLink = '../Zev%20Goldberg%20-%20Resume%202025_08_21.pdf';
+  const pdfLink = '../Zev%20Goldberg%20-%20Resume%202025_08_22.pdf';
 
   let randomFont = getRandomFont(null, null);
   let {
@@ -146,9 +149,21 @@
           <li>Evanston, IL 60203</li>
         </ul>
         <ul class="subheader">
-          <li class="no-print"><a href={pdfLink}>PDF Format</a></li>
-          <li class="no-print">
-            <a href="https://github.com/zrg/resume">GitHub Source Code</a>
+          <li>
+            <a href={pdfLink} class="show-link"
+              ><span class="icon"><Pdf /></span> <span class="no-print">PDF Résumé</span></a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/zrg/resume" class="show-link"
+              ><span class="icon"><Github /></span>
+              <span class="no-print">GitHub Source Code</span></a
+            >
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/zevgoldberg" class="show-link"
+              ><span class="icon"><Linkedin /></span> <span class="no-print">LinkedIn</span></a
+            >
           </li>
         </ul>
       </div>
@@ -531,6 +546,10 @@
       margin-bottom: 8px;
     }
 
+    .icon {
+      vertical-align: top;
+    }
+
     @media (width >= 560px) {
       $spacer-width: 11px;
       $spacer-line-width: 2px;
@@ -799,6 +818,9 @@
   @media print {
     .no-print {
       display: none;
+    }
+    a[href].show-link::after {
+      content: attr(href) ' ';
     }
     .outer-container {
       background: none;
