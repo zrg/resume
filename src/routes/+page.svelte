@@ -203,7 +203,7 @@
                   <span class="job__title">{title}</span>
                 </h3>
                 <div>
-                  <span class="job__city">{city.toUpperCase()}</span>
+                  <span class="job__city">{city}</span>
                   <span class="job__dates">
                     {formatDate(startMonth).toUpperCase()}<VisuallyHidden>
                       through
@@ -724,7 +724,8 @@
     font-style: italic;
   }
 
-  .job__company {
+  .job__company,
+  .job__city {
     text-transform: uppercase;
   }
 
