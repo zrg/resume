@@ -196,7 +196,7 @@
               <li class="job" {id}>
                 <h3 class="job__header">
                   {#if url}
-                    <a href="//{url}" rel="nofollow">{fullName.toUpperCase()}</a>
+                    <a href="//{url}" rel="nofollow" class="job__company">{fullName}</a>
                   {:else}
                     {fullName.toUpperCase()}
                   {/if}
@@ -212,7 +212,7 @@
                 </div>
                 <ul class="job__highlights">
                   {#each highlights as highlight}
-                    <li>{highlight}</li>
+                    <li><VisuallyHidden>&bull;&nbsp;</VisuallyHidden>{highlight}</li>
                   {/each}
                 </ul>
               </li>
@@ -722,6 +722,10 @@
   .job__title,
   .school__concentration {
     font-style: italic;
+  }
+
+  .job__company {
+    text-transform: uppercase;
   }
 
   .qrContainer {
