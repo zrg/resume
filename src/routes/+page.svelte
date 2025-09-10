@@ -198,16 +198,16 @@
                   {#if url}
                     <a href="//{url}" rel="nofollow" class="job__company">{fullName}</a>
                   {:else}
-                    {fullName.toUpperCase()}
+                    <span class="job_company">{fullName}</span>
                   {/if}
                   <span class="job__title">{title}</span>
                 </h3>
                 <div>
                   <span class="job__city">{city}</span>
                   <span class="job__dates">
-                    {formatDate(startMonth).toUpperCase()}<VisuallyHidden>
+                    <span class="job__month">{formatDate(startMonth)}</span><VisuallyHidden>
                       through
-                    </VisuallyHidden>&ndash;{formatDate(endMonth).toUpperCase()}
+                    </VisuallyHidden>&ndash;<span class="job__month">{formatDate(endMonth)}</span>
                   </span>
                 </div>
                 <ul class="job__highlights">
@@ -725,7 +725,8 @@
   }
 
   .job__company,
-  .job__city {
+  .job__city,
+  .job__month {
     text-transform: uppercase;
   }
 
