@@ -171,6 +171,9 @@ export const coreSkills = [
     id: 'devops',
     title: 'Dev-Ops',
     sublist: [
+      'AWS',
+      'S3',
+      'Amplify',
       'Jest (Unit Testing)',
       'Chromatic',
       'Node.js',
