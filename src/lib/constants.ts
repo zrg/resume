@@ -156,7 +156,7 @@ export const coreSkills = [
       'jQuery',
       'REST API',
       'Single Page Applications',
-      'ZShell/Bash',
+      'ZShell/Bash scripting',
       'JSLint',
       'Prettier',
       'Python',
@@ -199,7 +199,7 @@ export const jobs = [
     highlights: [
       `HTML, SCSS/Sass/Less, Javascript, Node.js, NPM, React, TypeScript, Next.js, SSR, StoryBook,
         Chromatic, Webpack, Rollup, Snyk, JSLint, Prettier, Jest, Svelte, jQuery, AWS, GitHub
-        Actions/Workflows, CI/CD, Bash/ZShell`,
+        Actions/Workflows, CI/CD, Bash/ZShell scripting, Agile Methodology`,
       `Improved speed, reliability and capabilities of Fortune 500 e-commerce platform by
         converting legacy components and pages to modern Single-Page Applications using
         microservices and component frameworks (Svelte, React)`,
