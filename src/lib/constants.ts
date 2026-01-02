@@ -224,6 +224,7 @@ export const jobs = [
     endMonth: '2015-03',
     title: 'Software Engineer (contract)',
     highlights: [
+      `HTML, CSS, JavaScript, Angular, Bootstrap, Less, Angular-UI, Grunt, Underscore, Github`,
       `Developed gamified learning management application`,
       `Converted UX documents and mock-up images into functioning sections of the application`,
     ],
@@ -237,7 +238,10 @@ export const jobs = [
     startMonth: '2014-03',
     endMonth: '2014-05',
     title: 'Senior Web Developer',
-    highlights: [`Developed and supported responsive Wordpress sites for SMB clients`],
+    highlights: [
+      `HTML, CSS, JavaScript, PHP, Wordpress, Git, Beanstalk`,
+      `Developed and supported responsive Wordpress sites for SMB clients`,
+    ],
   },
   {
     id: 'cm',
@@ -249,6 +253,7 @@ export const jobs = [
     endMonth: '2014-02',
     title: 'Senior Developer',
     highlights: [
+      `Web Performance Tools, Google PageSpeed Tools, YSlow, ImageOptim`,
       `Developed strategies and plans to measure and improve load times and perceived performance
         of existing websites`,
     ],
@@ -263,6 +268,8 @@ export const jobs = [
     endMonth: '2013-11',
     title: 'Software Engineer III',
     highlights: [
+      `HTML, CSS, JavaScript, jQuery, responsive layout, touch-enabled, cross-browser,
+        device-agnostic, SVN, Photoshop, InDesign`,
       `Developed completely new device-agnostic SPA publication for a major metropolitan newspaper`,
       `Converted requirements documents and mock-up images into layouts and functioning sections of
         the website`,
@@ -279,6 +286,8 @@ export const jobs = [
     endMonth: '2012-04',
     title: 'Web Developer',
     highlights: [
+      `HTML, CSS, Smarty, JavaScript, jQuery, jQuery UI, Modernizr, NetBeans, Subversion,
+        Photoshop, PHP, Zend, MySQL`,
       `Lead front-end development of HTML and CSS for a large social network, news, venue/city
         guide and dating site`,
       `Converted requirements documents and mock-up images into reusable templates and functioning
@@ -295,6 +304,7 @@ export const jobs = [
     endMonth: '2010-11',
     title: 'Front-End Web Developer (contract)',
     highlights: [
+      `HTML, CSS, JavaScript, Photoshop`,
       `Migrated several classified ads systems into the new one, maintaining the latest
         branding styles in a legacy framework`,
     ],
@@ -309,6 +319,8 @@ export const jobs = [
     endMonth: '2010-08',
     title: 'Web Developer',
     highlights: [
+      `LAMP, Joomla, HTML, CSS, JavaScript, Ajax, ColdFusion, Photoshop, Illustrator, social
+        media, Android`,
       `Developed and maintained content and SEO for company’s extensive web presence and partner
         websites`,
     ],
@@ -323,6 +335,9 @@ export const jobs = [
     endMonth: '2010-04',
     title: 'Senior Web Application Developer',
     highlights: [
+      `LAMP, Joomla, HTML, CSS, JavaScript (Prototype, Scriptaculous, etc.), Ajax, Excel, MS
+        Visual Basic, Photoshop, Illustrator, InDesign, SubVersion, Fiery Print Server,
+        bash/Python scripting`,
       `Designed, developed, coded, tested and supported online database applications with multiple
         access levels, user management, custom user interface, reporting and graphs used by more
         than 300 people spanning several departments`,
@@ -406,7 +421,7 @@ export const schools = [
   },
 ];
 
-export const summary = `Extensive web  development experience working on mission critical applications.
+export const summary = `Extensive web development experience working on mission critical applications.
 I am looking to be a good citizen on the internet and deliver robust, intuitive, and accessible
 interfaces. I strive to gather consensus from all stakeholders, Product, Engineering, and UX while
 focusing on the end-user. I am passionate about accessibility and detail-oriented.`;

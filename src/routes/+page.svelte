@@ -697,6 +697,10 @@
 
       li {
         margin-bottom: 0.5em;
+
+        &:first-of-type {
+          font-style: italic;
+        }
       }
     }
 
