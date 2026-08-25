@@ -676,8 +676,8 @@
     &__city,
     &__dates {
       color: var(--jobs-color);
+      display: block;
       font-weight: 300;
-      line-height: 2;
     }
   }
 
@@ -708,13 +708,20 @@
       &__dates::before {
         content: ' | ';
       }
+
       &__title {
         display: inline;
-
+        
         &::before {
           content: '\2014\0020';
         }
       }
+      &__city,
+      &__dates {
+        display: inline;
+        line-height: 2;
+      }
+      
       &__city,
       &__dates,
       &__title {
