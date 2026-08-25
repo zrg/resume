@@ -146,12 +146,12 @@
           <li aria-label="zev goldberg at G mail dot com">
             <Mailto>zevgoldberg@<span aria-hidden="true">[remove this]</span>gmail.com</Mailto>
           </li>
-          <li>Evanston, IL 60203</li>
+          <li>Skokie, IL 60076</li>
         </ul>
         <ul class="subheader">
           <li>
             <a href={pdfLink} class="show-link"
-              ><span class="icon"><Pdf /></span> <span class="no-print">PDF Résumé</span></a
+              ><span class="icon"><Pdf /></span> <span class="no-print">PDF Résumé - out of date</span></a
             >
           </li>
           <li>

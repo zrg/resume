@@ -1,4 +1,4 @@
-export const availability = true;
+export const availability = false;
 
 type ColorFamily = {
   name: string | null;
@@ -145,6 +145,8 @@ export const coreSkills = [
       'CSS/SCSS/Sass/Less',
       'ECMAScript (JavaScript)',
       'Typescript',
+      'Vue.js',
+      'Nuxt',
       'Svelte',
       'SvelteKit',
       'React.js',
@@ -187,6 +189,16 @@ export const coreSkills = [
 ];
 
 export const jobs = [
+  {
+    id: 'univar',
+    display: true,
+    url: 'www.univarsolutions.com',
+    fullName: 'Univar Solutions LLC.',
+    city: 'Downers Grove, IL',
+    startMonth: '2026-05',
+    endMonth: 'current',
+    title: 'Software Developer (contract)',
+  },
   {
     id: 'grainger',
     display: true,
